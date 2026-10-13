@@ -1,0 +1,18 @@
+{
+  "name": "sopinsya-capstone",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sopinsya - Sistem Informasi Pelatihan dan Konsultasi DMP (Capstone PPSI Kelompok 01)",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev --workspace apps/api",
+    "dev:web": "npm run dev --workspace apps/web",
+    "start:api": "npm run start --workspace apps/api",
+    "build:web": "npm run build --workspace apps/web"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
