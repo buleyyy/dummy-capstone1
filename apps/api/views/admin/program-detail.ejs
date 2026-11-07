@@ -1,0 +1,344 @@
+<%
+  const evalTypes = [
+    { type: 'PRE_TEST', label: 'Pre-test' },
+    { type: 'POST_TEST', label: 'Post-test' },
+    { type: 'QUIZ', label: 'Kuis / Quiz Game' },
+  ];
+  const materialTypes = ['SILABUS','MATERI','STUDI_KASUS','VIDEO','QUIZ','SOP','DOKUMEN'];
+  const letters = ['A','B','C','D','E','F'];
+  const parseOptions = (raw) => { try { return JSON.parse(raw); } catch { return []; } };
+%>
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/internal-topbar', { user }) %>
+<div class="app">
+  <%- include('../partials/internal-sidebar', { user, active }) %>
+  <div class="app-main">
+    <main class="container">
+      <%- include('../partials/flash', { ok, err }) %>
+      <div class="pagehead">
+        <div>
+          <h1><%= program.title %></h1>
+          <div class="sub">
+            <span class="badge <%= program.isPublished ? 'b-ok' : 'b-mut' %>"><%= program.isPublished ? 'Published' : 'Draft' %></span>
+            &nbsp;/program/<%= program.slug %>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="btn ghost" href="/program/<%= program.slug %>" target="_blank" rel="noopener">Lihat di situs</a>
+          <a class="btn ghost" href="/admin/program">Daftar program</a>
+        </div>
+      </div>
+
+      <!-- ===== Identitas program ===== -->
+      <div class="card">
+        <h3>Informasi program</h3>
+        <form method="post" action="/admin/program/<%= program.id %>">
+          <div class="row">
+            <label class="field" style="flex:2">
+              <span>Nama program <span class="req">*</span></span>
+              <input name="title" required maxlength="200" value="<%= program.title %>" />
+            </label>
+            <label class="field">
+              <span>Slug URL</span>
+              <input name="slug" value="<%= program.slug %>" />
+            </label>
+            <label class="field">
+              <span>Kategori</span>
+              <select name="categoryId">
+                <option value="">— Tanpa kategori —</option>
+                <% categories.forEach(function (c) { %>
+                  <option value="<%= c.id %>" <%= program.categoryId === c.id ? 'selected' : '' %>><%= c.name %></option>
+                <% }) %>
+              </select>
+            </label>
+          </div>
+          <label class="field">
+            <span>Ringkasan</span>
+            <input name="summary" maxlength="300" value="<%= program.summary || '' %>" />
+          </label>
+          <label class="field">
+            <span>Deskripsi</span>
+            <textarea name="description" rows="4"><%= program.description || '' %></textarea>
+          </label>
+          <label class="field">
+            <span>Silabus</span>
+            <textarea name="syllabus" rows="5"><%= program.syllabus || '' %></textarea>
+          </label>
+          <div class="row">
+            <label class="field">
+              <span>Trainer</span>
+              <input name="trainerName" value="<%= program.trainerName || '' %>" />
+            </label>
+            <label class="field">
+              <span>Tautan pertemuan daring</span>
+              <input name="meetingUrl" type="url" value="<%= program.meetingUrl || '' %>" />
+            </label>
+            <label class="field">
+              <span>Gambar sampul (URL)</span>
+              <input name="coverUrl" type="url" value="<%= program.coverUrl || '' %>" />
+            </label>
+          </div>
+          <label class="check">
+            <input type="checkbox" name="isPublished" <%= program.isPublished ? 'checked' : '' %> /> Program dipublikasikan (tampil pada katalog peserta)
+          </label>
+          <button class="btn" type="submit">Simpan Perubahan</button>
+        </form>
+      </div>
+
+      <!-- ===== Materi ===== -->
+      <div class="card" id="materi">
+        <h3>Materi &amp; konten pembelajaran <span class="badge b-info"><%= program.materials.length %> item</span></h3>
+        <% if (!program.materials.length) { %><div class="empty">Belum ada materi.</div><% } %>
+        <% program.materials.forEach(function (m) { %>
+          <details class="material-item" style="display:block">
+            <summary style="cursor:pointer;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+              <span>
+                <span class="badge b-mut"><%= helpers.MATERIAL_LABELS[m.type] || m.type %></span>
+                <strong><%= m.title %></strong>
+                <span class="badge <%= m.isPublished ? 'b-ok' : 'b-mut' %>"><%= m.isPublished ? 'Tampil' : 'Draft' %></span>
+              </span>
+              <span class="small muted"><%= m.url ? 'Tautan' : 'Tanpa tautan' %></span>
+            </summary>
+            <form method="post" action="/admin/materi/<%= m.id %>" style="margin-top:10px">
+              <input type="hidden" name="programId" value="<%= program.id %>" />
+              <div class="row">
+                <label class="field">
+                  <span>Jenis</span>
+                  <select name="type">
+                    <% materialTypes.forEach(function (t) { %>
+                      <option value="<%= t %>" <%= m.type === t ? 'selected' : '' %>><%= helpers.MATERIAL_LABELS[t] %></option>
+                    <% }) %>
+                  </select>
+                </label>
+                <label class="field" style="flex:2">
+                  <span>Judul</span>
+                  <input name="title" value="<%= m.title %>" required />
+                </label>
+                <label class="field">
+                  <span>Urutan</span>
+                  <input name="sortOrder" type="number" value="<%= m.sortOrder %>" />
+                </label>
+              </div>
+              <label class="field">
+                <span>Tautan / berkas</span>
+                <input name="url" type="url" value="<%= m.url || '' %>" placeholder="https://…" />
+              </label>
+              <label class="field">
+                <span>Deskripsi</span>
+                <textarea name="description" rows="2"><%= m.description || '' %></textarea>
+              </label>
+              <label class="check"><input type="checkbox" name="isPublished" <%= m.isPublished ? 'checked' : '' %> /> Tampilkan ke peserta</label>
+              <div class="actions">
+                <button class="btn sm" type="submit">Simpan materi</button>
+                <button class="btn sm danger" type="submit" formaction="/admin/materi/<%= m.id %>/hapus" data-confirm="Hapus materi ini?">Hapus</button>
+              </div>
+            </form>
+          </details>
+        <% }) %>
+
+        <details style="margin-top:14px">
+          <summary class="btn sm ghost" style="display:inline-flex;cursor:pointer">＋ Tambah materi</summary>
+          <form method="post" action="/admin/program/<%= program.id %>/materi" style="margin-top:12px">
+            <div class="row">
+              <label class="field">
+                <span>Jenis <span class="req">*</span></span>
+                <select name="type" required>
+                  <% materialTypes.forEach(function (t) { %><option value="<%= t %>"><%= helpers.MATERIAL_LABELS[t] %></option><% }) %>
+                </select>
+              </label>
+              <label class="field" style="flex:2">
+                <span>Judul <span class="req">*</span></span>
+                <input name="title" required placeholder="Contoh: Modul 1 — Ruang lingkup ISO 37001" />
+              </label>
+              <label class="field">
+                <span>Urutan</span>
+                <input name="sortOrder" type="number" value="0" />
+              </label>
+            </div>
+            <label class="field">
+              <span>Tautan (YouTube, Zoom, Google Drive, PDF)</span>
+              <input name="url" type="url" placeholder="https://…" />
+            </label>
+            <label class="field">
+              <span>Deskripsi singkat</span>
+              <textarea name="description" rows="2"></textarea>
+            </label>
+            <button class="btn" type="submit">Tambah materi</button>
+          </form>
+        </details>
+      </div>
+
+      <!-- ===== Evaluasi ===== -->
+      <div class="card" id="soal">
+        <h3>Evaluasi &amp; bank soal</h3>
+        <% evalTypes.forEach(function (item) {
+             const evaluation = program.evaluations.find(function (e) { return e.type === item.type; });
+        %>
+          <details style="border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:12px" <%= evaluation ? '' : '' %>>
+            <summary style="cursor:pointer;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+              <span>
+                <strong><%= item.label %></strong>
+                <% if (evaluation) { %>
+                  <span class="badge <%= evaluation.isPublished ? 'b-ok' : 'b-mut' %>"><%= evaluation.isPublished ? 'Terbit' : 'Draft' %></span>
+                  <span class="small muted"><%= evaluation.questions.length %> soal · <%= evaluation._count.attempts %> pengerjaan</span>
+                <% } else { %><span class="badge b-mut">Belum dibuat</span><% } %>
+              </span>
+              <span class="small muted">Klik untuk mengelola</span>
+            </summary>
+
+            <form method="post" action="/admin/program/<%= program.id %>/evaluasi/<%= item.type %>" style="margin-top:12px">
+              <div class="row">
+                <label class="field" style="flex:2">
+                  <span>Judul evaluasi</span>
+                  <input name="title" value="<%= evaluation ? evaluation.title : item.label %>" />
+                </label>
+                <label class="field">
+                  <span>Instruksi</span>
+                  <input name="instructions" value="<%= evaluation ? (evaluation.instructions || '') : '' %>" placeholder="Petunjuk pengerjaan" />
+                </label>
+              </div>
+              <label class="check"><input type="checkbox" name="isPublished" <%= evaluation && evaluation.isPublished ? 'checked' : '' %> /> Terbitkan evaluasi</label>
+              <label class="check"><input type="checkbox" name="shuffle" <%= !evaluation || evaluation.shuffle ? 'checked' : '' %> /> Acak urutan soal (KF-12)</label>
+              <button class="btn sm" type="submit"><%= evaluation ? 'Simpan pengaturan' : 'Buat evaluasi' %></button>
+            </form>
+
+            <% if (evaluation) { %>
+              <div style="margin-top:14px">
+                <% if (!evaluation.questions.length) { %><div class="empty">Belum ada soal.</div><% } %>
+                <% evaluation.questions.forEach(function (q, index) { const opts = parseOptions(q.options); %>
+                  <details class="material-item" style="display:block">
+                    <summary style="cursor:pointer">
+                      <strong><%= index + 1 %>. <%= q.text %></strong>
+                      <span class="badge b-info">Kunci <%= q.correctAnswer %></span>
+                      <span class="badge b-mut"><%= q.score %> poin</span>
+                    </summary>
+                    <form method="post" action="/admin/soal/<%= q.id %>" style="margin-top:10px">
+                      <input type="hidden" name="programId" value="<%= program.id %>" />
+                      <label class="field">
+                        <span>Pertanyaan</span>
+                        <textarea name="text" rows="3" required><%= q.text %></textarea>
+                      </label>
+                      <label class="field">
+                        <span>Opsi jawaban (satu per baris)</span>
+                        <textarea name="options" rows="4" required><%= opts.join('\n') %></textarea>
+                      </label>
+                      <div class="row">
+                        <label class="field">
+                          <span>Kunci jawaban</span>
+                          <select name="correctAnswer">
+                            <% letters.slice(0, Math.max(opts.length, 2)).forEach(function (l) { %>
+                              <option value="<%= l %>" <%= q.correctAnswer === l ? 'selected' : '' %>><%= l %></option>
+                            <% }) %>
+                          </select>
+                        </label>
+                        <label class="field">
+                          <span>Bobot</span>
+                          <input name="score" type="number" min="1" value="<%= q.score %>" />
+                        </label>
+                        <label class="field">
+                          <span>Urutan</span>
+                          <input name="sortOrder" type="number" value="<%= q.sortOrder %>" />
+                        </label>
+                      </div>
+                      <div class="actions">
+                        <button class="btn sm" type="submit">Simpan soal</button>
+                        <button class="btn sm danger" type="submit" formaction="/admin/soal/<%= q.id %>/hapus" data-confirm="Hapus soal ini?">Hapus</button>
+                      </div>
+                    </form>
+                  </details>
+                <% }) %>
+
+                <details class="material-item" style="display:block">
+                  <summary style="cursor:pointer"><strong>＋ Tambah soal</strong></summary>
+                  <form method="post" action="/admin/evaluasi/<%= evaluation.id %>/soal" style="margin-top:10px">
+                    <input type="hidden" name="programId" value="<%= program.id %>" />
+                    <label class="field">
+                      <span>Pertanyaan <span class="req">*</span></span>
+                      <textarea name="text" rows="3" required></textarea>
+                    </label>
+                    <label class="field">
+                      <span>Opsi jawaban (satu per baris, minimal 2) <span class="req">*</span></span>
+                      <textarea name="options" rows="4" required placeholder="Opsi A&#10;Opsi B&#10;Opsi C&#10;Opsi D"></textarea>
+                    </label>
+                    <div class="row">
+                      <label class="field">
+                        <span>Kunci</span>
+                        <select name="correctAnswer"><% letters.forEach(function (l) { %><option value="<%= l %>"><%= l %></option><% }) %></select>
+                      </label>
+                      <label class="field">
+                        <span>Bobot</span>
+                        <input name="score" type="number" min="1" value="1" />
+                      </label>
+                      <label class="field">
+                        <span>Urutan</span>
+                        <input name="sortOrder" type="number" value="<%= evaluation.questions.length + 1 %>" />
+                      </label>
+                    </div>
+                    <button class="btn sm" type="submit">Tambah soal</button>
+                  </form>
+                </details>
+
+                <details class="material-item" style="display:block">
+                  <summary style="cursor:pointer"><strong>⤓ Impor soal massal (Excel/Word → CSV)</strong></summary>
+                  <p class="small muted" style="margin:10px 0 6px">
+                    Satu soal per baris, kolom dipisah <code>|</code> atau TAB:
+                    <code>pertanyaan | opsi A | opsi B | opsi C | opsi D | kunci</code>.
+                    Simpan berkas Excel/Word sebagai CSV/TXT, lalu tempel isinya di sini.
+                  </p>
+                  <form method="post" action="/admin/evaluasi/<%= evaluation.id %>/impor">
+                    <input type="hidden" name="programId" value="<%= program.id %>" />
+                    <label class="field">
+                      <span>Isi berkas</span>
+                      <textarea name="text" rows="5" required placeholder="Apa tujuan utama ISO 37001? | Mencegah penyuapan | Menambah laba | … | A"></textarea>
+                    </label>
+                    <label class="check"><input type="checkbox" name="replace" value="1" /> Ganti seluruh soal yang ada</label>
+                    <button class="btn sm" type="submit">Impor soal</button>
+                  </form>
+                </details>
+              </div>
+            <% } %>
+          </details>
+        <% }) %>
+      </div>
+
+      <!-- ===== SOP program ===== -->
+      <div class="card">
+        <h3>Pustaka SOP program</h3>
+        <% if (!allSops.length) { %>
+          <div class="empty">Belum ada SOP pada pustaka. <a href="/admin/sop">Tambah SOP</a>.</div>
+        <% } else { %>
+          <ul class="list">
+            <% allSops.forEach(function (s) { %>
+              <li>
+                <span><strong><%= s.code %></strong> — <%= s.title %> <span class="small muted">rev. <%= s.version %></span></span>
+                <form method="post" action="/admin/program/<%= program.id %>/sop">
+                  <input type="hidden" name="sopId" value="<%= s.id %>" />
+                  <input type="hidden" name="attached" value="<%= attached.has(s.id) ? '0' : '1' %>" />
+                  <button class="btn sm <%= attached.has(s.id) ? 'danger' : 'ghost' %>" type="submit"><%= attached.has(s.id) ? 'Lepas' : 'Hubungkan' %></button>
+                </form>
+              </li>
+            <% }) %>
+          </ul>
+        <% } %>
+      </div>
+
+      <!-- ===== Ulasan ===== -->
+      <div class="card">
+        <h3>Rating &amp; ulasan <span class="badge b-warn"><%= program.reviews.length %> ulasan</span></h3>
+        <% if (!program.reviews.length) { %><div class="empty">Belum ada ulasan untuk program ini.</div><% } %>
+        <% program.reviews.slice(0, 6).forEach(function (r) { %>
+          <div class="review-row">
+            <div class="review-avatar">A</div>
+            <div style="flex:1">
+              <div><strong>Anonim</strong> <span class="stars"><%= '★'.repeat(r.rating) %><%= '☆'.repeat(5 - r.rating) %></span></div>
+              <div class="small muted"><%= helpers.formatDate(r.createdAt) %></div>
+              <% if (r.comment) { %><div class="small" style="margin-top:4px"><%= r.comment %></div><% } %>
+            </div>
+          </div>
+        <% }) %>
+        <a class="btn sm ghost" href="/admin/ulasan">Lihat semua ulasan</a>
+      </div>
+    </main>
+  </div>
+</div>
+<%- include('../partials/foot') %>

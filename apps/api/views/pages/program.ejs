@@ -1,0 +1,185 @@
+<%
+  const byType = (type) => program.materials.filter((m) => m.type === type);
+  const evaluationOf = (type) => program.evaluations.find((e) => e.type === type) || null;
+  const pre = evaluationOf('PRE_TEST');
+  const post = evaluationOf('POST_TEST');
+  const quiz = evaluationOf('QUIZ');
+  const sops = program.programSops.filter((row) => row.sop.isPublished);
+  const sections = [
+    { id: 'silabus', label: 'Silabus', ic: '▤' },
+    { id: 'materi', label: 'Materi', ic: '▥' },
+    { id: 'studi-kasus', label: 'Studi Kasus', ic: '▧' },
+    { id: 'pretest', label: 'Pre-test', ic: '✎' },
+    { id: 'posttest', label: 'Post-test', ic: '✓' },
+    { id: 'quiz', label: 'Quiz Game', ic: '◈' },
+    { id: 'video', label: 'Video Referensi', ic: '▶' },
+    { id: 'sop', label: 'Pustaka SOP', ic: '▦' },
+    { id: 'ulasan', label: 'Rating & Ulasan', ic: '★' },
+  ];
+%>
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/public-nav', { user, active }) %>
+
+<main class="container">
+  <%- include('../partials/flash', { ok, err }) %>
+
+  <div class="learn">
+    <aside class="learn-side">
+      <div class="meet">
+        <%= program.title %>
+        <% if (program.trainerName) { %><div class="small muted" style="font-weight:500">Trainer: <%= program.trainerName %></div><% } %>
+      </div>
+      <% if (program.meetingUrl) { %>
+        <a class="btn sm wide ghost" href="<%= program.meetingUrl %>" target="_blank" rel="noopener" style="margin-bottom:10px">Bergabung ke pertemuan</a>
+      <% } %>
+      <ul>
+        <% sections.forEach(function (s) { %>
+          <li><a href="#<%= s.id %>"><span class="ic"><%= s.ic %></span> <%= s.label %></a></li>
+        <% }) %>
+      </ul>
+      <a class="btn sm wide" href="#pretest">Mulai Pre-test</a>
+    </aside>
+
+    <div>
+      <div class="learn-head">
+        <div class="meta">
+          <span><%= program.category ? program.category.name : 'Program Pelatihan' %></span>
+          <% if (program.trainerName) { %><span>Trainer: <%= program.trainerName %></span><% } %>
+          <span class="stars">★ <%= reviews.average ? reviews.average.toFixed(1) : '0.0' %></span>
+          <span class="small muted"><%= reviews.count %> ulasan</span>
+        </div>
+        <h1><%= program.title %></h1>
+        <% if (program.summary) { %><p class="muted" style="margin:6px 0 0"><%= program.summary %></p><% } %>
+      </div>
+
+      <section class="content-block on card" id="silabus" style="scroll-margin-top:90px">
+        <div class="block-title"><h2>Silabus</h2></div>
+        <% if (program.syllabus) { %>
+          <div style="white-space:pre-line"><%= program.syllabus %></div>
+        <% } else { %>
+          <div class="empty">Silabus belum ditambahkan.</div>
+        <% } %>
+        <% if (program.description) { %>
+          <h3 style="margin-top:16px">Tentang program</h3>
+          <div class="muted" style="white-space:pre-line;font-size:.92rem"><%= program.description %></div>
+        <% } %>
+      </section>
+
+      <section class="content-block on card" id="materi" style="scroll-margin-top:90px">
+        <div class="block-title"><h2>Materi Pembelajaran</h2><span class="badge b-info"><%= byType('MATERI').length + byType('DOKUMEN').length %> materi</span></div>
+        <%- include('../partials/material-list', { items: byType('MATERI').concat(byType('DOKUMEN')), empty: 'Materi belum ditambahkan.' }) %>
+      </section>
+
+      <section class="content-block on card" id="studi-kasus" style="scroll-margin-top:90px">
+        <div class="block-title"><h2>Studi Kasus</h2><span class="badge b-info"><%= byType('STUDI_KASUS').length %> item</span></div>
+        <%- include('../partials/material-list', { items: byType('STUDI_KASUS'), empty: 'Studi kasus belum tersedia.' }) %>
+      </section>
+
+      <section class="content-block on card" id="pretest" style="scroll-margin-top:90px">
+        <div class="block-title">
+          <h2>Pre-test</h2>
+          <span class="badge b-warn">Nilai tidak ditampilkan langsung</span>
+        </div>
+        <p class="muted small">Ukur pemahaman awal Anda sebelum mempelajari materi. Isi identitas, lalu kerjakan soal pilihan ganda.</p>
+        <% if (pre && pre._count.questions > 0) { %>
+          <div class="meta">
+            <span><%= pre._count.questions %> soal</span>
+            <span>Pilihan ganda</span>
+            <span>Urutan soal diacak</span>
+          </div>
+          <a class="btn" href="/program/<%= program.slug %>/evaluasi/PRE_TEST">Mulai Pre-test</a>
+        <% } else { %>
+          <div class="empty">Pre-test belum tersedia untuk program ini.</div>
+        <% } %>
+      </section>
+
+      <section class="content-block on card" id="posttest" style="scroll-margin-top:90px">
+        <div class="block-title">
+          <h2>Post-test</h2>
+          <span class="badge b-ok">Nilai tampil setelah submit</span>
+        </div>
+        <p class="muted small">Ukur peningkatan pemahaman Anda setelah menyelesaikan seluruh materi.</p>
+        <% if (post && post._count.questions > 0) { %>
+          <div class="meta">
+            <span><%= post._count.questions %> soal</span>
+            <span>Pilihan ganda</span>
+            <span>Urutan soal diacak</span>
+          </div>
+          <a class="btn" href="/program/<%= program.slug %>/evaluasi/POST_TEST">Mulai Post-test</a>
+        <% } else { %>
+          <div class="empty">Post-test belum tersedia untuk program ini.</div>
+        <% } %>
+      </section>
+
+      <section class="content-block on card" id="quiz" style="scroll-margin-top:90px">
+        <div class="block-title"><h2>Quiz Game</h2></div>
+        <% if (quiz && quiz._count.questions > 0) { %>
+          <p class="muted small">Latihan singkat untuk menguji pemahaman dengan suasana kuis.</p>
+          <a class="btn ghost" href="/program/<%= program.slug %>/evaluasi/QUIZ">Buka kuis</a>
+        <% } %>
+        <%- include('../partials/material-list', { items: byType('QUIZ'), empty: 'Quiz game belum tersedia.' }) %>
+      </section>
+
+      <section class="content-block on card" id="video" style="scroll-margin-top:90px">
+        <div class="block-title"><h2>Video Referensi</h2></div>
+        <%- include('../partials/material-list', { items: byType('VIDEO'), empty: 'Video referensi belum ditambahkan.' }) %>
+      </section>
+
+      <section class="content-block on card" id="sop" style="scroll-margin-top:90px">
+        <div class="block-title"><h2>Pustaka SOP</h2></div>
+        <% if (sops.length) { %>
+          <ul class="list">
+            <% sops.forEach(function (row) { %>
+              <li>
+                <span><strong class="mono"><%= row.sop.code %></strong> — <%= row.sop.title %> <span class="small muted">rev. <%= row.sop.version %></span></span>
+                <a class="btn sm ghost" href="<%= row.sop.url %>" target="_blank" rel="noopener">Buka dokumen</a>
+              </li>
+            <% }) %>
+          </ul>
+        <% } %>
+        <%- include('../partials/material-list', { items: byType('SOP'), empty: 'SOP program belum dihubungkan.' }) %>
+      </section>
+
+      <section class="content-block on card" id="ulasan" style="scroll-margin-top:90px">
+        <div class="block-title">
+          <h2>Rating &amp; Ulasan</h2>
+          <a class="btn sm" href="/program/<%= program.slug %>/ulasan">Tulis Ulasan</a>
+        </div>
+        <div class="review-summary">
+          <div class="center">
+            <div class="review-score"><%= reviews.average ? reviews.average.toFixed(1) : '0.0' %></div>
+            <div class="stars"><%= '★'.repeat(Math.round(reviews.average || 0)) %><%= '☆'.repeat(5 - Math.round(reviews.average || 0)) %></div>
+            <div class="small muted"><%= reviews.count %> ulasan anonim</div>
+          </div>
+          <div class="rating-bars">
+            <% [5,4,3,2,1].forEach(function (star) {
+                 const total = reviews.distribution[star] || 0;
+                 const pct = reviews.count ? Math.round((total / reviews.count) * 100) : 0;
+            %>
+              <div class="bar"><span><%= star %></span><div class="progress"><i style="width:<%= pct %>%"></i></div><span><%= total %></span></div>
+            <% }) %>
+          </div>
+        </div>
+
+        <div style="margin-top:16px">
+          <% if (!reviews.reviews.length) { %>
+            <div class="empty">Belum ada ulasan. Jadilah yang pertama memberikan penilaian.</div>
+          <% } %>
+          <% reviews.reviews.slice(0, 6).forEach(function (r) { %>
+            <div class="review-row">
+              <div class="review-avatar">A</div>
+              <div style="flex:1">
+                <div><strong>Anonim</strong> <span class="stars"><%= '★'.repeat(r.rating) %><%= '☆'.repeat(5 - r.rating) %></span></div>
+                <div class="small muted"><%= helpers.formatDate(r.createdAt) %></div>
+                <% if (r.comment) { %><div class="small" style="margin-top:4px"><%= r.comment %></div><% } %>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/public-footer', { settings, waLink }) %>
+<%- include('../partials/foot') %>

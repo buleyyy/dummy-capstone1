@@ -2,15 +2,15 @@
   "name": "@sopinsya/web",
   "version": "0.1.0",
   "private": true,
-  "description": "Frontend Next.js untuk Sopinsya (Capstone PPSI Kelompok 01)",
+  "type": "module",
+  "description": "Aset frontend Sopinsya (Vite + Tailwind). Halaman dirender Express dengan EJS; Vite hanya membangun CSS/JS.",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "vite build --watch",
+    "build": "vite build"
   },
-  "dependencies": {
-    "next": "^15.1.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.4"
   }
 }

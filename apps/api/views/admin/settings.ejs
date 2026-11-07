@@ -1,0 +1,48 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/internal-topbar', { user }) %>
+<div class="app">
+  <%- include('../partials/internal-sidebar', { user, active }) %>
+  <div class="app-main">
+    <main class="container">
+      <%- include('../partials/flash', { ok, err }) %>
+      <div class="pagehead">
+        <div>
+          <h1>Pengaturan Situs</h1>
+          <div class="sub">Informasi publik, tautan WhatsApp, dan header dokumen laporan audit.</div>
+        </div>
+      </div>
+
+      <form class="card" method="post" action="/admin/pengaturan">
+        <h3>Identitas &amp; kontak</h3>
+        <div class="row">
+          <label class="field" style="flex:2"><span>Nama situs</span><input name="siteName" value="<%= settings.siteName %>" required /></label>
+          <label class="field"><span>Nomor WhatsApp</span><input name="whatsapp" value="<%= settings.whatsapp %>" placeholder="62812…" /></label>
+        </div>
+        <label class="field"><span>Tagline</span><input name="tagline" value="<%= settings.tagline %>" /></label>
+        <label class="field"><span>Tentang kami</span><textarea name="about" rows="4"><%= settings.about %></textarea></label>
+        <div class="row">
+          <label class="field"><span>Email kontak</span><input name="email" type="email" value="<%= settings.email %>" /></label>
+          <label class="field"><span>Alamat</span><input name="address" value="<%= settings.address %>" /></label>
+          <label class="field"><span>Jam operasional</span><input name="operatingHours" value="<%= settings.operatingHours %>" /></label>
+        </div>
+
+        <h3 style="margin-top:22px">Header laporan audit (formulir cetak)</h3>
+        <div class="row">
+          <label class="field" style="flex:2"><span>Nama organisasi</span><input name="auditOrg" value="<%= settings.auditOrg %>" /></label>
+          <label class="field"><span>No. dokumen</span><input name="auditDocNo" value="<%= settings.auditDocNo %>" /></label>
+          <label class="field"><span>Revisi</span><input name="auditRevision" value="<%= settings.auditRevision %>" /></label>
+          <label class="field"><span>Tanggal terbit</span><input name="auditIssueDate" type="date" value="<%= settings.auditIssueDate %>" /></label>
+        </div>
+        <div class="row">
+          <label class="field"><span>Nama lead auditor</span><input name="auditLeadName" value="<%= settings.auditLeadName %>" /></label>
+          <label class="field"><span>Jabatan lead auditor</span><input name="auditLeadTitle" value="<%= settings.auditLeadTitle %>" /></label>
+          <label class="field"><span>Nama manajer mutu</span><input name="auditManagerName" value="<%= settings.auditManagerName %>" /></label>
+          <label class="field"><span>Jabatan manajer mutu</span><input name="auditManagerTitle" value="<%= settings.auditManagerTitle %>" /></label>
+        </div>
+
+        <button class="btn" type="submit">Simpan pengaturan</button>
+      </form>
+    </main>
+  </div>
+</div>
+<%- include('../partials/foot') %>

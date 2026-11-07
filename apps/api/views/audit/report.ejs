@@ -1,0 +1,144 @@
+<%
+  const auditors = [...new Set(findings.map((f) => f.auditor.name))];
+  const dates = findings.map((f) => new Date(f.reportedAt)).filter((d) => !Number.isNaN(d.getTime()));
+  const reported = dates.length ? new Date(Math.min(...dates)) : null;
+  const targets = findings.map((f) => f.targetDate).filter(Boolean).map((d) => new Date(d)).filter((d) => !Number.isNaN(d.getTime()));
+  const verified = findings.map((f) => f.verifiedAt).filter(Boolean).map((d) => new Date(d)).filter((d) => !Number.isNaN(d.getTime()));
+  const latestVerified = verified.length ? new Date(Math.max(...verified)) : null;
+  const targetDate = targets.length ? new Date(Math.max(...targets)) : null;
+%>
+<%- include('../partials/head', { title, bodyClass: 'report-body' }) %>
+
+<div class="report-toolbar no-print">
+  <div class="actions">
+    <a class="btn ghost sm" href="/audit">← Dashboard</a>
+    <a class="btn ghost sm" href="/audit/temuan">Daftar temuan</a>
+  </div>
+  <form class="actions" method="get" action="/audit/laporan">
+    <select name="category" aria-label="Kategori">
+      <option value="">Semua kategori</option>
+      <% ['MAJOR','MINOR','OBSERVASI'].forEach(function (c) { %>
+        <option value="<%= c %>" <%= filters.category === c ? 'selected' : '' %>><%= helpers.CATEGORY_LABELS[c] %></option>
+      <% }) %>
+    </select>
+    <select name="status" aria-label="Status">
+      <option value="">Semua status</option>
+      <% ['OPEN','CLOSED'].forEach(function (s) { %>
+        <option value="<%= s %>" <%= filters.status === s ? 'selected' : '' %>><%= helpers.FINDING_STATUS_LABELS[s] %></option>
+      <% }) %>
+    </select>
+    <button class="btn ghost sm" type="submit">Terapkan filter</button>
+    <button class="btn sm" type="button" data-print>⎙ Cetak / Simpan PDF</button>
+  </form>
+</div>
+
+<div class="report-sheet">
+  <div class="report-head">
+    <div>
+      <div class="org"><%= settings.auditOrg %></div>
+      <div style="font-size:.78rem">Sistem Manajemen Mutu ISO 17025</div>
+      <div class="doc" style="margin-top:10px">Laporan Ketidaksesuaian dan Tindakan Korektif</div>
+    </div>
+    <div class="report-meta">
+      <div><span>No Dokumen</span><span>: <%= settings.auditDocNo %></span></div>
+      <div><span>Revisi</span><span>: <%= settings.auditRevision %></span></div>
+      <div><span>Tgl Terbit</span><span>: <%= helpers.formatShortDate(settings.auditIssueDate) %></span></div>
+      <div><span>Halaman</span><span>: 1 (otomatis saat dicetak)</span></div>
+    </div>
+  </div>
+
+  <div class="report-source">
+    <span><strong>SUMBER KETIDAKSESUAIAN:</strong></span>
+    <span>☐ Ketidaksesuaian Internal</span>
+    <span>☐ Audit Pemantauan</span>
+    <span>☐ Keluhan</span>
+    <span>☐ Lainnya</span>
+    <span class="muted">Periode laporan: <%= filters.from ? helpers.formatShortDate(filters.from) : 'awal' %> – <%= filters.to ? helpers.formatShortDate(filters.to) : 'sekarang' %></span>
+  </div>
+
+  <% if (!findings.length) { %>
+    <div class="card"><div class="empty">Belum ada data temuan yang dapat dilaporkan.</div></div>
+  <% } else { %>
+    <table class="report-table">
+      <thead>
+        <tr>
+          <th style="width:32px">No.<br>(1)</th>
+          <th style="width:110px">Acuan Ketidaksesuaian<br>(2)</th>
+          <th>Uraian Ketidaksesuaian (PLOR)<br>(3)</th>
+          <th style="width:38px">Kat.<br>(4)</th>
+          <th style="width:120px">Akar Penyebab<br>(5)</th>
+          <th style="width:130px">Perbaikan / Koreksi<br>(6)</th>
+          <th style="width:150px">Tindakan Korektif<br>(7)</th>
+          <th style="width:120px">Hasil Verifikasi<br>(8)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% findings.forEach(function (f, index) { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= f.clause %><div class="muted"><%= f.code %></div></td>
+            <td><%= f.description %><div class="muted">Auditor: <%= f.auditor.name %></div></td>
+            <td class="center"><%= f.category === 'MAJOR' ? '1' : f.category === 'MINOR' ? '2' : 'O' %></td>
+            <td><%= f.rootCause || '-' %></td>
+            <td><%= f.correction || '-' %></td>
+            <td><%= f.correctiveAction || '-' %></td>
+            <td>
+              <strong><%= f.status === 'CLOSED' ? 'Closed' : 'Open' %></strong>
+              <% if (f.verificationResult) { %><div><%= f.verificationResult %></div><% } %>
+              <% if (f.targetDate) { %><div class="muted">Target: <%= helpers.formatShortDate(f.targetDate) %></div><% } %>
+              <% if (f.evidenceUrl) { %><div class="muted">Bukti: terlampir</div><% } %>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <div class="report-summary">
+      <span>Jumlah temuan kategori 1 (Mayor): <strong><%= stats.byCategory.MAJOR %></strong></span>
+      <span>Jumlah temuan kategori 2 (Minor): <strong><%= stats.byCategory.MINOR %></strong></span>
+      <span>Jumlah observasi (O): <strong><%= stats.byCategory.OBSERVASI %></strong></span>
+    </div>
+
+    <div class="report-summary">
+      <span>DILAPORKAN TANGGAL: <strong><%= helpers.formatShortDate(reported) %></strong></span>
+      <span>TARGET PENYELESAIAN: <strong><%= helpers.formatShortDate(targetDate) %></strong></span>
+      <span>DIVERIFIKASI TANGGAL: <strong><%= helpers.formatShortDate(latestVerified) %></strong></span>
+    </div>
+
+    <div class="report-sign">
+      <div class="box">
+        <b>Nama Pelapor / Auditor</b>
+        <% if (auditors.length) { %>
+          <% auditors.forEach(function (name, index) { %><div><%= index + 1 %>. <%= name %> — Auditor</div><% }) %>
+        <% } else { %>
+          <div>1. <%= settings.auditLeadName %> — <%= settings.auditLeadTitle %></div>
+        <% } %>
+        <div style="margin-top:26px">Tanda tangan: …………………</div>
+      </div>
+      <div class="box">
+        <b>Nama Terlapor / Auditi</b>
+        <div>1. <%= settings.auditManagerName %> — <%= settings.auditManagerTitle %></div>
+        <div style="margin-top:26px">Tanda tangan: …………………</div>
+      </div>
+      <div class="box">
+        <b>Nama Verifikator / Auditor</b>
+        <div>1. <%= settings.auditLeadName %> — <%= settings.auditLeadTitle %></div>
+        <div>2. <% auditors[0] || settings.auditLeadName %> — Auditor</div>
+        <div style="margin-top:20px">Tanda tangan: …………………</div>
+      </div>
+    </div>
+
+    <p class="report-note">
+      Keterangan: (1) Nomor urut temuan. (2) Klausul SNI ISO/IEC 17025:2017 yang dilanggar.
+      (3) Uraian temuan dengan metode PLOR. (4) Kategori: 1 (Mayor), 2 (Minor), O (Observasi).
+      (5) Akar masalah penyebab. (6) Perbaikan langsung/koreksi &amp; PIC. (7) Tindakan korektif
+      (Kat. 1 &amp; 2) atau tindakan peningkatan (Observasi). (8) Hasil verifikasi efektivitas
+      (Closed/Efektif atau Open/Belum Efektif).
+    </p>
+    <p class="report-note">
+      Laporan dihasilkan <%= helpers.formatDate(generatedAt, { withTime: true }) %> dari Sistem Sopinsya Educenter.
+    </p>
+  <% } %>
+</div>
+
+<%- include('../partials/foot') %>

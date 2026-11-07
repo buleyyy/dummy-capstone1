@@ -1,0 +1,26 @@
+<header class="topbar">
+  <a class="brand" href="<%= user.role === 'ADMIN' ? '/admin' : '/audit' %>">
+    <span class="logo" aria-hidden="true"></span>
+    <span class="brand-text">SopinsyaEducenter<span class="brand-role-badge"><%= user.role === 'ADMIN' ? 'Admin' : 'Audit' %></span></span>
+  </a>
+
+  <% if (user.role === 'AUDITOR') { %>
+    <nav class="pillnav topbar-pillnav" aria-label="Navigasi audit">
+      <a href="/audit" class="<%= locals.active === 'dashboard' ? 'on' : '' %>">Dashboard</a>
+      <a href="/audit/temuan" class="<%= locals.active === 'temuan' ? 'on' : '' %>">Daftar Temuan</a>
+      <a href="/audit/laporan" class="<%= locals.active === 'laporan' ? 'on' : '' %>">Cetak Hasil</a>
+    </nav>
+    <a class="btn btn-sm" href="/audit/temuan/baru">+ Tambah Temuan</a>
+  <% } %>
+
+  <nav class="topbar-actions" aria-label="Navigasi akun">
+    <div class="user-menu">
+      <div class="user-name"><%= user.name %></div>
+      <div class="user-role"><%= user.role === 'ADMIN' ? 'Admin' : 'Lead Auditor' %></div>
+    </div>
+    <div class="avatar" aria-hidden="true"><%= user.name.charAt(0).toUpperCase() %></div>
+    <form method="post" action="/logout">
+      <button class="logout-btn" type="submit">Keluar</button>
+    </form>
+  </nav>
+</header>

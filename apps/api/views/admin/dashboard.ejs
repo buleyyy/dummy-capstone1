@@ -1,0 +1,74 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/internal-topbar', { user }) %>
+<div class="app">
+  <%- include('../partials/internal-sidebar', { user, active }) %>
+  <div class="app-main">
+    <main class="container">
+      <%- include('../partials/flash', { ok, err }) %>
+      <div class="pagehead">
+        <div>
+          <h1>Dashboard Admin</h1>
+          <div class="sub">Ringkasan konten pelatihan dan hasil evaluasi peserta.</div>
+        </div>
+        <div class="actions">
+          <a class="btn ghost" href="/admin/program/baru">＋ Tambah Program</a>
+          <a class="btn" href="/admin/hasil">Lihat Rekap Nilai</a>
+        </div>
+      </div>
+
+      <div class="grid g4" style="margin-bottom:16px">
+        <div class="stat"><div class="num"><%= stats.programs %></div><div class="lbl">Total program</div></div>
+        <div class="stat teal"><div class="num"><%= stats.published %></div><div class="lbl">Program terbit</div></div>
+        <div class="stat"><div class="num"><%= stats.attempts %></div><div class="lbl">Evaluasi dikerjakan</div></div>
+        <div class="stat amber"><div class="num"><%= stats.averageRating ? stats.averageRating.toFixed(1) : '0.0' %></div><div class="lbl">Rata-rata rating (<%= stats.reviews %> ulasan)</div></div>
+      </div>
+
+      <div class="grid g-side">
+        <div>
+          <div class="card">
+            <h3>Bank soal</h3>
+            <p class="muted small" style="margin:0 0 8px">Soal aktif pada seluruh evaluasi program.</p>
+            <div class="num" style="font-size:1.8rem;font-weight:800;color:var(--primary)"><%= stats.questions %></div>
+            <a class="btn sm ghost" href="/admin/program" style="margin-top:12px">Kelola soal</a>
+          </div>
+          <div class="card">
+            <h3>Program terbaru</h3>
+            <ul class="list">
+              <% stats.topPrograms.forEach(function (p) { %>
+                <li>
+                  <span><%= p.title %><br><span class="small muted"><%= p._count.materials %> materi · <%= p._count.evaluations %> evaluasi</span></span>
+                  <a class="btn sm ghost" href="/admin/program/<%= p.id %>">Kelola</a>
+                </li>
+              <% }) %>
+              <% if (!stats.topPrograms.length) { %><li class="muted small">Belum ada program.</li><% } %>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Pengiriman evaluasi terbaru</h3>
+          <% if (!stats.latestAttempts.length) { %>
+            <div class="empty">Belum ada peserta yang mengirimkan evaluasi.</div>
+          <% } else { %>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Peserta</th><th>Program</th><th>Jenis</th><th>Nilai</th><th>Waktu</th></tr></thead>
+                <tbody>
+                  <% stats.latestAttempts.forEach(function (a) { %>
+                    <tr>
+                      <td><strong><%= a.takerName %></strong><br><span class="small muted"><%= a.takerEmail %></span></td>
+                      <td><%= a.evaluation.program.title %></td>
+                      <td><span class="badge b-info"><%= helpers.EVALUATION_LABELS[a.evaluation.type] || a.evaluation.type %></span></td>
+                      <td><%= a.score %>/<%= a.maxScore %> (<%= a.maxScore ? Math.round((a.score / a.maxScore) * 100) : 0 %>)</td>
+                      <td class="small muted"><%= helpers.formatDate(a.submittedAt, { withTime: true }) %></td>
+                    </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<%- include('../partials/foot') %>

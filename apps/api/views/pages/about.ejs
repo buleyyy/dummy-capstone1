@@ -1,0 +1,43 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/public-nav', { user, active }) %>
+
+<main class="container">
+  <div class="pagehead">
+    <div>
+      <h1>Tentang Kami</h1>
+      <div class="sub">Sopinsya Educenter — pelatihan, konsultasi, dan audit internal.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="white-space:pre-line;margin:0"><%= settings.about %></p>
+  </div>
+
+  <div class="grid g3">
+    <div class="card">
+      <h3>Pelatihan</h3>
+      <p class="muted small" style="margin:0">Program pelatihan standar ISO dengan silabus, materi, studi kasus, dan evaluasi terstruktur.</p>
+    </div>
+    <div class="card">
+      <h3>Konsultasi</h3>
+      <p class="muted small" style="margin:0">Pendampingan penerapan sistem manajemen dan persiapan audit melalui kanal WhatsApp.</p>
+    </div>
+    <div class="card">
+      <h3>Audit internal</h3>
+      <p class="muted small" style="margin:0">Register temuan Major, Minor, dan Observasi beserta tindak lanjut dan laporan siap cetak.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Informasi kontak</h3>
+    <dl class="kv">
+      <dt>Alamat</dt><dd><%= settings.address %></dd>
+      <dt>Email</dt><dd><a href="mailto:<%= settings.email %>"><%= settings.email %></a></dd>
+      <dt>Jam operasional</dt><dd><%= settings.operatingHours %></dd>
+      <dt>WhatsApp</dt><dd><% if (waLink) { %><a href="<%= waLink %>" target="_blank" rel="noopener">Hubungi via WhatsApp</a><% } else { %>Belum dikonfigurasi<% } %></dd>
+    </dl>
+  </div>
+</main>
+
+<%- include('../partials/public-footer', { settings, waLink }) %>
+<%- include('../partials/foot') %>

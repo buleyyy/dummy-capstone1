@@ -1,0 +1,22 @@
+<% if (!items || !items.length) { %>
+  <div class="empty"><%= locals.empty || 'Belum ada konten.' %></div>
+<% } else { %>
+  <% items.forEach(function (m) { %>
+    <div class="material-item">
+      <div style="flex:1;min-width:200px">
+        <div class="t">
+          <span class="badge b-mut"><%= helpers.MATERIAL_LABELS[m.type] || m.type %></span>
+          <%= m.title %>
+        </div>
+        <% if (m.description) { %><div class="d"><%= m.description %></div><% } %>
+      </div>
+      <% if (m.url) { %>
+        <a class="btn sm ghost" href="<%= m.url %>" target="_blank" rel="noopener">
+          <%= m.type === 'VIDEO' ? 'Tonton' : m.type === 'QUIZ' ? 'Buka kuis' : 'Buka' %>
+        </a>
+      <% } else { %>
+        <span class="small muted">Tautan belum tersedia</span>
+      <% } %>
+    </div>
+  <% }) %>
+<% } %>

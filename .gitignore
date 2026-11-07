@@ -8,3 +8,6 @@ coverage/
 .env.*.local
 .DS_Store
 Thumbs.db
+.vercel
+
+apps/api/public/

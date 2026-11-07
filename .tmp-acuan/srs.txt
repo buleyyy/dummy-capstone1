@@ -1,0 +1,1973 @@
+SOFTWARE REQUIREMENTS SPECIFICATION
+
+                                  (SRS)
+ APLIKASI PELATIHAN BERBASIS WEB (SOPINSYA)
+
+                                    Versi <<1.2>>
+
+Nama Klien        Ahmad Fadillah
+Kelompok / Kelas  Kelompok 1 / 4KA23
+Disusun oleh      Astari Cipta Rahma dan Anggota
+Dosen Pengampu    Dr. Lulu Chaerani Munggaran, S.Kom, MMSI.
+Tanggal           20-10-2026 / Versi 1.2
+
+                            Program Studi Sistem Informasi
+                  Fakultas Ilmu Komputer dan Teknologi Informasi
+
+                                 Universitas Gunadarma
+
+                                                     1
+                                             DAFTAR ISI
+
+1. PENDAHULUAN..................................................................................................................... 3
+    1.1 Tujuan Dokumen..............................................................................................................3
+    1.2 Ruang Lingkup Produk...................................................................................................3
+    1.3 Definisi dan Singkatan.....................................................................................................4
+    1.4 Referensi............................................................................................................................5
+
+2. PROSES PENGUMPULAN KEBUTUHAN......................................................................... 5
+    2.1 Pemangku Kepentingan dan Narasumber.................................................................... 5
+    2.2 Teknik Pengumpulan Kebutuhan...................................................................................6
+    2.3 Ringkasan Temuan...........................................................................................................6
+
+3. GAMBARAN UMUM SISTEM..............................................................................................9
+    3.1 Perspektif Produk............................................................................................................ 9
+    3.2 Kelompok Pengguna dan Karakteristik........................................................................ 9
+    3.3 Lingkungan Operasi...................................................................................................... 10
+    3.4 Batasan, Asumsi, dan Ketergantungan........................................................................10
+
+4. KEBUTUHAN FUNGSIONAL.............................................................................................12
+    4.1 Daftar Kebutuhan Fungsional...................................................................................... 12
+    4.2 Diagram Use Case.......................................................................................................... 15
+    4.3 Spesifikasi Use Case....................................................................................................... 16
+    4.4 User Story dan Kriteria Penerimaan........................................................................... 28
+
+5. KEBUTUHAN NON-FUNGSIONAL...................................................................................31
+6. KEBUTUHAN DATA.............................................................................................................32
+
+    6.1 Entitas Data Utama........................................................................................................32
+    6.2 Kebutuhan Laporan / Keluaran................................................................................... 32
+7. KEBUTUHAN ANTARMUKA EKSTERNAL................................................................... 33
+    7.1 Antarmuka Pengguna........................................................................................ 33
+    7.2 Antarmuka Perangkat Keras..............................................................................34
+    7.3 Antarmuka Perangkat Lunak dan Komunikasi...................................................34
+8. PRIORITAS DAN RENCANA RILIS..................................................................................34
+9. MATRIKS KETERLACAKAN KEBUTUHAN................................................................. 35
+10. REFERENSI DAN PERNYATAAN PENGGUNAAN AI.................................................36
+    10.1 Referensi......................................................................................................... 36
+    10.2 Pernyataan Penggunaan AI.............................................................................36
+LAMPIRAN A................................................................................................................ 37
+LAMPIRAN B................................................................................................................ 39
+
+                     RIWAYAT REVISI
+
+Versi  Tanggal       Nama                        Alasan Perubahan
+
+1.0 20 Oktober 2026  Fikri Nurrahman, Martsya    Versi awal untuk dikumpulkan Minggu 4
+                     Adillah, Alfi Fauzi, Ahmad
+                     Iqbal Zega
+
+                           2
+Versi  Tanggal                    Nama                 Alasan Perubahan
+
+1.1 27 Oktober 2026  Astari Cipta Rahma,  Mengisi poin-poin yang belum terisi di
+                     Martsya Adillah      Minggu 4
+
+1.2 02 November 2026 Astari Cipta Rahma   Mengisi poin-poin yang belum terisi di
+                                          Minggu 5 dan terdapat perubahan pada
+                                          beberapa poin-poin
+
+1. PENDAHULUAN
+
+1.1 Tujuan Dokumen
+
+         Dokumen Software Requirements Specification (SRS) ini bertujuan untuk
+menjelaskan kebutuhan perangkat lunak Aplikasi Pelatihan Berbasis Web Sopinsya
+secara sistematis dan terstruktur. Dokumen ini menjadi acuan bagi klien, analis sistem,
+perancang, pengembang, dan penguji dalam memahami fungsi, batasan, antarmuka,
+serta karakteristik sistem yang akan dikembangkan. SRS mencakup keseluruhan sistem
+Sopinsya, yaitu modul informasi dan pengelolaan pelatihan, pembelajaran dan evaluasi
+peserta, serta modul audit internal.
+
+         Dokumen ini mencakup keseluruhan sistem Sopinsya Educenter, yang
+mengintegrasikan pengelolaan program pelatihan dan materi pembelajaran, pelaksanaan
+Pre-test dan Post-test, pengelolaan Pustaka SOP, pengelolaan master Checklist Audit,
+pelaksanaan audit internal, pengelolaan Register Temuan, pemantauan dashboard, serta
+pembuatan laporan audit dalam format PDF.
+
+         Sistem dirancang untuk mendukung tiga kelompok aktor utama, yaitu Admin,
+Audit/Peserta, dan Auditor, dengan hak akses dan tanggung jawab yang berbeda.
+Rincian kewenangan setiap aktor dijelaskan dalam bagian kebutuhan fungsional dan
+spesifikasi alur penggunaan sistem pada dokumen ini.
+
+1.2 Ruang Lingkup Produk
+
+         Sopinsya merupakan aplikasi berbasis web yang dirancang untuk
+mengintegrasikan kegiatan pelatihan dan audit internal ke dalam satu platform. Sistem
+dikembangkan untuk mengatasi permasalahan pengelolaan informasi, materi, evaluasi,
+dan dokumentasi audit yang sebelumnya tersebar di berbagai layanan.
+
+         Proses yang berjalan saat ini memanfaatkan berbagai platform, seperti Linktree,
+Google Forms, aplikasi kuis, file presentasi, dan tautan video. Pengelolaan data peserta,
+materi pelatihan, serta hasil evaluasi yang masih terpisah menyebabkan proses
+administrasi, pemantauan hasil, dan rekapitulasi data memerlukan pekerjaan manual.
+Oleh karena itu, Sopinsya Educenter dirancang untuk menyederhanakan proses tersebut
+melalui sistem yang terintegrasi, terstruktur, dan mudah diakses sesuai hak akses
+masing-masing pengguna.
+
+                     3
+1.3 Definisi dan Singkatan
+
+         Istilah                                               Arti
+KF / KNF
+UC                Kebutuhan Fungsional / Kebutuhan Non-Fungsional
+MoSCoW
+SOP               Use Case, gambaran interaksi aktor dengan sistem
+Pustaka SOP
+Register Temuan   Must have, Should have, Could have, Won't have (this time)
+SRS
+Scope             Standard Operating Procedure, dokumen prosedur operasional standar
+Master Ceklist
+Role              Tempat penyimpanan dan pengelolaan dokumen prosedur operasional standar
+Autentikasi       yang dapat diakses sesuai hak askes pengguna
+
+User              Modul yang mencatat, mengelola dan memantau temuan audit beserta status
+                  tindak lanjutnya
+Admin
+                  Software Requirements Spesification, dokumen yang menjelaskan kebutuhan,
+Auditor           fungsi, batasan, dan karakteristik perangkat lunak yang akan dikembangkan
+
+                  Batasan ruang lingkup pekerjaan dan fitur yang termasuk dalam
+                  pengembangan sistem
+
+                  Dftar induk butir pemeriksaan yang dikelola admin sebagai dasar pelaksanaan
+                  audit
+
+                  Kategori peran pengguna yang menentukan fungsi dan data yang boleh
+                  diakses
+
+                  Proses memverifikasi identitas pengguna sebelum memberikan akses ke
+                  fungsi yang diperlukan
+
+                  Pengguna yang dapat melihat katalog dan daftar program, mengakses materi
+                  pembelajaran, mengerjakan Pre-test dan Post-test, serta memberikan rating.
+                  Halaman publik dapat diakses tanpa login.
+
+                  Pengguna yang bertanggung jawab mengelola program pelatihan, materi, soal
+                  evaluasi, data peserta, Pustaka SOP, Master Checklist, akun, dan hak akses
+                  sesuai kewenangannya.
+
+                  Pengguna yang bertanggung jawab mengisi Checklist Audit, mencatat temuan
+                  dengan klasifikasi Major atau Minor, memantau hasil audit, dan mengunduh
+                  laporan audit.
+
+Pre-test          Evaluasi yang dikerjakan sebelum pembelajaran untuk mengukur pemahaman
+                  awal peserta.
+
+Post-test         Evaluasi yang dikerjakan setelah pembelajaran untuk mengukur pemahaman
+                  peserta terhadap materi yang telah dipelajari.
+
+Rating            Penilaian yang diberikan User terhadap program pelatihan melalui fitur
+                  penilaian yang tersedia pada website.
+
+Major             Klasifikasi temuan audit untuk ketidaksesuaian yang dinilai mayor
+                  berdasarkan kriteria audit yang berlaku.
+
+                            4
+         Istilah                                                      Arti
+Minor
+                          Klasifikasi temuan audit untuk ketidaksesuaian yang dinilai minor
+                          berdasarkan kriteria audit yang berlaku.
+
+Hak Akses                 Kewenangan pengguna untuk melihat data atau menjalankan fungsi tertentu
+                          berdasarkan role yang dimiliki.
+
+Data Peserta              Informasi mengenai peserta pelatihan yang disimpan dan dikelola untuk
+                          mendukung administrasi serta evaluasi pelatihan.
+
+Hasil Evaluasi            Data hasil Pre-test dan Post-test yang digunakan untuk mengetahui hasil
+                          pembelajaran peserta.
+
+RBAC                      Role-Based Access Control, mekanisme pengaturan akses berdasarkan role
+                          pengguna.
+
+Riwayat Aktivitas         Catatan aktivitas atau perubahan data yang dilakukan dalam sistem, apabila
+                          fitur pencatatan aktivitas diterapkan.
+
+Data Historis             Data dari aktivitas atau periode sebelumnya yang disimpan untuk keperluan
+                          penelusuran dan pelaporan.
+
+UAT                       User Acceptance Testing, pengujian penerimaan oleh pengguna atau
+
+                          perwakilan klien untuk memastikan sistem memenuhi kebutuhan yang
+
+                          disepakati.
+
+1.4 Referensi
+Referensi yang digunakan dalam penyusunan Software Requirements Specification
+(SRS) Website Sopinsya Educenter adalah sebagai berikut:
+
+1. Requirement Document 2 versi 2, sebagai acuan kebutuhan dan permasalahan
+    yang menjadi dasar pengembangan Website Sopinsya Educenter.
+
+2. Notulen Wawancara W-01 dengan Ahmad Fadillah selaku Trainer, sebagai
+    sumber informasi mengenai kebutuhan pelatihan, proses evaluasi peserta, serta
+    kebutuhan pendukung kegiatan pelatihan.
+
+3. Dokumen dan hasil analisis kebutuhan Website Sopinsya Educenter, yang
+    mencakup kebutuhan fungsional, kebutuhan non-fungsional, kelompok
+    pengguna, alur pengguna (user flow), serta prioritas dan rencana rilis sistem.
+
+2. PROSES PENGUMPULAN KEBUTUHAN
+
+2.1 Pemangku Kepentingan dan Narasumber
+
+     Nama / Jabatan                    Peran terhadap Sistem    Kepentingan / Harapan Utama
+
+Ahmad Fadillah / Trainer  Pemberi kebutuhan, pengambil        Pelatihan dan audit internal terpusat;
+(klien)                   keputusan, penyetuju hasil          rekap hasil lebih mudah; persetujuan
+                                                              UAT dan BAST
+
+                                       5
+Peserta pelatihan (User)  Pengguna publik                   Informasi, materi, dan evaluasi
+                                                            dalam satu tempat; tidak
+Admin / pengelola konten  Pengelola CMS dan data            berpindah-pindah platform
+
+Auditor internal          Pengguna modul audit              Memperbarui konten tanpa
+                                                            mengubah kode; rekap nilai otomatis
+Tim pengembang (Kelompok
+                                       Pelaksana proyek     Mengisi checklist, menyimpan bukti,
+                                                            mencatat temuan, melihat progres,
+1)                                                          dan mengunduh laporan.
+
+                                                            Kebutuhan jelas, terukur, dan dapat
+                                                            diuji
+
+2.2 Teknik Pengumpulan Kebutuhan
+
+Kode              Teknik  Narasumber / Objek                Tanggal       Bukti (Lampiran A)
+
+W-01  Wawancara 1 -       Bapak Ahmad Fadillah              9 Oktober 2026 Notulen Wawancara
+      Proses Bisnis       selaku Trainer Utama                                   W-01
+      Pelatihan
+
+W-02  Wawancara 2 -       Bapak Ahmad Fadillah dan 20 Oktober             Notulen Wawancara
+      Kebutuhan Sistem                                                    W-02
+      Audit               tim trainer                       2026
+
+W-03  Wawancara 3 -       Bapak Ahmad Fadillah              27 Oktober    Notulen Wawancara
+      Pembaruan           selaku Trainer Utama              2026          W-03
+      Kebutuhan Sistem
+
+O-01 Observasi            Media dan platform                9 dan 20      Catatan Observasi O-01
+                          pelatihan yang digunakan          Oktober 2026
+                          saat ini
+
+D-01 Studi Dokumen        Dokumen SOP, soal tes,            9-27 Oktober  Dokumen Pendukung
+                          contoh data peserta, materi       2026          D-01
+                          pelatihan, laporan
+                          pelatihan, dan formulir
+                          audit
+
+2.3 Ringkasan Temuan
+
+Sumber                    Temuan / Masalah                           Kebutuhan yang Dihasilkan
+
+W-01        Informasi program pelatihan masih tersebar di beberapa   KF-01, KF-02
+            platform, seperti Linktree, sehingga peserta harus
+            berpindah platform untuk memperoleh informasi.
+
+W-01, D-01  Informasi detail program, materi pembelajaran, silabus,  KF-03, KF-07, KF-08, KF-30
+            studi kasus, dokumen SOP, dan video referensi belum
+            terintegrasi dalam satu platform.
+
+                                                         6
+W-01, W-03  Proses evaluasi Pre-test dan Post-test masih              KF-09, KF-10, KF-11
+            menggunakan layanan yang berbeda sehingga
+            diperlukan fasilitas evaluasi terintegrasi.
+
+W-03        Peserta memerlukan formulir identitas sebelum             KF-09
+
+            mengerjakan evaluasi agar data peserta dapat dicatat dan
+
+            diidentifikasi.
+
+W-03        Urutan soal evaluasi perlu diacak untuk mendukung         KF-12
+            pelaksanaan Pre-test dan Post-test.
+
+W-01, D-01  Proses penilaian evaluasi memerlukan perhitungan          KF-13
+            otomatis berdasarkan jawaban peserta dan kunci
+            jawaban yang telah ditentukan.
+
+W-01, W-03  Data peserta dan hasil evaluasi perlu disimpan secara     KF-14, KF-16
+            terpusat agar Admin dapat melakukan rekapitulasi hasil
+            Pre-test dan Post-test.
+
+W-03        Nilai Pre-test tidak boleh ditampilkan langsung kepada    KF-15
+            peserta setelah evaluasi selesai.
+
+W-03        Auditor tidak diperbolehkan mengakses nilai Pre-test      KF-17, KF-20
+            dan Post-test peserta karena data tersebut merupakan
+            kewenangan Admin.
+
+W-03        Admin memerlukan fasilitas untuk mengunggah soal          KF-18
+            Pre-test dan Post-test menggunakan berkas Excel atau
+            Word.
+
+D-01        Admin dan Auditor membutuhkan fasilitas login untuk       KF-19, KF-20
+            mengakses halaman internal sesuai peran
+            masing-masing.
+
+W-03        Pengelolaan akun internal dan pembagian hak akses         KF-20, KF-33
+            diperlukan agar setiap pengguna hanya dapat
+            menjalankan fungsi sesuai kewenangannya.
+
+W-03        Register Temuan Audit diperlukan untuk mencatat dan       KF-21, KF-22
+            mengelola hasil temuan selama pelaksanaan audit
+            internal.
+
+W-03        Informasi temuan audit perlu mencakup identitas           KF-23
+            Auditor, referensi klausul, kategori temuan, dan tanggal
+            target koreksi agar dapat ditelusuri.
+
+W-03, D-01  Temuan audit perlu dikelompokkan berdasarkan              KF-24
+            klasifikasi Major, Minor, dan Observation untuk
+            membedakan tingkat ketidaksesuaian.
+
+W-03        Data temuan audit perlu dapat diperbarui oleh pihak       KF-25
+            yang memiliki kewenangan sesuai ketentuan
+            pengelolaan sistem.
+
+W-03        Auditor membutuhkan dashboard terpusat untuk              KF-26
+            memantau status audit, statistik pemeriksaan, dan
+            perkembangan temuan.
+
+                             7
+W-03, D-01  Hasil pemeriksaan dan Register Temuan perlu                KF-27
+D-01        didokumentasikan dalam laporan audit agar dapat
+W-03, D-01  digunakan sebagai bahan evaluasi dan dokumentasi.
+W-03, D-01
+W-03        Laporan audit perlu mendukung format PDF agar hasil        KF-28
+W-03, D-01  pemeriksaan dapat diunduh dan disimpan sebagai
+W-03, D-01  dokumen.
+
+W-01, D-01  Pengunjung memerlukan akses komunikasi dengan              KF-29
+W-01, D-01  pihak Sopinsya Educenter untuk memperoleh informasi
+            dan konsultasi program pelatihan.
+
+            Program pelatihan memerlukan dukungan tautan               KF-30
+            eksternal untuk video referensi dan pertemuan daring
+            melalui YouTube, Zoom, atau Google Meet.
+
+            Peserta memerlukan fasilitas rating dan ulasan secara      KF-31
+            anonim sebagai sarana memberikan penilaian setelah
+            mengikuti aktivitas yang ditentukan.
+
+            Pendaftaran pelatihan dan pembayaran online tidak          KF-32
+            termasuk dalam ruang lingkup pengembangan sistem
+            saat ini.
+
+            Sistem perlu menerapkan pembatasan hak akses               KF-19, KF-20, KF-33,
+            berdasarkan peran agar halaman internal dan data           KNF-01, KNF-02
+            sensitif hanya dapat diakses oleh pengguna yang
+            berwenang.
+
+            Website perlu memiliki antarmuka yang mudah                KNF-03
+            digunakan dan dapat menyesuaikan tampilan pada
+            berbagai ukuran perangkat.
+
+            Data program, peserta, evaluasi, dan audit perlu           KNF-04
+
+            disimpan secara terstruktur agar informasi dapat dikelola
+
+            dan ditelusuri kembali.
+
+                                     8
+3. GAMBARAN UMUM SISTEM
+3.1 Perspektif Produk
+
+                  Gambar 3.1 Diagram Konteks Sistem
+
+3.2 Kelompok Pengguna dan Karakteristik
+
+Aktor / Pengguna  Deskripsi                 Hak Akses           Keahlian         Frekuensi
+                                                                Komputer           Pakai
+
+                                         Melihat beranda dan    Dasar; mampu
+
+                  Pengunjung yang        katalog program,       menggunakan      Sesuai
+
+                  mencari informasi      mengakses materi,      browser dan      kebutuhan
+
+User              program dan mengakses  mengerjakan pre-test   mengisi          atau saat
+
+                  materi pelatihan.      dan post-test, serta   formulir secara  mengikuti
+
+                                         memberikan rating dan  daring.          pelatihan.
+
+                                         ulasan.
+
+Admin             Pengelola konten dan   Mengelola program,     Dasar -          Setiap hari
+                  website Sopinsya       materi, soal, data     menengah:        kerja atau saat
+                  Educenter.             peserta, pustaka SOP,  mampu            ada
+                                         ceklist audit, akun    mengelola        pembaruan
+                                         pengguna, dan hak      konten dan data  data.
+                                         akses.                 melalui
+                                                                antarmuka
+                                                                website.
+
+                                         9
+Aktor / Pengguna        Deskripsi         Hak Akses               Keahlian    Frekuensi
+                                                                 Komputer        Pakai
+Auditor           Pengguna internal yang  Melihat dashboard
+                  melaksanakan            auidit, memilih dan  Dasar -      Saat
+                  pemeriksaan audit       mengisi ceklist,     menengah;    pelaksanaan
+                  melalui sistem.         menguggah bukti,     mampu        audit dan
+                                          mencatat, dan        menggunakan  tidak lanjut
+                                          memperbarui status   formulir     temuan.
+                                          temuan, mengakses    daring,
+                                          pustaka SOP, serta   mengelola
+                                          mengunduh laporan    dokumen dan
+                                          audit.               mengakses
+                                                               laporan
+
+3.3 Lingkungan Operasi                                  Spesifikasi Minimum
+
+              Komponen       PC/laptop dengan RAM minimal 4 GB dan printer(perangkat
+ Perangkat keras klien       pencetak dokumen) jika diperlukan untuk mencetak temuan audit.
+ Sistem operasi / peramban
+ Server / hosting            Windows 10 atau versi lebih baru, dengan Google Chrome atau
+ Perangkat lunak pendukung   Microsoft Edge versi terbaru.
+ Jaringan
+                             Server atau layanan cloud hosting yang mendukung Node.js untuk
+                             menjalankan aplikasi backend dan frontend.
+
+                             Node.js, Express.js, Next.js, React, JavaScript, Prisma ORM,
+                             MySQL, Git, GitHub, Figma, dan npm Workspaces.
+
+                             Koneksi internet yang stabil untuk mengakses website, mengelola
+                             data, menjalankan evaluasi, dan menggunakan dashboard audit.
+
+3.4 Batasan, Asumsi, dan Ketergantungan
+
+3.4.1 Batasan
+
+ID                Batasan                            Keterangan
+
+B-01 Platform sistem               Sistem dikembangkan dalam bentuk website yang diakses
+                                   melalui peramban web, bukan aplikasi mobile native.
+
+B-02 Teknologi pengembangan        Pengembangan menggunakan Node.js, Express.js, Prisma
+                                   ORM, MySQL, Next.js, React, dan JavaScript sesuai
+                                   technology stack yang ditetapkan.
+
+B-03 Hak akses pengguna            Sistem memiliki tiga aktor utama, yaitu User, Admin, dan
+                                   Auditor, dengan hak akses yang disesuaikan berdasarkan
+                                   perannya.
+
+B-04 Pendaftaran dan pembayaran Sistem tidak mencakup fitur pendaftaran pelatihan dan
+                                                 pembayaran secara online.
+
+B-05 Layanan eksternal             Video referensi dan pertemuan daring menggunakan tautan
+                                   eksternal seperti YouTube, Zoom, atau Google Meet.
+
+                                          10
+B-06 Konsultasi                 Konsultasi melalui WhatsApp dilakukan melalui tautan yang
+B-07 Audit                      mengarahkan pengguna ke layanan WhatsApp, bukan melalui
+B-08 Rating dan ulasan          fitur percakapan internal website.
+B-09 Waktu pengembangan
+                                Fitur audit mencakup dashboard audit, melihat daftar temuan,
+                                menambahkan temuan audit, dan mencetak temuan audit.
+
+                                Rating dan ulasan merupakan fitur tambahan (Could Have)
+                                sehingga penerapannya bergantung pada prioritas
+                                pengembangan.
+
+                                Waktu pelaksanaan proyek direncanakan selama 16 minggu,
+                                sehingga pengembangan perlu mengikuti jadwal dan prioritas
+                                yang telah disepakati.
+
+3.4.2 Asumsi  Asumsi                Keterangan
+
+   ID
+
+A-01 Ketersediaan internet      Pengguna memiliki koneksi internet yang memadai untuk
+                                mengakses website dan menggunakan fitur sistem.
+
+A-02 Ketersediaan peramban      Pengguna mengakses website menggunakan peramban
+                                modern, seperti Google Chrome atau Microsoft Edge.
+
+A-03 Ketersediaan konten        Klien menyediakan informasi program pelatihan, materi
+                                pembelajaran, dokumen SOP, serta informasi lain yang
+                                diperlukan untuk mengisi website.
+
+A-04 Ketersediaan data audit    Klien menyediakan format atau contoh data audit dan temuan
+                                yang dibutuhkan untuk merancang fitur audit.
+
+A-05 Pengelolaan sistem         Admin bertanggung jawab mengelola konten program, materi
+                                pembelajaran, data peserta, soal evaluasi, serta akun dan hak
+                                akses sesuai kewenangannya.
+
+A-06  Penggunaan layanan eksternal Pengguna dapat membuka tautan YouTube, Zoom, Google
+                                            Meet, dan WhatsApp melalui layanan eksternal yang
+                                            bersangkutan.
+
+A-07 Penggunaan hasil evaluasi  Hasil pre-test dan post-test disimpan agar dapat dikelola dan
+                                direkap oleh Admin sesuai ketentuan hak akses.
+
+A-08 Kebutuhan audit            Auditor menggunakan fitur audit untuk melihat dashboard,
+                                melihat daftar temuan, menambahkan temuan, dan mencetak
+                                temuan sesuai kebutuhan pemeriksaan.
+
+                                11
+3.4.3 Ketergantungan
+
+ID     Ketergantungan                                         Keterangan
+
+K-01   Penyediaan hosting dan   Deployment website bergantung pada tersedianya layanan
+       domain                   hosting dan domain yang sesuai dengan kebutuhan aplikasi.
+
+K-02 Infrastruktur basis data   Sistem bergantung pada MySQL untuk menyimpan data
+                                program, materi, peserta, evaluasi, akun pengguna, dan temuan
+K-03 Lingkungan server          audit.
+
+K-04 Layanan eksternal          Server harus mendukung teknologi yang digunakan, termasuk
+                                Node.js serta kebutuhan deployment aplikasi frontend dan
+K-05   Materi dan dokumen dari  backend.
+       klien
+                                Fitur video, pertemuan daring, dan konsultasi bergantung pada
+K-06 Validasi kebutuhan         ketersediaan layanan YouTube, Zoom atau Google Meet, serta
+                                WhatsApp.
+K-07 Jadwal proyek
+                                Pengisian konten website dan pengujian fitur bergantung pada
+                                ketersediaan materi pelatihan, SOP, soal evaluasi, serta contoh
+                                data audit dari klien.
+
+                                Finalisasi fitur dan hak akses bergantung pada persetujuan
+                                klien terhadap kebutuhan fungsional, kebutuhan
+                                non-fungsional, serta hasil wawancara.
+
+                                Penyelesaian pengembangan bergantung pada ketepatan waktu
+                                pemberian data, validasi kebutuhan, dan umpan balik dari
+                                klien selama periode proyek 16 minggu.
+
+4. KEBUTUHAN FUNGSIONAL
+
+4.1 Daftar Kebutuhan Fungsional
+
+ID                 Kebutuhan Fungsional            Aktor Prioritas Sumber  RD
+
+KF-01  Sistem harus menampilkan halaman            User   Must W-01, D-01 F-01
+       beranda publik Sopinsya Educenter yang
+       memuat informasi utama, navigasi, dan
+       akses menuju katalog program.
+
+KF-02 Sistem harus menampilkan katalog program User       Must W-01, D-01 F-02
+             pelatihan yang memuat nama program,
+             kategori, gambar sampul, dan deskripsi
+             singkat.
+
+KF-03 Sistem harus menampilkan detail program      User   Must W-01, D-01 F-03
+
+       yang dapat mencakup materi, silabus, studi
+
+       kasus, SOP, evaluasi, dan tautan video
+
+       referensi.
+
+KF-04  Sistem harus memungkinkan Admin             Admin  Must  W-03       F-05
+       menambahkan program pelatihan baru,
+
+                                               12
+KF-05  termasuk program seperti ISO 17025 dan         Admin    Must W-03, D-01 F-05
+KF-06  ISO 20000.                                     Admin
+KF-07                                                 Admin    Must  D-01  F-05
+KF-08  Sistem harus memungkinkan Admin
+KF-09  melihat, mengubah, dan menghapus                User    Must  W-01, D-01 F-05,
+KF-10  informasi program pelatihan.                    User                          F-07, F-08
+KF-11
+KF-12  Sistem harus memungkinkan Admin                 User    Must W-01, D-01 F-07
+KF-13  mengelola kategori, deskripsi, gambar           User
+KF-14  sampul, dan status publikasi program.          Sistem   Must  W-03  F-04
+KF-15                                                 Sistem
+KF-16  Sistem harus memungkinkan Admin                Sistem,  Must W-01, W-03 F-09
+       mengelola materi pembelajaran, silabus,        Admin
+       studi kasus, dokumen SOP, dan tautan            User    Must  D-01  F-09
+       referensi pada program.                        Admin
+                                                               Must  W-03  F-09
+       Sistem harus menyediakan akses terhadap
+       materi dan referensi pembelajaran sesuai                Must W-01, D-01 F-10
+       dengan ketentuan akses yang ditetapkan.
+                                                               Must W-01, W-03 F-10
+       Sistem harus menyediakan formulir
+       identitas peserta sebelum evaluasi dimulai,             Must  W-03  F-10
+       yang mencakup nama, email, nomor
+       telepon, dan jabatan.                                   Must  W-03  F-10
+
+       Sistem harus menyediakan fitur pre-test dan
+       post-test sesuai dengan program pelatihan
+       yang dipilih.
+
+       Sistem harus menampilkan soal evaluasi
+       dalam bentuk pilihan ganda dan menerima
+       satu jawaban untuk setiap pertanyaan.
+
+       Sistem harus mengacak urutan soal pre-test
+       dan post-test ketika evaluasi ditampilkan
+       kepada peserta.
+
+       Sistem harus menghitung nilai evaluasi
+       berdasarkan jawaban peserta dan kunci
+       jawaban yang telah ditetapkan.
+
+       Sistem harus menyimpan jawaban dan hasil
+       evaluasi peserta agar dapat direkap oleh
+       Admin.
+
+       Sistem tidak boleh menampilkan nilai
+       pre-test secara langsung kepada peserta
+       setelah evaluasi selesai.
+
+       Sistem harus memungkinkan Admin
+       melihat hasil pre-test dan post-test peserta.
+
+       13
+KF-17  Sistem harus membatasi akses Auditor agar     Auditor  Must    W-03  F-18
+KF-18  tidak dapat melihat nilai pre-test dan        Admin
+KF-19  post-test peserta.                            Admin,   Should  W-03 F-05, F-09
+KF-20                                                Auditor
+       Sistem harus memungkinkan Admin               Admin,   Must    D-01  F-18
+KF-21  mengunggah soal pre-test dan post-test        Auditor
+KF-22  menggunakan berkas Excel atau Word.           Auditor  Must W-03, D-01 F-06, F-18
+KF-23                                                Auditor
+       Sistem harus menyediakan fitur login bagi     Auditor  Must    W-03  F-15
+KF-24  Admin dan Auditor untuk mengakses
+KF-25  halaman internal.                             Auditor  Must    W-03  F-15
+                                                     Auditor
+KF-26  Sistem harus menerapkan hak akses                      Must    W-03  F-15
+KF-27  berdasarkan peran agar pengguna hanya         Auditor
+KF-28  dapat mengakses fungsi dan data sesuai        Auditor  Must W-03, D-01 F-15
+       kewenangannya.                                Auditor
+KF-29                                                         Must    W-03  F-15
+       Sistem harus menyediakan Register Temuan       User
+       untuk mencatat temuan audit.                           Must    W-03  F-14
+
+       Sistem harus memungkinkan Auditor                      Must D-01, W-03 F-16
+       melihat daftar temuan dan menambahkan
+       temuan baru.                                           Should  D-01  F-16
+
+       Sistem harus menyimpan informasi temuan                Should W-03, D-01 F-17
+       yang mencakup nama Auditor, referensi
+       klausul, kategori temuan, dan tanggal target
+       koreksi.
+
+       Sistem harus mendukung kategori temuan
+       Major, Minor, dan Observation.
+
+       Sistem harus memungkinkan perubahan
+       data temuan oleh pihak yang memiliki
+       kewenangan sesuai ketentuan yang
+       disepakati.
+
+       Sistem harus menyediakan dashboard audit
+       yang menampilkan ringkasan status audit,
+       statistik, dan temuan audit.
+
+       Sistem harus menyediakan laporan audit
+       yang memuat hasil pemeriksaan dan register
+       temuan.
+
+       Sistem harus menyediakan laporan audit
+       dalam format PDF apabila format tersebut
+       dikonfirmasi sebagai format keluaran yang
+       wajib.
+
+       Sistem harus menyediakan tautan
+       WhatsApp agar pengunjung dapat
+
+       14
+KF-30  menghubungi Sopinsya Educenter untuk         User  Must W-03, D-01 F-03, F-07
+KF-31  konsultasi.                                  User
+KF-32                                               User  Could  W-03  F-11
+KF-33  Sistem harus menyediakan tautan eksternal   Admin
+       YouTube untuk video referensi dan Zoom             Won't W-03, D-01 F-04
+       atau Google Meet untuk pertemuan daring.
+                                                          Must   D-01  F-18
+       Sistem dapat menyediakan fitur rating
+       bintang dan ulasan yang diberikan secara
+       anonim setelah audit selesai.
+
+       Sistem tidak menyediakan fitur pendaftaran
+       pelatihan dan pembayaran online dalam
+       ruang lingkup pengembangan saat ini.
+
+       Sistem harus memungkinkan Admin
+       mengelola akun internal dan hak akses
+       pengguna.
+
+4.2 Diagram Use Case
+
+                      Gambar 4.1 Diagram Use Case
+                                        15
+4.3 Spesifikasi Use Case
+
+ID / Nama          UC-01 / Melihat Informasi dan Katalog Program
+
+Aktor              User
+
+Kebutuhan terkait  KF-01, KF-02
+
+Deskripsi          User melihat informasi Sopinsya Educenter dan katalog program pelatihan
+                   yang telah dipublikasikan oleh Admin.
+
+Prakondisi         Website dapat diakses dan program pelatihan telah tersedia serta
+                   dipublikasikan oleh Admin.
+
+Alur utama                1. User membuka website Sopinsya Educenter.
+                          2. Sistem menampilkan halaman beranda.
+                          3. Sistem menampilkan informasi utama dan navigasi website.
+                          4. Sistem menampilkan katalog program pelatihan.
+                          5. User melihat daftar program yang tersedia.
+                          6. User memasukkan kata kunci pada kolom pencarian jika
+
+                               diperlukan.
+                          7. Sistem menampilkan program sesuai kata kunci pencarian.
+
+Alur alternatif    6a. User tidak menggunakan pencarian: sistem tetap menampilkan seluruh
+                   program yang telah dipublikasikan.
+                   7a. User memilih kategori tertentu: sistem menampilkan program
+                   berdasarkan kategori tersebut.
+
+Pengecualian       4a. Belum ada program yang dipublikasikan: sistem menampilkan informasi
+                   bahwa program belum tersedia.
+                   7b. Program tidak ditemukan: sistem menampilkan pesan bahwa hasil
+                   pencarian tidak ditemukan.
+                   7c. Terjadi kegagalan koneksi: sistem menampilkan pesan kesalahan saat
+                   memuat katalog.
+
+Pascakondisi       User berhasil melihat informasi dan katalog program pelatihan yang
+                   tersedia.
+
+ID / Nama          UC-02 / Melihat Detail Program
+Aktor
+Kebutuhan terkait  User
+Deskripsi
+                   KF-03
+Prakondisi
+                   User melihat informasi lengkap program pelatihan yang dipilih dari katalog
+                   program.
+
+                   User berada pada halaman katalog dan program yang dipilih telah
+                   dipublikasikan oleh Admin.
+
+                                 16
+Alur utama              1. User membuka katalog program.
+                        2. User memilih salah satu program.
+Alur alternatif         3. Sistem mengambil data program dari database.
+Pengecualian            4. Sistem menampilkan kategori, gambar sampul, judul, dan deskripsi
+Pascakondisi
+                             program.
+                        5. Sistem menampilkan kelompok konten yang tersedia, seperti
+
+                             materi, silabus, studi kasus, SOP, evaluasi, dan video referensi.
+                        6. User melihat informasi detail program.
+
+                   5a. Salah satu kelompok konten belum memiliki materi: sistem
+                   menampilkan kelompok konten yang tersedia atau keterangan bahwa materi
+                   belum tersedia.
+
+                   3a. Program tidak ditemukan atau sudah tidak dipublikasikan: sistem
+                   menampilkan pemberitahuan bahwa program tidak tersedia.
+                   3b. Terjadi kegagalan pengambilan data: sistem menampilkan pesan
+                   kesalahan.
+
+                   User berhasil melihat detail program dan dapat melanjutkan ke aktivitas
+                   pembelajaran atau evaluasi.
+
+ID / Nama          UC-03 / Mengakses Materi Pembelajaran
+Aktor
+Kebutuhan terkait  User
+Deskripsi
+Prakondisi         KF-08, KF-30
+Alur utama
+                   User membuka atau mengunduh materi pembelajaran yang tersedia pada
+Alur alternatif    halaman detail program.
+
+                   User telah membuka detail program dan materi telah ditambahkan serta
+                   dipublikasikan oleh Admin.
+
+                   1. User membuka halaman detail program.
+                   2. User memilih kelompok materi yang ingin diakses.
+                   3. Sistem menampilkan daftar materi sesuai kelompok yang dipilih.
+                   4. User memilih file atau tautan materi.
+                   5. Sistem membuka dokumen, menyediakan unduhan, atau menampilkan
+                   video sesuai format konten.
+                   6. User mempelajari materi yang tersedia.
+
+                   4a. User memilih video referensi YouTube: sistem membuka atau
+                   menampilkan video tersebut.
+                   4b. User memilih tautan Zoom atau Google Meet: sistem mengarahkan User
+                   ke halaman pertemuan daring yang tersedia.
+                   4c. User memilih dokumen yang dapat diunduh: sistem menyediakan file
+                   untuk diunduh.
+
+                   17
+Pengecualian       3a. Materi belum tersedia: sistem menampilkan informasi bahwa materi
+Pascakondisi       belum ditambahkan.
+                   5a. File tidak ditemukan atau tautan tidak dapat diakses: sistem menampilkan
+                   pesan kesalahan.
+                   5b. Format file tidak didukung browser: sistem menyediakan opsi unduh
+                   apabila diizinkan.
+
+                   User berhasil membuka atau mengunduh materi pembelajaran sesuai format
+                   dan ketentuan akses yang tersedia.
+
+ID / Nama          UC-04 / Mengerjakan Pre-test dan Post-test
+Aktor
+Kebutuhan terkait  User
+Deskripsi
+Prakondisi         KF-09, KF-10, KF-11, KF-12, KF-13, KF-14, KF-15
+Alur utama
+                   User mengerjakan evaluasi pilihan ganda untuk mengukur pemahaman
+Alur alternatif    sebelum dan sesudah mengikuti pelatihan.
+Pengecualian
+                   User telah membuka detail program dan soal evaluasi telah tersedia serta
+                   dipublikasikan oleh Admin.
+
+                        1. User membuka halaman detail program.
+                        2. User memilih Pre-test atau Post-test.
+                        3. Sistem memeriksa ketersediaan tes dan riwayat pengerjaan peserta.
+                        4. Sistem menampilkan formulir identitas peserta.
+                        5. User mengisi nama, email, nomor telepon, dan jabatan.
+                        6. User menekan tombol Lanjutkan.
+                        7. Sistem memvalidasi identitas peserta.
+                        8. Sistem menampilkan soal pilihan ganda dengan urutan soal yang
+
+                             telah diacak.
+                        9. User menjawab setiap pertanyaan dengan memilih satu jawaban.
+                        10. User menekan tombol Submit.
+                        11. Sistem memvalidasi jawaban dan menghitung nilai berdasarkan
+
+                             kunci jawaban.
+                        12. Sistem menyimpan identitas, jawaban, nilai, dan waktu pengerjaan.
+                        13. Sistem menampilkan notifikasi "Jawaban berhasil terkirim." tanpa
+
+                             menampilkan nilai Pre-test secara langsung kepada peserta.
+
+                   9a. User mengubah jawaban sebelum Submit: sistem memperbarui pilihan
+                   jawaban yang dipilih.
+                   3a. User sudah menyelesaikan tes: sistem menampilkan informasi bahwa tes
+                   telah dikerjakan.
+
+                   5a. Identitas wajib belum lengkap: sistem menampilkan pesan validasi.
+                   7a. Identitas tidak sesuai format: sistem meminta User memperbaiki data.
+                   10a. Terdapat pertanyaan yang belum dijawab: sistem meminta User
+                   melengkapi jawaban.
+                   12a. Penyimpanan gagal: sistem menampilkan pesan kesalahan dan tidak
+                   menampilkan notifikasi keberhasilan.
+                   3b. Soal tes tidak tersedia: sistem menampilkan informasi bahwa tes belum
+                   dapat dikerjakan.
+
+                   18
+Pascakondisi       Jawaban dan hasil evaluasi peserta berhasil tersimpan di database dan dapat
+                   dilihat Admin melalui pengelolaan hasil evaluasi.
+
+ID / Nama          UC-05 / Memberi Rating dan Ulasan
+Aktor
+Kebutuhan terkait  User
+Deskripsi
+Prakondisi         KF-31
+Alur utama
+                   User memberikan penilaian dan ulasan secara anonim terhadap pengalaman
+Alur alternatif    pelatihan atau audit sesuai ketentuan yang berlaku.
+
+Pengecualian       User telah menyelesaikan aktivitas yang menjadi dasar pemberian rating
+Pascakondisi       dan fitur rating tersedia.
+
+                        1. User membuka halaman pemberian rating dan ulasan..
+                        2. Sistem menampilkan formulir rating dan ulasan.
+                        3. User memilih rating bintang sesuai penilaian.
+                        4. User menuliskan ulasan jika ingin memberikan komentar.
+                        5. User menekan tombol Kirim.
+                        6. Sistem memvalidasi data penilaian.
+                        7. Sistem menyimpan rating dan ulasan secara anonim.
+                        8. Sistem menampilkan notifikasi bahwa penilaian berhasil dikirim.
+
+                   4a. User hanya memberikan rating tanpa menulis ulasan: sistem
+                   menyimpan rating sesuai ketentuan.
+                   5a. User memilih untuk tidak memberikan penilaian: User dapat kembali ke
+                   halaman sebelumnya.
+
+                   6a. Rating belum dipilih: sistem menampilkan pesan validasi.
+                   7a. Terjadi kegagalan penyimpanan: sistem menampilkan pesan kesalahan
+                   dan data tidak dinyatakan berhasil tersimpan.
+
+                   Rating dan ulasan berhasil tersimpan secara anonim dan dapat dilihat
+                   admin sesuai hak aksesnya.
+
+ID / Nama          UC-06 / Menghubungi via WhatsApp
+Aktor
+Kebutuhan terkait  User
+Deskripsi
+                   KF-29
+Prakondisi
+                   User menghubungi pihak Sopinsya Educenter melalui tautan WhatsApp
+                   yang tersedia pada website untuk memperoleh informasi atau konsultasi.
+
+                   Website dapat diakses dan nomor WhatsApp resmi Sopinsya Educenter
+                   telah dikonfigurasi.
+
+                   19
+Alur utama              1. User membuka website Sopinsya Educenter.
+                        2. User memilih tombol Hubungi Kami atau ikon WhatsApp.
+Alur alternatif         3. Sistem membuka tautan WhatsApp yang telah dikonfigurasi.
+Pengecualian            4. Sistem mengarahkan User ke aplikasi WhatsApp atau WhatsApp
+Pascakondisi
+                             Web.
+                        5. User menuliskan dan mengirimkan pesan kepada pihak Sopinsya
+
+                             Educenter.
+
+                   4a. WhatsApp tidak tersedia pada perangkat: sistem membuka WhatsApp
+                   Web melalui browser jika memungkinkan.
+
+                   3a. Nomor WhatsApp belum dikonfigurasi: sistem menampilkan informasi
+                   bahwa kontak belum tersedia.
+                   4b. Tautan tidak dapat dibuka: sistem menampilkan pesan kesalahan.
+
+                   User berhasil diarahkan ke kanal komunikasi WhatsApp Sopinsya
+                   Educenter.
+
+ID / Nama          UC-07 / Login
+Aktor
+Kebutuhan terkait  Admin
+Deskripsi
+Prakondisi         KF-19, KF-20
+Alur utama
+                   Admin melakukan autentikasi untuk mengakses halaman administrasi
+Alur alternatif    Sopinsya Educenter.
+Pengecualian
+                   Admin telah memiliki akun yang terdaftar dan aktif.
+Pascakondisi
+                        1. Admin membuka halaman login.
+                        2. Sistem menampilkan formulir login.
+                        3. Admin memasukkan email dan password.
+                        4. Admin menekan tombol Login.
+                        5. Sistem memvalidasi kredensial.
+                        6. Sistem memeriksa role pengguna.
+                        7. Sistem membuat sesi autentikasi.
+                        8. Sistem mengarahkan Admin ke halaman administrasi.
+
+                   5a. Kredensial tidak sesuai: sistem menampilkan pesan kesalahan dan
+                   Admin dapat mencoba kembali.
+
+                   5b. Akun tidak aktif: sistem menolak proses login.
+                   5c. Terjadi gangguan server: sistem menampilkan pesan bahwa autentikasi
+                   tidak dapat diproses.
+                   6a. Role bukan Admin: sistem menolak akses ke halaman administrasi.
+
+                   Admin berhasil login dan memiliki akses ke fitur administrasi sesuai hak
+                   aksesnya.
+
+ID / Nama          UC-08 / Mengelola Program Pelatihan
+Aktor              Admin
+
+                   20
+Kebutuhan terkait  KF-04, KF-05, KF-06
+Deskripsi
+Prakondisi         Admin membuat, melihat, mengubah, dan menghapus informasi program
+Alur utama         pelatihan yang tersedia pada website.
+
+Alur alternatif    Admin telah login dan memiliki hak akses pengelolaan program.
+
+Pengecualian            1. Admin membuka menu Program.
+Pascakondisi            2. Sistem menampilkan daftar program pelatihan.
+                        3. Admin memilih Tambah Program.
+                        4. Sistem menampilkan formulir pengelolaan program.
+                        5. Admin mengisi nama program, kategori, gambar sampul, dan
+
+                             deskripsi.
+                        6. Admin menentukan status publikasi program.
+                        7. Admin menekan tombol Simpan.
+                        8. Sistem memvalidasi data program.
+                        9. Sistem menyimpan data ke database.
+                        10. Sistem menampilkan notifikasi keberhasilan.
+                        11. Program yang berstatus Published ditampilkan pada halaman User.
+
+                   3a. Admin memilih program yang sudah tersedia: sistem menampilkan detail
+                   program untuk diedit.
+                   6a. Admin memilih Draft: program disimpan tetapi belum ditampilkan
+                   kepada User.
+                   3b. Admin memilih Hapus: sistem menampilkan konfirmasi sebelum
+                   penghapusan dilakukan.
+
+                   5a. Data wajib belum lengkap: sistem menampilkan pesan validasi.
+                   8a. Gambar tidak sesuai format atau ukuran: sistem menolak unggahan.
+                   9a. Penyimpanan gagal: sistem menampilkan pesan kesalahan dan perubahan
+                   tidak diterapkan.
+
+                   Data program tersimpan dan ditampilkan kepada User sesuai status
+                   publikasinya.
+
+ID / Nama          UC-09 / Mengelola Materi dan Konten Program
+Aktor              Admin
+Kebutuhan terkait  KF-07
+Deskripsi          Admin menambahkan, melihat, mengubah, dan menghapus materi serta
+                   konten pendukung pada setiap program pelatihan.
+Prakondisi         Admin telah login dan program yang akan dikelola sudah tersedia.
+
+                   21
+Alur utama              1. Admin membuka menu Program.
+                        2. Admin memilih program yang ingin dikelola.
+Alur alternatif         3. Sistem menampilkan detail program beserta kelompok konten.
+Pengecualian            4. Admin memilih kelompok konten, seperti materi, silabus, studi
+Pascakondisi
+                             kasus, SOP, atau video referensi.
+                        5. Admin memilih Tambah Konten.
+                        6. Sistem menampilkan formulir penambahan konten.
+                        7. Admin mengisi judul dan informasi konten.
+                        8. Admin mengunggah file atau memasukkan tautan sesuai jenis
+
+                             konten.
+                        9. Admin menekan tombol Simpan.
+                        10. Sistem memvalidasi dan menyimpan konten.
+                        11. Sistem menampilkan konten pada halaman detail program sesuai
+
+                             status publikasi.
+
+                   5a. Admin memilih konten yang sudah tersedia: sistem menampilkan
+                   formulir edit.
+                   5b. Admin memilih SOP: sistem menampilkan daftar SOP untuk dipilih.
+                   5c. Admin memilih Hapus: sistem menampilkan konfirmasi penghapusan.
+
+                   8a. File tidak sesuai format atau ukuran: sistem menolak unggahan.
+                   8b. Tautan tidak valid: sistem menampilkan pesan kesalahan.
+                   10a. Penyimpanan gagal: sistem menampilkan pesan kesalahan.
+
+                   Materi dan konten program tersimpan dan tersedia pada halaman User sesuai
+                   status publikasi.
+
+ID / Nama          UC-10 / Mengelola Soal Pre-test dan Post-test
+Aktor
+Kebutuhan terkait  Admin
+Deskripsi
+                   KF-10, KF-11, KF-18
+Prakondisi
+Alur utama         Admin membuat dan mengelola soal pilihan ganda serta menentukan kunci
+                   jawaban untuk Pre-test dan Post-test.
+
+                   Admin telah login dan program pelatihan sudah tersedia.
+
+                        1. Admin membuka menu Program.
+                        2. Admin memilih program yang akan dikelola.
+                        3. Admin membuka bagian Pre-test atau Post-test.
+                        4. Sistem menampilkan daftar soal yang tersedia.
+                        5. Admin memilih Tambah Soal.
+                        6. Sistem menampilkan formulir pembuatan soal.
+                        7. Admin memasukkan pertanyaan.
+                        8. Admin menambahkan pilihan jawaban.
+                        9. Admin menentukan satu pilihan sebagai kunci jawaban.
+                        10. Admin menambahkan soal berikutnya jika diperlukan.
+                        11. Admin menekan tombol Simpan.
+                        12. Sistem memvalidasi dan menyimpan soal beserta kunci jawaban.
+                        13. Soal tersedia untuk digunakan peserta setelah dipublikasikan.
+
+                   22
+Alur alternatif    5a. Admin memilih soal yang sudah tersedia: sistem menampilkan formulir
+Pengecualian       edit.
+Pascakondisi       10a. Admin menghapus soal atau pilihan jawaban yang tidak diperlukan.
+                   11a. Admin mengunggah soal melalui berkas Excel atau Word apabila fitur
+                   impor tersedia.
+
+                   7a. Pertanyaan kosong: sistem menampilkan pesan validasi.
+                   8a. Pilihan jawaban belum lengkap: sistem meminta Admin melengkapi
+                   pilihan.
+                   9a. Kunci jawaban belum ditentukan: sistem menolak penyimpanan soal.
+                   12a. Penyimpanan gagal: sistem menampilkan pesan kesalahan.
+                   11b. Format berkas impor tidak sesuai: sistem menolak berkas dan
+                   menampilkan pesan kesalahan.
+
+                   Soal Pre-test atau Post-test tersimpan beserta pilihan dan kunci jawabannya.
+
+ID / Nama          UC-11 / Melihat Rekap Nilai dan Laporan Pelatihan
+Aktor
+Kebutuhan terkait  Admin
+Deskripsi
+Prakondisi         KF-14, KF-16
+Alur utama
+                   Admin melihat hasil pengerjaan Pre-test dan Post-test peserta berdasarkan
+Alur alternatif    program dan waktu pengiriman.
+
+Pengecualian       Admin telah login dan terdapat hasil evaluasi peserta yang tersimpan.
+
+Pascakondisi       1. Admin membuka menu Program.
+                   2. Admin memilih program yang ingin diperiksa.
+                   3. Admin membuka bagian Hasil Evaluasi.
+                   4. Sistem mengambil data hasil Pre-test dan Post-test dari database.
+                   5. Sistem menampilkan nama peserta, email, nomor telepon, jabatan, jenis
+                   tes, nilai, serta tanggal dan waktu pengiriman.
+                   6. Admin memilih jenis tes atau tanggal pengiriman sebagai filter.
+                   7. Sistem menampilkan hasil sesuai filter.
+                   8. Admin melihat rekap nilai peserta.
+
+                   6a. Admin tidak menggunakan filter: sistem menampilkan seluruh hasil
+                   evaluasi program.
+                   6b. Admin memilih tanggal tertentu: sistem menampilkan hasil berdasarkan
+                   tanggal pengiriman tersebut.
+
+                   4a. Belum terdapat hasil evaluasi: sistem menampilkan informasi bahwa
+                   data belum tersedia.
+                   4b. Gagal mengambil data: sistem menampilkan pesan kesalahan.
+                   7a. Tidak ada hasil yang sesuai filter: sistem menampilkan informasi data
+                   tidak ditemukan.
+
+                   Admin berhasil melihat rekap nilai dan informasi hasil evaluasi peserta.
+
+                   23
+ID / Nama          UC-12 / Mengelola Akun dan Hak Akses
+Aktor
+Kebutuhan terkait  Admin
+Deskripsi
+Prakondisi         KF-17, KF-20, KF-33
+Alur utama
+                   Admin mengelola akun pengguna internal serta mengatur hak akses sesuai
+Alur alternatif    peran masing-masing pengguna.
+
+Pengecualian       Admin telah login dan memiliki kewenangan mengelola akun.
+Pascakondisi
+                        1. Admin membuka menu Pengelolaan Akun.
+                        2. Sistem menampilkan daftar akun internal.
+                        3. Admin memilih Tambah Akun atau memilih akun yang tersedia.
+                        4. Sistem menampilkan formulir pengelolaan akun.
+                        5. Admin mengisi nama, email, password awal, dan role pengguna.
+                        6. Admin menentukan status akun.
+                        7. Admin menekan tombol Simpan.
+                        8. Sistem memvalidasi data akun.
+                        9. Sistem menyimpan data dan menerapkan hak akses berdasarkan
+
+                             role.
+                        10. Sistem menampilkan notifikasi keberhasilan.
+
+                   3a. Admin memilih akun yang tersedia: sistem menampilkan informasi akun
+                   untuk diedit.
+                   6a. Admin menonaktifkan akun: sistem meminta konfirmasi sebelum
+                   perubahan status.
+                   3b. Admin memilih reset password: sistem menjalankan mekanisme
+                   pengaturan ulang password yang aman.
+
+                   5a. Email sudah terdaftar: sistem menampilkan pesan bahwa email telah
+                   digunakan.
+                   8a. Data wajib tidak lengkap: sistem menolak penyimpanan.
+                   9a. Penyimpanan gagal: sistem menampilkan pesan kesalahan.
+
+                   Akun pengguna internal tersimpan atau diperbarui dan memiliki hak akses
+                   sesuai role yang ditetapkan.
+
+ID / Nama          UC-13 / Login
+Aktor              Auditor
+Kebutuhan terkait  KF-19, KF-20
+Deskripsi          Auditor melakukan autentikasi untuk mengakses dashboard dan fitur audit
+                   internal.
+Prakondisi         Auditor telah memiliki akun yang terdaftar dan aktif.
+
+                   24
+Alur utama              1. Auditor membuka halaman login.
+                        2. Sistem menampilkan formulir login.
+Alur alternatif         3. Auditor memasukkan email dan password.
+Pengecualian            4. Auditor menekan tombol Login.
+Pascakondisi            5. Sistem memvalidasi kredensial.
+                        6. Sistem memeriksa role pengguna.
+                        7. Sistem membuat sesi autentikasi.
+                        8. Sistem mengarahkan Auditor ke Dashboard Audit.
+
+                   5a. Kredensial tidak sesuai: sistem menampilkan pesan kesalahan dan
+                   Auditor dapat mencoba kembali.
+
+                   5b. Akun tidak aktif: sistem menolak proses login.
+                   5c. Terjadi gangguan server: sistem menampilkan pesan bahwa autentikasi
+                   tidak dapat diproses.
+                   6a. Role bukan Auditor: sistem menolak akses ke Dashboard Audit.
+
+                   Auditor berhasil login dan dapat mengakses fitur audit sesuai hak aksesnya.
+
+ID / Nama          UC-14 / Melihat Dashboard Audit
+Aktor
+Kebutuhan terkait  Auditor
+Deskripsi
+Prakondisi         KF-26
+Alur utama
+                   Auditor melihat ringkasan informasi audit, progres pemeriksaan, statistik,
+Alur alternatif    dan temuan audit melalui dashboard.
+
+Pengecualian       Auditor telah login dan sistem memiliki data audit atau temuan yang dapat
+                   ditampilkan.
+Pascakondisi
+                        1. Auditor membuka Dashboard Audit.
+                        2. Sistem mengambil data audit dan Register Temuan dari database.
+                        3. Sistem menghitung ringkasan status audit.
+                        4. Sistem menghitung progres pemeriksaan.
+                        5. Sistem menghitung jumlah temuan Major, Minor, dan Observation.
+                        6. Sistem menampilkan statistik audit.
+                        7. Sistem menampilkan daftar temuan terbaru.
+                        8. Auditor melihat informasi hasil audit melalui dashboard.
+
+                   2a. Auditor memilih filter departemen atau periode audit: sistem
+                   memperbarui data dashboard berdasarkan filter.
+                   2b. Belum terdapat data audit: sistem menampilkan nilai nol atau keterangan
+                   bahwa data belum tersedia.
+
+                   2c. Gagal mengambil data dari database: sistem menampilkan pesan
+                   kesalahan.
+                   3a. Data tidak lengkap: sistem menampilkan indikator sesuai data yang
+                   tersedia.
+
+                   Auditor berhasil melihat ringkasan progres dan hasil audit berdasarkan data
+                   yang tersimpan.
+
+                   25
+ID / Nama          UC-15 / Melihat Daftar Temuan Audit
+Aktor
+Kebutuhan terkait  Auditor
+Deskripsi
+Prakondisi         KF-21, KF-22, KF-23, KF-24
+Alur utama
+                   Auditor melihat daftar temuan audit yang telah dicatat dan tersimpan dalam
+Alur alternatif    sistem.
+
+Pengecualian       Auditor telah login dan memiliki akses untuk melihat Register Temuan.
+
+Pascakondisi            1. Auditor membuka menu Register Temuan.
+                        2. Sistem mengambil data temuan dari database.
+                        3. Sistem menampilkan daftar temuan yang telah disimpan.
+                        4. Sistem menampilkan informasi setiap temuan, meliputi nama
+
+                             Auditor, kategori temuan, dan tanggal target koreksi.
+                        5. Auditor memilih salah satu temuan untuk melihat detail.
+                        6. Sistem menampilkan detail temuan beserta informasi terkait.
+                        7. Auditor melihat informasi temuan audit sesuai data yang tersimpan.
+
+                   3a. Auditor menggunakan kolom pencarian: sistem menampilkan temuan
+                   berdasarkan kata kunci.
+                   3b. Auditor menggunakan filter kategori: sistem menampilkan temuan
+                   berdasarkan kategori Major, Minor, atau Observation.
+                   3c. Auditor tidak memilih temuan tertentu: sistem tetap menampilkan daftar
+                   temuan.
+
+                   2a. Belum terdapat temuan: sistem menampilkan informasi bahwa data
+                   temuan belum tersedia.
+                   2b. Gagal mengambil data: sistem menampilkan pesan kesalahan.
+                   5a. Temuan tidak ditemukan: sistem menampilkan pemberitahuan yang
+                   sesuai.
+
+                   Auditor berhasil melihat daftar dan detail temuan audit sesuai hak aksesnya.
+
+ID / Nama          UC-16 / Menambah dan Mengubah Temuan Audit
+Aktor
+Kebutuhan terkait  Auditor
+Deskripsi
+                   KF-22, KF-23, KF-24, KF-25
+Prakondisi
+                   Auditor mencatat temuan baru berdasarkan hasil pemeriksaan atau
+                   memperbarui informasi temuan yang sudah tersedia.
+
+                   Auditor telah login dan memiliki akses ke Register Temuan. Untuk membuat
+                   temuan baru, informasi hasil pemeriksaan dan referensi klausul telah
+                   tersedia.
+
+                   26
+Alur utama              1. Auditor membuka menu Register Temuan.
+                        2. Sistem menampilkan daftar temuan audit.
+Alur alternatif         3. Auditor memilih Tambah Temuan atau memilih temuan yang ingin
+Pengecualian
+Pascakondisi                 diubah.
+                        4. Sistem menampilkan formulir temuan.
+                        5. Auditor mengisi atau memperbarui informasi temuan, meliputi
+
+                             nama Auditor, referensi klausul, kategori temuan, uraian, dan
+                             tanggal target koreksi.
+                        6. Sistem memvalidasi data temuan.
+                        7. Auditor menekan tombol Simpan.
+                        8. Sistem menyimpan data ke database.
+                        9. Sistem menampilkan notifikasi keberhasilan.
+                        10. Sistem memperbarui daftar temuan dan informasi terkait pada
+                             Dashboard Audit.
+
+                   3a. Auditor memilih Tambah Temuan: sistem menampilkan formulir kosong
+                   untuk membuat temuan baru.
+                   3b. Auditor memilih temuan yang tersedia: sistem menampilkan data
+                   sebelumnya untuk diedit.
+                   5a. Auditor mengubah kategori temuan dari Major menjadi Minor atau
+                   Observation sesuai hasil peninjauan dan kewenangannya.
+
+                   5b. Informasi wajib belum lengkap: sistem menampilkan pesan validasi.
+                   6a. Kategori temuan tidak sesuai pilihan yang tersedia: sistem menampilkan
+                   pesan kesalahan.
+                   6b. Temuan dengan sumber yang sama sudah tercatat: sistem memberikan
+                   peringatan untuk mencegah duplikasi.
+                   8a. Penyimpanan gagal: sistem menampilkan pesan kesalahan dan perubahan
+                   tidak diterapkan.
+
+                   Temuan baru berhasil disimpan atau informasi temuan berhasil diperbarui
+                   dan tercatat dalam Register Temuan.
+
+ID / Nama          UC-17 / Mencetak Laporan Temuan Audit
+Aktor
+Kebutuhan terkait  Auditor
+Deskripsi
+                   KF-27, KF-28
+Prakondisi
+                   Auditor menghasilkan dan mengunduh laporan audit yang memuat
+                   keseluruhan hasil pemeriksaan dan data Register Temuan yang telah
+                   tersimpan dalam sistem. Laporan tersedia dalam format PDF.
+
+                   Auditor telah login dan terdapat data audit atau temuan yang dapat dibuatkan
+                   laporan.
+
+                   27
+Alur utama       1. Auditor membuka menu Laporan audit.
+                 2. Sistem mengambil seluruh data hasil pemeriksaan dan Register
+
+                      Temuan dari database.
+                 3. Sistem menyusun laporan berdasarkan data audit yang tersimpan.
+                 4. Sistem menampilkan pratinjau laporan audit.
+                 5. Auditor memilih tombol Unduh PDF.
+                 6. Sistem menghasilkan dokumen laporan audit dalam format PDF.
+                 7. Sistem menyediakan dokumen PDF untuk diunduh.
+                 8. Auditor mengunduh dan menyimpan laporan audit.
+
+Alur alternatif  4a. Auditor memilih beberapa temuan jika fitur cetak gabungan tersedia:
+Pengecualian     sistem menyusun laporan berdasarkan temuan yang dipilih.
+Pascakondisi     4b. Auditor memilih fitur Cetak: sistem membuka tampilan pratinjau atau
+                 dialog pencetakan jika tersedia.
+
+                 2a. Data hasil pemeriksaan atau Register Temuan belum tersedia: sistem
+                 menampilkan informasi bahwa laporan belum dapat dibuat.
+                 2b. Sistem gagal mengambil data dari database: sistem menampilkan pesan
+                 kesalahan.
+                 6a. Proses pembuatan PDF gagal: sistem menampilkan pemberitahuan
+                 bahwa laporan gagal dibuat dan menyediakan opsi untuk mencoba kembali.
+
+                 Laporan audit yang memuat hasil pemeriksaan dan Register Temuan berhasil
+                 dihasilkan dalam format PDF dan tersedia untuk diunduh oleh Auditor.
+
+4.4 User Story dan Kriteria Penerimaan
+
+ID               User Story                        Kriteria Penerimaan                   UC
+
+US-01  Sebagai User, saya ingin melihat halaman    Halaman beranda menampilkan           UC-01
+       beranda Sopinsya Educenter agar dapat       informasi utama, navigasi, dan akses
+       memperoleh informasi utama mengenai         menuju katalog program.
+       layanan pelatihan.
+
+US-02  Sebagai User, saya ingin melihat katalog    Sistem menampilkan nama program,      UC-01
+       program pelatihan agar dapat menemukan      kategori, gambar sampul, dan
+       program yang sesuai dengan kebutuhan        deskripsi singkat. User dapat
+       saya.                                       mencari program yang tersedia.
+
+US-03  Sebagai User, saya ingin melihat detail     Sistem menampilkan detail program     UC-02
+US-04  program agar dapat mengetahui informasi     yang mencakup informasi, materi,
+US-05  dan materi yang tersedia sebelum mengikuti  silabus, studi kasus, SOP, evaluasi,
+       pelatihan.                                  dan tautan video referensi sesuai
+                                                   ketersediaan.
+
+       Sebagai User, saya ingin mengakses materi   User dapat membuka atau               UC-03
+       pembelajaran agar dapat mempelajari         mengunduh materi sesuai format dan
+       materi pelatihan secara terpusat.           ketentuan akses yang tersedia. User
+                                                   juga dapat membuka tautan
+                                                   YouTube, Zoom, dan Google Meet.
+
+       Sebagai User, saya ingin mengisi identitas  Sistem menyediakan formulir nama, UC-04
+       sebelum mengerjakan evaluasi agar hasil     email, nomor telepon, dan jabatan.
+
+                                        28
+       pengerjaan dapat dikaitkan dengan data         Sistem menolak identitas yang belum
+       peserta.                                       lengkap.
+
+US-06  Sebagai User, saya ingin mengerjakan           Sistem menampilkan soal pilihan       UC-04
+US-07  Pre-test dan Post-test agar dapat mengukur     ganda dengan satu jawaban untuk
+       pemahaman terhadap materi pelatihan.           setiap pertanyaan dan mengacak
+US-08                                                 urutan soal.
+US-09
+US-10  Sebagai User, saya ingin mengirimkan           Sistem menghitung nilai berdasarkan   UC-04
+US-11  jawaban evaluasi agar sistem dapat             kunci jawaban, menyimpan jawaban
+US-12  menghitung dan menyimpan hasil                 dan hasil evaluasi, serta
+US-13  pengerjaan saya.                               menampilkan notifikasi pengiriman
+US-14                                                 berhasil. Nilai Pre-test tidak
+US-15                                                 ditampilkan langsung kepada
+                                                      peserta.
+
+       Sebagai User, saya ingin memberikan rating     Sistem menyediakan rating bintang     UC-05
+       dan ulasan secara anonim setelah audit agar    dan kolom ulasan. Identitas pemberi
+       dapat menyampaikan penilaian terhadap          penilaian tidak ditampilkan.
+       pelaksanaan audit.
+
+       Sebagai User, saya ingin menghubungi           Tombol WhatsApp mengarahkan           UC-06
+       Sopinsya Educenter melalui WhatsApp            User ke nomor kontak resmi
+       agar dapat memperoleh informasi dan            Sopinsya Educenter.
+       konsultasi pelatihan.
+
+       Sebagai Admin, saya ingin login agar dapat     Sistem memvalidasi email dan          UC-07
+       mengakses halaman pengelolaan website          password serta mengarahkan Admin
+       sesuai kewenangan saya.                        ke halaman administrasi apabila
+                                                      autentikasi berhasil.
+
+       Sebagai Admin, saya ingin menambahkan          Admin dapat mengisi nama program,     UC-08
+       program pelatihan agar informasi program       kategori, gambar sampul, dan
+       baru dapat ditampilkan pada website.           deskripsi. Program dapat disimpan
+                                                      sebagai Draft atau Published.
+
+       Sebagai Admin, saya ingin melihat,             Sistem menampilkan daftar program.    UC-08
+       mengubah, dan menghapus program agar           Admin dapat mengubah dan
+       informasi pelatihan selalu sesuai kebutuhan.   menghapus program setelah
+                                                      konfirmasi.
+
+       Sebagai Admin, saya ingin mengelola            Admin dapat mengubah kategori,        UC-08
+       kategori dan status publikasi program agar     deskripsi, gambar sampul, dan status
+       katalog pelatihan tersusun dengan baik.        publikasi program.
+
+       Sebagai Admin, saya ingin mengelola            Admin dapat menambah, melihat,        UC-09
+       materi, silabus, studi kasus, SOP, dan tautan  mengubah, dan menghapus konten
+       referensi agar seluruh konten pelatihan        program sesuai jenisnya.
+       tersedia secara terpusat.
+
+       Sebagai Admin, saya ingin membuat dan          Admin dapat membuat soal pilihan      UC-10
+       mengelola soal Pre-test dan Post-test agar     ganda, menambahkan pilihan
+       evaluasi peserta sesuai dengan materi          jawaban, menentukan kunci
+       pelatihan.                                     jawaban, dan mengubah soal.
+
+                                               29
+US-16  Sebagai Admin, saya ingin mengunggah         Sistem dapat menerima dan             UC-10
+US-17  soal melalui Excel atau Word agar proses
+       pengelolaan soal menjadi lebih praktis.      memproses berkas Excel atau Word
+US-18
+                                                    sesuai format impor yang ditentukan.
+
+       Sebagai Admin, saya ingin melihat rekap      Sistem menampilkan data peserta,      UC-11
+       nilai Pre-test dan Post-test agar dapat      jenis tes, nilai, serta tanggal dan
+       memantau hasil evaluasi peserta.             waktu pengiriman. Admin dapat
+                                                    melihat hasil berdasarkan program
+                                                    dan jenis tes.
+
+       Sebagai Admin, saya ingin mengelola akun     Admin dapat menambah, melihat,        UC-12
+       internal agar pengguna dapat mengakses       dan mengubah akun internal serta
+       sistem sesuai perannya.                      menentukan role pengguna.
+
+US-19  Sebagai Admin, saya ingin mengatur hak       Sistem menerapkan pembatasan          UC-12
+US-20  akses pengguna agar setiap pengguna hanya    akses berdasarkan role Admin dan
+US-21  dapat mengakses fitur sesuai                 Auditor.
+US-22  kewenangannya.
+US-23
+       Sebagai Auditor, saya ingin login agar       Sistem memvalidasi email dan          UC-13
+US-24  dapat mengakses fitur audit internal.        password serta mengarahkan Auditor
+US-25                                               ke Dashboard Audit apabila
+                                                    autentikasi berhasil.
+
+       Sebagai Auditor, saya ingin melihat          Dashboard menampilkan ringkasan       UC-14
+       Dashboard Audit agar dapat memantau          data audit dan temuan berdasarkan
+       status, statistik, dan perkembangan temuan   data yang tersimpan dalam sistem.
+       audit.
+
+       Sebagai Auditor, saya ingin melihat daftar   Sistem menampilkan daftar temuan      UC-15
+       temuan audit agar dapat menelusuri hasil     yang mencakup nama Auditor,
+       pemeriksaan yang telah dicatat.              referensi klausul, kategori temuan,
+                                                    deskripsi temuan, dan tanggal target
+                                                    koreksi sesuai data yang tersimpan.
+
+       Sebagai Auditor, saya ingin menambahkan      Auditor dapat menambahkan temuan      UC-16
+       temuan audit agar hasil pemeriksaan dapat    dengan mengisi referensi klausul,
+       terdokumentasi dalam Register Temuan.        kategori temuan, deskripsi temuan,
+                                                    dan tanggal target koreksi. Sistem
+                                                    mencatat nama Auditor yang
+                                                    menambahkan temuan.
+
+       Sebagai Auditor, saya ingin mengubah         Sistem mengizinkan perubahan data     UC-16
+       informasi temuan sesuai kewenangan agar      temuan oleh pengguna yang
+       data temuan tetap sesuai dengan hasil        memiliki kewenangan dan
+       pemeriksaan dan tindak lanjut.               menyimpan perubahan tersebut.
+
+       Sebagai Auditor, saya ingin                  Sistem menyediakan kategori Major,    UC-16
+       mengelompokkan temuan berdasarkan            Minor, dan Observation.
+       kategori agar tingkat ketidaksesuaian dapat
+       dibedakan.
+
+                                               30
+US-26   Sebagai Auditor, saya ingin membuat       Sistem menghasilkan laporan yang        UC-17
+US-27   laporan audit agar hasil pemeriksaan dan  memuat hasil pemeriksaan dan data       UC-17
+        Register Temuan dapat didokumentasikan    Register Temuan yang tersimpan
+        dalam satu laporan.                       dalam sistem.
+
+        Sebagai Auditor, saya ingin mengunduh     Sistem menyediakan dokumen PDF
+        laporan audit dalam format PDF agar       berdasarkan data audit yang telah
+        laporan dapat disimpan dan dibagikan.     tersimpan apabila format PDF
+                                                  ditetapkan sebagai keluaran.
+
+5. KEBUTUHAN NON-FUNGSIONAL
+
+ID      Kategori          Kebutuhan (terukur)                     Cara Verifikasi Prioritas
+
+KNF-01 Kinerja            Halaman utama, katalog program,         Uji waktu respons       Should
+                          dan daftar temuan audit tampil dalam    halaman.
+                          waktu  3 detik pada kondisi
+                          pengujian normal.
+
+KNF-02 Keamanan           Kata sandi akun internal disimpan Uji penyimpanan kata          Must
+                          dalam bentuk hash. Sistem membatasi sandi dan pengujian
+                          akses berdasarkan peran Admin dan hak akses setiap peran.
+                          Auditor pada sisi server.
+
+KNF-03 Usability          Menu utama, katalog program,            Uji kegunaan dengan     Should
+                          materi, dan formulir evaluasi dapat     skenario tugas untuk
+                          digunakan melalui navigasi yang jelas   User, Admin, dan
+                          tanpa memerlukan panduan teknis         Auditor.
+                          khusus.
+
+KNF-04  Reliabilitas dan  Sistem menargetkan ketersediaan         Pemantauan              Should
+        ketersediaan      99% selama jam operasional yang         ketersediaan dan
+                          ditetapkan. Data sistem dicadangkan     pemeriksaan log
+                          minimal satu kali sehari.               pencadangan.
+
+KNF-05  Kompatibilitas    Website dapat digunakan pada versi      Uji kompatibilitas      Must
+                          terkini Google Chrome dan Microsoft     browser dan tampilan
+                          Edge serta menampilkan tata letak       pada beberapa ukuran
+                          responsif pada ponsel dan desktop.      layar.
+
+KNF-06 Pemeliharaan       Kode sumber disimpan dalam              Pemeriksaan repositori  Should
+                          repositori Git dan dilengkapi panduan   dan panduan instalasi.
+                          instalasi serta konfigurasi sistem.
+
+KNF-07 Privasi data       Data peserta, termasuk email, nomor     Uji akses data          Must
+                          telepon, jabatan, dan hasil evaluasi,   menggunakan akun
+                          hanya dapat diakses oleh peran yang     dengan peran berbeda.
+                          berwenang. Auditor tidak dapat
+                          melihat nilai Pre-test dan Post-test.
+
+KNF-08  Integritas data   Data hasil evaluasi, temuan audit, dan  Uji penyimpanan,        Must
+                          laporan yang telah tersimpan tetap      pengambilan ulang,
+                          konsisten setelah pengguna berpindah    dan konsistensi data.
+                          halaman atau melakukan login ulang.
+
+                             31
+6. KEBUTUHAN DATA
+
+6.1 Entitas Data Utama
+
+Entitas                      Atribut Utama                        Sumber Data Digunakan oleh
+
+Program Pelatihan   ID program, nama program, kategori,           Input Admin           UC-01, UC-02,
+                    deskripsi, gambar sampul, status                                    UC-08
+                    publikasi
+
+Materi Pelatihan    ID materi, ID program, judul materi,          Input Admin           UC-02, UC-03,
+                    jenis materi, deskripsi, tautan atau file                           UC-09
+                    materi
+
+Silabus Program     ID silabus, ID program, judul, deskripsi, Input Admin               UC-02, UC-03,
+                    urutan materi                                                       UC-09
+
+Studi Kasus         ID studi kasus, ID program, judul,            Input Admin           UC-02, UC-03,
+                    deskripsi, file atau tautan pendukung                               UC-09
+
+Dokumen SOP         ID SOP, judul dokumen, nomor atau             Unggahan atau input UC-02, UC-03,
+                    kode SOP, deskripsi, file atau tautan
+                    dokumen, kategori                             Admin                 UC-09
+
+Peserta             ID peserta, nama, email, nomor telepon, Formulir identitas          UC-04, UC-11
+
+                    jabatan                                       peserta
+
+Soal                ID soal, ID program, pertanyaan, pilihan Input Admin atau           UC-04, UC-10
+Pre-test/Post-test
+                    jawaban, kunci jawaban, jenis tes             impor Excel/Word
+
+Jawaban Peserta     ID jawaban, ID peserta, ID soal, jawaban Input peserta saat         UC-04, UC-11
+                    yang dipilih, jenis tes, waktu pengerjaan mengerjakan tes
+
+Hasil Evaluasi      ID hasil, ID peserta, ID program, nilai       Hasil perhitungan     UC-04, UC-11
+                    Pre-test, nilai Post-test, tanggal dan        otomatis sistem
+                    waktu pengerjaan
+
+Pengguna Sistem     ID pengguna, nama, username, kata             Input Admin           UC-07, UC-12,
+                    sandi, peran, status akun                                           UC-13
+
+Temuan Audit        ID temuan, nama auditor, klausul,             Input Auditor         UC-14, UC-15,
+(Register Temuan)   kategori temuan (Major, Minor,                                      UC-16, UC-17
+                    Observation), uraian temuan, tanggal
+                    target koreksi, status tindak lanjut, tautan
+                    bukti
+
+Rating dan Ulasan ID ulasan, nilai bintang, komentar,             Input User secara     UC-05
+                         tanggal ulasan                           anonim
+
+6.2 Kebutuhan Laporan / Keluaran
+
+Laporan                      Isi                            Pengguna          Periode          KF
+                                                           Admin                        KF-14, KF-16
+Laporan Hasil       Identitas peserta, nilai Pre-test,                     Setiap
+Evaluasi Peserta    nilai Post-test, dan tanggal                           pelaksanaan
+                    pengerjaan                                             evaluasi
+
+                                            32
+Rekapitulasi Hasil Rekap nilai peserta berdasarkan     Admin    Setiap       KF-14, KF-16
+Pre-test dan Post-test program pelatihan dan jenis              pelaksanaan  KF-26
+                                                                evaluasi
+                           evaluasi
+                                                                Saat
+Dashboard Audit    Ringkasan status audit, statistik   Auditor  dibutuhkan
+                   pemeriksaan, dan jumlah temuan
+                   audit
+
+Laporan Register   Daftar temuan, klausul, kategori    Auditor  Saat         KF-21, KF-22,
+Temuan Audit       temuan, uraian, tanggal target               dibutuhkan   KF-23, KF-24,
+                   koreksi, status tindak lanjut, dan                        KF-27
+                   tautan bukti
+
+Laporan Audit PDF  Dokumen PDF yang memuat             Auditor  Setiap laporan KF-27, KF-28
+                   hasil pemeriksaan dan Register               diterbitkan
+                   Temuan Audit
+
+Rekapitulasi Rating Nilai bintang dan komentar         Admin    Setiap ada   KF-31
+                                                                ulasan
+dan Ulasan         pengguna secara anonim
+
+7. KEBUTUHAN ANTARMUKA EKSTERNAL
+
+7.1 Antarmuka Pengguna
+
+         Sistem Sopinsya Educenter berbasis website dan dirancang agar mudah
+digunakan, responsif, serta dapat diakses melalui komputer, laptop, tablet, dan ponsel.
+Antarmuka menggunakan Bahasa Indonesia sebagai bahasa utama dengan navigasi
+yang jelas dan konsisten sesuai hak akses pengguna.
+
+Ketentuan antarmuka meliputi:
+
+     Bahasa: Bahasa Indonesia untuk menu, tombol, formulir, notifikasi, dan pesan
+         kesalahan.
+
+     Tipografi: Jenis huruf yang mudah dibaca, ukuran teks responsif, serta hierarki
+         yang jelas antara judul, subjudul, dan isi.
+
+     Warna: Nuansa biru
+     Responsivitas: Tata letak menyesuaikan ukuran layar, termasuk kartu program,
+
+         formulir tes, tabel checklist audit, register temuan, dan dashboard.
+     Aksesibilitas: Teks harus mudah dibaca, tombol memiliki label yang jelas, serta
+
+         status tidak dibedakan hanya berdasarkan warna.
+     Navigasi berdasarkan peran:
+
+              User: Beranda, Program, Tentang Kami, detail program, materi, pre-test,
+                  post-test, silabus, pustaka SOP, video referensi, kuis, studi kasus.
+
+              Admin: Dashboard atau halaman administrasi, Program, Pustaka SOP,
+                  pengelolaan master pertanyaan checklist audit, serta hasil tes.
+
+              Auditor: Dashboard, Checklist Audit, Register Temuan, dan Pustaka
+                  SOP.
+
+                                                33
+ Notifikasi dan validasi: Sistem menampilkan pesan keberhasilan, kesalahan,
+    konfirmasi penghapusan, dan informasi jika data wajib belum diisi.
+
+ Tampilan dokumen: Materi dan SOP dapat dibuka atau diunduh sesuai jenis
+    file dan izin akses. Laporan checklist audit dan register temuan dapat diunduh
+    dalam format PDF.
+
+Sketsa kasar tata letak dan desain visual rinci akan dijelaskan lebih lanjut dalam
+dokumen Software Design Description (SDD).
+7.2 Antarmuka Perangkat Keras.
+
+         Sistem tidak memerlukan perangkat keras khusus (tanpa printer struk atau
+pemindai barcode). Pengguna mengakses melalui PC, laptop, tablet, atau ponsel dengan
+peramban; pencetakan laporan dilakukan dari berkas PDF memakai printer pengguna di
+luar sistem.
+
+7.3 Antarmuka Perangkat Lunak dan Komunikasi.
+
+Sistem berinteraksi dengan layanan berikut:
+
+Layanan                Fungsi                              Mekanisme dan Format Data
+
+YouTube                Video referensi program       Tautan URL YouTube yang divalidasi
+                                                     formatnya; ditampilkan atau dibuka dari
+                                                     halaman detail program
+
+Google Drive / tautan  Bukti objektif audit dan      URL disimpan pada kolom Tautan Bukti;
+dokumen                dokumen pendukung             hak akses dokumen diatur oleh pemilik
+                                                     tautan
+
+Zoom / Google Meet     Pelatihan daring              Tautan pertemuan ditampilkan;
+                                                     pertemuan berjalan di layanan eksternal
+
+WhatsApp               Konsultasi dan kontak         Tautan wa.me ke nomor klien pada
+                                                     halaman publik
+
+Penyimpanan berkas     Cover, modul, materi, studi   Unggahan berkas (PDF, PPT/PPTX,
+                       kasus, dokumen SOP            DOC/DOCX, gambar) dengan batas
+                                                     ukuran yang ditetapkan pada SDD
+
+Pembuat PDF (server)   Laporan checklist dan temuan  Pembuatan PDF di sisi server dari data
+                                                     tersimpan
+
+Penyimpanan lokal      History program User          Data judul dan cover program terakhir
+peramban                                             dibuka (tanpa data pribadi)
+
+8. PRIORITAS DAN RENCANA RILIS
+
+Prioritas              Kebutuhan / Use Case                             Rencana Rilis
+
+Must have              KF-01, KF-02, KF-03, KF-04, KF-05,  Sprint 1 (Minggu 9): Halaman
+                       KF-06, KF-07, KF-08, KF-09, KF-10,  utama, katalog dan detail program,
+                       KF-11, KF-12, KF-13, KF-14, KF-15,  serta login dan hak akses. Sprint 2
+                       KF-16, KF-17, KF-19, KF-20, KF-21,  (Minggu 10): Pengelolaan program
+
+                                         34
+                  KF-22, KF-23, KF-24, KF-25, KF-26,   dan materi, Pre-test/Post-test, serta
+                  KF-27, KF-30, KF-33. (UC-01, UC-02,  pengolahan nilai. Sprint 3 (Minggu
+                  UC-03, UC-04, UC-07, UC-08, UC-09,   12): Dashboard audit, Register
+                  UC-10, UC-11, UC-12, UC-13, UC-14,   Temuan, pengelolaan temuan, dan
+                  UC-15, UC-16, UC-17)                 laporan audit.
+
+Should have       KF-18, KF-28, KF-29. (UC-06, UC-10,  Sprint 2 (Minggu 10): Impor soal
+                  UC-17)                               melalui Excel/Word. Sprint 3
+                                                       (Minggu 12): Ekspor laporan audit
+                                                       ke PDF dan tautan WhatsApp.
+
+Could have        KF-31. (UC-05)                       Sprint 3 (Minggu 12), bila waktu
+                                                       cukup: Fitur pemberian rating dan
+                                                       ulasan secara anonim.
+
+Won't have (this time) KF-32.                          Tidak dikerjakan dalam proyek ini.
+                                                       Pendaftaran pelatihan secara online
+                                                       dan pembayaran dicatat sebagai
+                                                       pengembangan berikutnya.
+
+9. MATRIKS KETERLACAKAN KEBUTUHAN
+
+KF           Fungsi RD         Use Case  User Story Sprint      SDD    Kasus Uji
+                                                            (Mg 8)   (Mg 13)
+KF-01 F-01              UC-01            US-01  1           (Mg 8)   (Mg 13)
+                                                            (Mg 8)   (Mg 13)
+KF-02 F-02              UC-01            US-02  1           (Mg 8)   (Mg 13)
+                                                            (Mg 8)   (Mg 13)
+KF-03 F-03              UC-02            US-03  1           (Mg 8)   (Mg 13)
+                                                            (Mg 8)   (Mg 13)
+KF-04 F-05              UC-08            US-11  1           (Mg 8)   (Mg 13)
+                                                            (Mg 8)   (Mg 13)
+KF-05 F-05              UC-08            US-12  1           (Mg 8)   (Mg 13)
+                                                            (Mg 8)   (Mg 13)
+KF-06 F-05              UC-08            US-13  1           (Mg 8)   (Mg 13)
+                                                            (Mg 8)   (Mg 13)
+KF-07 F-05, F-07, F-08 UC-09             US-14  2           (Mg 8)   (Mg 13)
+                                                            (Mg 8)   (Mg 13)
+KF-08 F-07              UC-03            US-04  2           (Mg 8)   (Mg 13)
+                                                            (Mg 8)   (Mg 13)
+KF-09 F-04              UC-04            US-05  2           (Mg 8)   (Mg 13)
+                                                            (Mg 8)   (Mg 13)
+KF-10 F-09              UC-04            US-06  2
+
+KF-11 F-09              UC-04            US-06  2
+
+KF-12 F-09              UC-04            US-06  2
+
+KF-13 F-10              UC-04            US-07  2
+
+KF-14 F-10              UC-04, UC-11 US-07, US-17 2
+
+KF-15 F-10              UC-04            US-07  2
+
+KF-16 F-10              UC-11            US-17  2
+
+KF-17 F-18              UC-12            US-19  1
+
+KF-18 F-05, F-09        UC-10            US-16  2
+
+KF-19 F-18              UC-07, UC-13 US-10, US-20 1
+
+                                         35
+KF-20 F-06, F-18   UC-07,  US-10, US-19, 1      (Mg 8)  (Mg 13)
+
+                   UC-12, UC-13 US-20           (Mg 8)  (Mg 13)
+                                                (Mg 8)  (Mg 13)
+KF-21  F-15        UC-15   US-22       3        (Mg 8)  (Mg 13)
+KF-22  F-15                                     (Mg 8)  (Mg 13)
+KF-23  F-15        UC-15, UC-16 US-22, US-23 3  (Mg 8)  (Mg 13)
+KF-24  F-15                                     (Mg 8)  (Mg 13)
+KF-25  F-15        UC-15, UC-16 US-22, US-23 3  (Mg 8)  (Mg 13)
+KF-26  F-14                                     (Mg 8)  (Mg 13)
+KF-27  F-16        UC-15, UC-16 US-25  3        (Mg 8)  (Mg 13)
+KF-28  F-16                                     (Mg 8)  (Mg 13)
+KF-29  F-17        UC-16   US-24       3        (Mg 8)  (Mg 13)
+KF-30  F-03, F-07                               (Mg 8)  (Mg 13)
+KF-31  F-11        UC-14   US-21       3        (Mg 8)  (Mg 13)
+KF-32  F-04
+KF-33  F-18        UC-17   US-26       3
+
+                   UC-17   US-27       3
+
+                   UC-06   US-09       3
+
+                   UC-03   US-04       2
+
+                   UC-05   US-08       3
+
+                   --      --          --
+
+                   UC-12   US-18, US-19 1
+
+10. REFERENSI DAN PERNYATAAN PENGGUNAAN AI
+10.1 Referensi
+
+Referensi yang digunakan dalam penyusunan dokumen Software Requirements
+Specification (SRS) Sopinsya Educenter meliputi:
+
+    1. Hasil wawancara dengan pihak Sopinsya Educenter mengenai kebutuhan sistem,
+         pengelolaan materi pelatihan, evaluasi peserta, dan proses audit internal.
+
+    2. Dokumen kebutuhan dan hasil analisis sistem Sopinsya Educenter yang menjadi
+         dasar penyusunan kebutuhan fungsional, kebutuhan nonfungsional, use case, dan
+         user story.
+
+10.2 Pernyataan Penggunaan AI
+Dalam penyusunan dokumen SRS Sopinsya Educenter, alat kecerdasan buatan
+(Artificial Intelligence/AI), yaitu ChatGPT dari OpenAI, digunakan sebagai alat bantu
+untuk:
+
+    1. Membantu memperbaiki redaksi kebutuhan fungsional dan nonfungsional.
+    2. Memeriksa konsistensi antara kebutuhan fungsional, use case, dan user story.
+    3. Membantu memperbaiki struktur penulisan dan tata bahasa dokumen.
+
+                               36
+Kode / Teknik                           LAMPIRAN A
+Tanggal & Tempat       BUKTI PENGUMPULAN KEBUTUHAN
+Narasumber
+                             W-03 / Wawancara
+Pewawancara                  Jakarta, 27 Oktober 2026
+                             Ahmad Fadillah, Trainer
+
+                            Alfi Fauzi, Astari Cipta Rahma, Martsya Adillah, Fikri Nurrahman
+
+                             Hakim,
+
+No.                    Pertanyaan                            Jawaban / Temuan
+
+1 Fitur apa yang menjadi prioritas utama dalam Must: Register temuan, detail program, dan
+
+     pengembangan sistem berdasarkan metode dashboard yang perlu diperbarui. Should:
+
+     MoSCoW?                                    Konsultasi melalui WhatsApp. Could: Rating
+
+                                                dan ulasan. Won't: Pendaftaran dan pembayaran
+
+                                                pelatihan secara online.
+
+2 Apakah Auditor diperbolehkan melihat nilai Tidak. Auditor hanya dapat melihat status open
+
+     pre-test dan post-test peserta?            atau close. Nilai pre-test dan post-test hanya
+
+                                                dapat dilihat oleh Admin. Perubahan atau
+
+                                                pengelolaan data sistem hanya boleh dilakukan
+
+                                                oleh Admin sesuai hak aksesnya.
+
+3 Apakah sistem perlu menyediakan fitur rating Perlu. Peserta dapat memberikan penilaian
+
+     dan ulasan?                                setelah audit selesai. Penilaian diberikan secara
+
+                                                anonim.
+
+4 Bagaimana kebutuhan dashboard audit dan Dashboard tetap diperlukan dengan isi seperti
+       siapa yang bertanggung jawab mengelolanya? pembahasan sebelumnya, tetapi perlu
+                                                                disederhanakan. Dashboard berisi ringkasan dan
+                                                                daftar temuan serta dilengkapi fungsi cetak
+                                                                laporan. Pengelolaannya dilakukan oleh lead
+                                                                auditor.
+
+5 Apakah sistem masih membutuhkan master Tidak. Klien menyampaikan bahwa checklist
+
+     checklist audit?                           audit tidak diperlukan. Fokus sistem diarahkan
+
+                                                pada pengelolaan register temuan audit.
+
+6 Bagaimana kebutuhan penggunaan video          Cukup menggunakan tautan eksternal. Sistem
+       YouTube dan Zoom/Meet dalam program      perlu menyediakan fasilitas untuk menginput
+       pelatihan?                               tautan video referensi.
+
+7 Apakah tautan WhatsApp untuk konsultasi Tetap diperlukan dan menjadi fitur penting agar
+
+     masih diperlukan?                          peserta dapat menghubungi pihak
+
+                                                penyelenggara untuk memperoleh jawaban atas
+
+                                                konsultasi.
+
+8 Apa saja halaman dan informasi yang perlu Halaman User terdiri dari Beranda, Program,
+
+     tersedia untuk User atau peserta?          dan Tentang Kami. Detail program memuat
+
+                                                silabus, SOP, materi, pre-test/post-test, studi
+
+                                                kasus, tautan Blooket, dan video referensi.
+
+                                            37
+9 Data apa saja yang perlu diisi peserta sebelum Peserta mengisi email, nama, nomor telepon,
+
+mengikuti evaluasi?                             dan jabatan. Nilai pre-test tidak langsung
+
+                                                ditampilkan kepada peserta setelah pengerjaan.
+
+10 Bagaimana struktur program pelatihan yang Program pelatihan memiliki tiga bagian utama,
+
+diharapkan klien?                               yaitu pelatihan, konsultasi, dan audit. Program
+
+                                                harus dapat ditambahkan sesuai kebutuhan
+
+                                                standar.
+
+11 Apa saja kebutuhan pengelolaan sistem oleh Admin dapat mengelola konten dan detail
+
+Admin?                                          program, materi, dashboard, pustaka SOP, data
+
+                                                peserta, nilai pre-test/post-test, studi kasus,
+
+                                                akun, dan hak akses. Admin juga perlu dapat
+
+                                                mengunggah soal evaluasi melalui Excel/Word
+
+                                                serta mengunggah video referensi.
+
+12 Apa saja aktivitas yang dapat dilakukan      Auditor dapat login, melihat pustaka SOP,
+       Auditor dalam sistem?                    melihat dashboard audit, melihat dan
+                                                menambahkan temuan, serta mengunduh
+                                                laporan audit. Informasi temuan meliputi nama
+                                                auditor, referensi klausul, kategori temuan
+                                                (Major, Minor, Observation), dan tanggal target
+                                                koreksi. Auditor tidak diperbolehkan mengedit
+                                                konten sistem.
+
+13 Apakah terdapat perubahan atau kebutuhan     Sistem perlu menyediakan fitur penambahan
+       tambahan yang perlu diperhatikan dalam   program pelatihan baru, pengacakan urutan soal
+       pengembangan sistem?                     pre-test/post-test, pengelolaan nama auditor
+                                                pada bagian temuan, serta fitur rating bintang
+                                                anonim. Sistem juga perlu disiapkan untuk uji
+                                                coba bersama klien, misalnya Laboratorium
+                                                BBS.
+
+                                            38
+                                           LAMPIRAN B
+
+                      PERSETUJUAN KEBUTUHAN OLEH KLIEN
+
+Dengan ini klien menyatakan telah membaca dan menyetujui kebutuhan fungsional,
+kebutuhan non-fungsional, dan prioritas yang tercantum dalam SRS APLIKASI
+PELATIHAN BERBASIS WEB (SOPINSYA) versi 1.2. Perubahan kebutuhan setelah
+persetujuan ini dicatat pada Riwayat Revisi dan dibahas bersama tim proyek.
+
+                                                                           Jakarta, 4 November 2026
+
+Pihak Klien                        System Analyst
+
+Ahmad Fadillah, Trainer & Notulen  Astari Cipta Rahma, 10123199
+
+                                   39
+

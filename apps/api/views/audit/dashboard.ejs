@@ -1,0 +1,131 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/internal-topbar', { user, active }) %>
+
+<main class="container audit-main">
+  <%- include('../partials/flash', { ok, err }) %>
+
+  <section class="dashboard-hero">
+    <div class="hero-tag">Audit Mutu Internal &amp; Pemantauan</div>
+    <h1 class="hero-title">Status Tindakan Korektif (CAPA)</h1>
+    <p class="hero-desc">Pemantauan kepatuhan persyaratan SNI ISO/IEC 37001:2025. Seluruh perbaikan dan tindakan korektif diverifikasi efektivitasnya oleh Lead Auditor.</p>
+    <a class="hero-action" href="/audit/laporan">&#9113; Format Formulir</a>
+  </section>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-head">
+        <span class="metric-label">TOTAL TEMUAN</span>
+        <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12"/><circle cx="4" cy="6" r="1.1"/><circle cx="4" cy="12" r="1.1"/><circle cx="4" cy="18" r="1.1"/></svg></span>
+      </div>
+      <div class="metric-body">
+        <div class="metric-value"><%= stats.total %></div>
+        <div class="metric-sub">/ klausul</div>
+      </div>
+      <div class="metric-foot">Klausul audit</div>
+    </div>
+
+    <div class="metric metric-major">
+      <div class="metric-head">
+        <span class="metric-label">KATEGORI 1 (MAYOR)</span>
+        <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5 2.8 19.5h18.4L12 3.5Z"/><path d="M12 9.5v4.5"/><path d="M12 17.2h.01"/></svg></span>
+      </div>
+      <div class="metric-body">
+        <div class="metric-value"><%= stats.byCategory.MAJOR %></div>
+      </div>
+      <div class="metric-foot">Ketidakmampuan sistem</div>
+    </div>
+
+    <div class="metric metric-minor">
+      <div class="metric-head">
+        <span class="metric-label">KATEGORI 2 (MINOR)</span>
+        <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5 2.8 19.5h18.4L12 3.5Z"/><path d="M12 9.5v4.5"/><path d="M12 17.2h.01"/></svg></span>
+      </div>
+      <div class="metric-body">
+        <div class="metric-value"><%= stats.byCategory.MINOR %></div>
+      </div>
+      <div class="metric-foot">Inkonsistensi / standar</div>
+    </div>
+
+    <div class="metric metric-observasi">
+      <div class="metric-head">
+        <span class="metric-label">OBSERVASI (O)</span>
+        <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.5 12S6 6.2 12 6.2 21.5 12 21.5 12 18 17.8 12 17.8 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.8"/></svg></span>
+      </div>
+      <div class="metric-body">
+        <div class="metric-value"><%= stats.byCategory.OBSERVASI %></div>
+      </div>
+      <div class="metric-foot">Peluang peningkatan</div>
+    </div>
+
+    <div class="metric metric-closed">
+      <div class="metric-head">
+        <span class="metric-label">SELESAI (CLOSED)</span>
+        <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="m8.4 12.4 2.4 2.4 4.8-5"/></svg></span>
+      </div>
+      <div class="metric-body">
+        <div class="metric-value"><%= stats.byStatus.CLOSED %></div>
+        <div class="metric-sub"><%= stats.total ? Math.round((stats.byStatus.CLOSED / stats.total) * 100) : 0 %>%</div>
+      </div>
+      <div class="metric-foot">Terverifikasi efektif</div>
+    </div>
+  </div>
+
+  <form class="toolbar" method="get" action="/audit">
+    <label class="field" style="flex:2;min-width:220px">
+      <span>Cari temuan</span>
+      <input type="search" name="q" value="<%= filters.q || '' %>" placeholder="Klausul, kode, atau uraian…" />
+    </label>
+    <label class="field">
+      <span>Kategori</span>
+      <select name="category">
+        <option value="">Semua</option>
+        <% ['MAJOR','MINOR','OBSERVASI'].forEach(function (c) { %>
+          <option value="<%= c %>" <%= filters.category === c ? 'selected' : '' %>><%= helpers.CATEGORY_LABELS[c] %></option>
+        <% }) %>
+      </select>
+    </label>
+    <label class="field">
+      <span>Dari tanggal</span>
+      <input type="date" name="from" value="<%= filters.from || '' %>" />
+    </label>
+    <label class="field">
+      <span>Sampai tanggal</span>
+      <input type="date" name="to" value="<%= filters.to || '' %>" />
+    </label>
+    <button class="btn btn-sm" type="submit">Terapkan</button>
+    <a class="btn btn-sm ghost" href="/audit">Reset</a>
+  </form>
+
+  <div class="card recent-card">
+    <div class="card-title"><h2>Temuan terbaru</h2></div>
+    <% if (!stats.latest.length) { %>
+      <div class="empty">Belum ada temuan audit. Tambahkan temuan pertama.</div>
+    <% } else { %>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Kode</th><th>Klausul</th><th>Kategori</th><th>Auditor</th><th>Target</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <% stats.latest.forEach(function (f) { %>
+              <tr>
+                <td class="mono"><a href="/audit/temuan/<%= f.id %>"><%= f.code %></a></td>
+                <td><%= f.clause %></td>
+                <td><span class="badge <%= helpers.CATEGORY_BADGE[f.category] %>"><%= helpers.CATEGORY_LABELS[f.category] %></span></td>
+                <td class="small"><%= f.auditor.name %></td>
+                <td class="small nowrap"><%= helpers.formatShortDate(f.targetDate) %></td>
+                <td><span class="badge <%= helpers.STATUS_BADGE[f.status] %>"><%= helpers.FINDING_STATUS_LABELS[f.status] %></span></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-foot">
+        <span>Menampilkan <%= stats.latest.length %> dari <%= stats.total %> temuan</span>
+        <span>Metode penulisan: Problem, Location, Objective evidence, Reference (PLOR)</span>
+      </div>
+    <% } %>
+  </div>
+</main>
+
+<%- include('../partials/foot') %>

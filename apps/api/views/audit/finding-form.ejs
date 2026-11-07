@@ -1,0 +1,101 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/internal-topbar', { user, active }) %>
+
+<main class="container audit-main">
+  <%- include('../partials/flash', { ok, err }) %>
+
+  <div class="pagehead">
+    <div>
+      <h1><%= finding ? 'Temuan ' + finding.code : 'Tambah Temuan Audit' %></h1>
+      <div class="sub">
+        <% if (finding) { %>
+          Dicatat oleh <strong><%= finding.auditor.name %></strong> pada <%= helpers.formatDate(finding.reportedAt, { withTime: true }) %>.
+        <% } else { %>
+          Lengkapi acuan klausul, uraian PLOR, kategori, dan target koreksi. Nama auditor diisi otomatis dari akun Anda.
+        <% } %>
+      </div>
+    </div>
+    <div class="actions">
+      <a class="btn btn-sm ghost" href="/audit/temuan">Daftar temuan</a>
+      <% if (finding) { %><a class="btn btn-sm ghost" href="/audit/laporan">&#9113; Cetak laporan</a><% } %>
+    </div>
+  </div>
+
+  <form class="card" method="post" action="<%= finding ? '/audit/temuan/' + finding.id : '/audit/temuan' %>">
+    <div class="row">
+      <label class="field" style="flex:2">
+        <span>Acuan ketidaksesuaian / klausul <span class="req">*</span></span>
+        <input name="clause" required value="<%= finding ? finding.clause : '' %>" placeholder="Contoh: SNI ISO/IEC 17025:2017 - 6.3.2" />
+      </label>
+      <label class="field">
+        <span>Kategori <span class="req">*</span></span>
+        <select name="category" required>
+          <% ['MAJOR','MINOR','OBSERVASI'].forEach(function (c) { %>
+            <option value="<%= c %>" <%= finding && finding.category === c ? 'selected' : '' %>><%= helpers.CATEGORY_LABELS[c] %></option>
+          <% }) %>
+        </select>
+      </label>
+      <label class="field">
+        <span>Sumber ketidaksesuaian</span>
+        <select name="source">
+          <% sources.forEach(function (s) { %>
+            <option value="<%= s %>" <%= finding && finding.source === s ? 'selected' : '' %>><%= s %></option>
+          <% }) %>
+        </select>
+      </label>
+    </div>
+
+    <label class="field">
+      <span>Uraian temuan (metode PLOR) <span class="req">*</span></span>
+      <textarea name="description" rows="5" required placeholder="Problem, Location, Objective evidence, Reference"><%= finding ? finding.description : '' %></textarea>
+    </label>
+
+    <div class="finding-detail-grid">
+      <label class="field">
+        <span>Akar penyebab</span>
+        <textarea name="rootCause" rows="3"><%= finding ? (finding.rootCause || '') : '' %></textarea>
+      </label>
+      <label class="field">
+        <span>Perbaikan / koreksi langsung</span>
+        <textarea name="correction" rows="3"><%= finding ? (finding.correction || '') : '' %></textarea>
+      </label>
+      <label class="field">
+        <span>Tindakan korektif / peningkatan</span>
+        <textarea name="correctiveAction" rows="3"><%= finding ? (finding.correctiveAction || '') : '' %></textarea>
+      </label>
+      <label class="field">
+        <span>Hasil verifikasi</span>
+        <textarea name="verificationResult" rows="3" placeholder="Contoh: Closed (efektif)"><%= finding ? (finding.verificationResult || '') : '' %></textarea>
+      </label>
+    </div>
+
+    <div class="row">
+      <label class="field">
+        <span>Tanggal target koreksi</span>
+        <input type="date" name="targetDate" value="<%= finding && finding.targetDate ? new Date(finding.targetDate).toISOString().slice(0,10) : '' %>" />
+      </label>
+      <label class="field">
+        <span>Tautan bukti objektif</span>
+        <input name="evidenceUrl" type="url" placeholder="https://drive.google.com/…" value="<%= finding ? (finding.evidenceUrl || '') : '' %>" />
+      </label>
+      <label class="field">
+        <span>Status tindak lanjut</span>
+        <select name="status">
+          <option value="OPEN" <%= !finding || finding.status === 'OPEN' ? 'selected' : '' %>>Open</option>
+          <option value="CLOSED" <%= finding && finding.status === 'CLOSED' ? 'selected' : '' %>>Closed</option>
+        </select>
+      </label>
+    </div>
+
+    <% if (finding && finding.verifiedAt) { %>
+      <p class="small muted">Diverifikasi: <%= helpers.formatDate(finding.verifiedAt, { withTime: true }) %></p>
+    <% } %>
+
+    <div class="actions">
+      <button class="btn" type="submit"><%= finding ? 'Simpan perubahan' : 'Simpan temuan' %></button>
+      <a class="btn ghost" href="/audit/temuan">Batal</a>
+    </div>
+  </form>
+</main>
+
+<%- include('../partials/foot') %>

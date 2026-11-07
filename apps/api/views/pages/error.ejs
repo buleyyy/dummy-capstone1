@@ -1,0 +1,17 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/public-nav', { user, active }) %>
+
+<main class="container narrow">
+  <div class="card center" style="padding:34px">
+    <div class="badge b-warn"><%= status || 500 %></div>
+    <h1 style="margin-top:12px"><%= title %></h1>
+    <p class="muted"><%= message || 'Terjadi kesalahan pada sistem.' %></p>
+    <div class="actions" style="justify-content:center">
+      <a class="btn" href="/program">Lihat program</a>
+      <a class="btn ghost" href="/">Kembali ke beranda</a>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/public-footer') %>
+<%- include('../partials/foot') %>

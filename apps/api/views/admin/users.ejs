@@ -1,0 +1,73 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/internal-topbar', { user }) %>
+<div class="app">
+  <%- include('../partials/internal-sidebar', { user, active }) %>
+  <div class="app-main">
+    <main class="container">
+      <%- include('../partials/flash', { ok, err }) %>
+      <div class="pagehead">
+        <div>
+          <h1>Akun &amp; Hak Akses</h1>
+          <div class="sub">Hanya Admin dan Auditor internal yang memiliki akun. Peserta mengakses situs tanpa login.</div>
+        </div>
+      </div>
+
+      <div class="grid g-side">
+        <div class="card">
+          <h3>Tambah akun</h3>
+          <form method="post" action="/admin/akun">
+            <label class="field"><span>Nama <span class="req">*</span></span><input name="name" required /></label>
+            <label class="field"><span>Email <span class="req">*</span></span><input name="email" type="email" required /></label>
+            <label class="field"><span>Kata sandi awal (min. 8 karakter) <span class="req">*</span></span><input name="password" type="password" minlength="8" required /></label>
+            <label class="field">
+              <span>Role <span class="req">*</span></span>
+              <select name="role"><option value="AUDITOR">AUDITOR</option><option value="ADMIN">ADMIN</option></select>
+            </label>
+            <button class="btn wide" type="submit">Buat akun</button>
+          </form>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Nama / Email</th><th>Role</th><th>Status</th><th class="right">Aksi</th></tr></thead>
+            <tbody>
+              <% users.forEach(function (u) { %>
+                <tr>
+                  <td>
+                    <strong><%= u.name %></strong><br>
+                    <span class="small muted"><%= u.email %></span>
+                    <% if (u._count.findings) { %><br><span class="small muted"><%= u._count.findings %> temuan dicatat</span><% } %>
+                  </td>
+                  <td><span class="badge <%= u.role === 'ADMIN' ? 'b-info' : 'b-warn' %>"><%= u.role %></span></td>
+                  <td><span class="badge <%= u.isActive ? 'b-ok' : 'b-bad' %>"><%= u.isActive ? 'Aktif' : 'Nonaktif' %></span></td>
+                  <td class="right nowrap">
+                    <details style="text-align:left">
+                      <summary class="btn sm ghost" style="display:inline-flex;cursor:pointer">Ubah</summary>
+                      <form method="post" action="/admin/akun/<%= u.id %>" style="margin-top:10px;min-width:240px">
+                        <label class="field"><span>Nama</span><input name="name" value="<%= u.name %>" required /></label>
+                        <label class="field"><span>Email</span><input name="email" type="email" value="<%= u.email %>" required /></label>
+                        <label class="field"><span>Role</span>
+                          <select name="role">
+                            <option value="ADMIN" <%= u.role === 'ADMIN' ? 'selected' : '' %>>ADMIN</option>
+                            <option value="AUDITOR" <%= u.role === 'AUDITOR' ? 'selected' : '' %>>AUDITOR</option>
+                          </select>
+                        </label>
+                        <label class="field"><span>Kata sandi baru (opsional)</span><input name="password" type="password" minlength="8" placeholder="Biarkan kosong bila tetap" /></label>
+                        <button class="btn sm" type="submit">Simpan</button>
+                      </form>
+                    </details>
+                    <form method="post" action="/admin/akun/<%= u.id %>/status" style="display:inline">
+                      <input type="hidden" name="isActive" value="<%= u.isActive ? '0' : '1' %>" />
+                      <button class="btn sm <%= u.isActive ? 'danger' : 'ghost' %>" type="submit" data-confirm="<%= u.isActive ? 'Nonaktifkan akun ini? Sesi aktif akan dihentikan.' : 'Aktifkan kembali akun ini?' %>"><%= u.isActive ? 'Nonaktifkan' : 'Aktifkan' %></button>
+                    </form>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<%- include('../partials/foot') %>

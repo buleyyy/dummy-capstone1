@@ -1,0 +1,16 @@
+<article class="prog">
+  <div class="prog-cover" aria-hidden="true">
+    <span class="prog-cover-badge"><%= p.category ? p.category.name : 'Program' %></span>
+  </div>
+  <div class="prog-body">
+    <h3><%= p.title %></h3>
+    <div class="prog-cat"><%= p.category ? p.category.name : 'Umum' %></div>
+    <p><%= p.summary || (p.description ? p.description.slice(0, 110) + '…' : 'Pelajari standar dan praktik penerapannya melalui materi terstruktur.') %></p>
+    <div class="prog-divider"></div>
+    <div class="prog-meta">
+      <span><%= p._count.materials %> materi</span>
+      <span><%= p._count.evaluations %> evaluasi</span>
+    </div>
+    <a class="btn btn-sm" href="/program/<%= p.slug %>">Lihat Program</a>
+  </div>
+</article>

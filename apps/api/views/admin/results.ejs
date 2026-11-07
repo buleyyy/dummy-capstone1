@@ -1,0 +1,77 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/internal-topbar', { user }) %>
+<div class="app">
+  <%- include('../partials/internal-sidebar', { user, active }) %>
+  <div class="app-main">
+    <main class="container">
+      <%- include('../partials/flash', { ok, err }) %>
+      <div class="pagehead">
+        <div>
+          <h1>Hasil Evaluasi</h1>
+          <div class="sub">Rekap identitas peserta, nilai, dan waktu pengiriman. Auditor tidak memiliki akses ke data ini (KF-17).</div>
+        </div>
+        <div class="actions">
+          <a class="btn ghost" href="/admin/hasil.csv?programId=<%= filters.programId || '' %>&type=<%= filters.type || '' %>&from=<%= filters.from || '' %>&to=<%= filters.to || '' %>">⤓ Ekspor CSV</a>
+        </div>
+      </div>
+
+      <form class="toolbar card card-tight" method="get" action="/admin/hasil">
+        <label class="field">
+          <span>Program</span>
+          <select name="programId">
+            <option value="">Semua program</option>
+            <% programs.forEach(function (p) { %>
+              <option value="<%= p.id %>" <%= String(filters.programId) === String(p.id) ? 'selected' : '' %>><%= p.title %></option>
+            <% }) %>
+          </select>
+        </label>
+        <label class="field">
+          <span>Jenis tes</span>
+          <select name="type">
+            <option value="">Semua jenis</option>
+            <% ['PRE_TEST','POST_TEST','QUIZ'].forEach(function (t) { %>
+              <option value="<%= t %>" <%= filters.type === t ? 'selected' : '' %>><%= helpers.EVALUATION_LABELS[t] %></option>
+            <% }) %>
+          </select>
+        </label>
+        <label class="field">
+          <span>Dari tanggal</span>
+          <input type="date" name="from" value="<%= filters.from || '' %>" />
+        </label>
+        <label class="field">
+          <span>Sampai tanggal</span>
+          <input type="date" name="to" value="<%= filters.to || '' %>" />
+        </label>
+        <button class="btn" type="submit">Terapkan</button>
+        <a class="btn ghost" href="/admin/hasil">Reset</a>
+      </form>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Peserta</th><th>Kontak</th><th>Program</th><th>Jenis</th><th>Nilai</th><th>Waktu kirim</th></tr>
+          </thead>
+          <tbody>
+            <% rows.forEach(function (row) { %>
+              <tr>
+                <td><strong><%= row.takerName %></strong><br><span class="small muted"><%= row.takerTitle || '—' %></span></td>
+                <td class="small"><%= row.takerEmail %><br><%= row.takerPhone || '—' %></td>
+                <td class="small"><%= row.evaluation.program.title %></td>
+                <td><span class="badge b-info"><%= helpers.EVALUATION_LABELS[row.evaluation.type] || row.evaluation.type %></span></td>
+                <td>
+                  <strong><%= row.score %>/<%= row.maxScore %></strong>
+                  <div class="small muted"><%= row.percent %>%</div>
+                </td>
+                <td class="small muted"><%= helpers.formatDate(row.submittedAt, { withTime: true }) %></td>
+              </tr>
+            <% }) %>
+            <% if (!rows.length) { %>
+              <tr><td colspan="6"><div class="empty">Belum ada hasil evaluasi yang sesuai filter.</div></td></tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+<%- include('../partials/foot') %>

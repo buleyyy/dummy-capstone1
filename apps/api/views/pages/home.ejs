@@ -1,0 +1,87 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/public-nav', { user, active }) %>
+
+<main class="container">
+  <%- include('../partials/flash', { ok, err }) %>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Platform Pembelajaran &amp; Pelatihan</div>
+      <h1>Tingkatkan kompetensi melalui pelatihan standar ISO</h1>
+      <p>Pelajari standar, pahami penerapannya, dan ikuti evaluasi pembelajaran dalam satu platform — lengkap dengan pustaka SOP dan konsultasi langsung.</p>
+      <div class="actions">
+        <a class="btn" href="/program">Jelajahi Pelatihan</a>
+        <% if (waLink) { %>        <a class="btn btn-sm ghost" href="<%= waLink %>" target="_blank" rel="noopener">Konsultasi WhatsApp</a><% } %>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="t">Katalog saat ini</div>
+      <div class="big"><%= stats.programCount %> program pelatihan terbit</div>
+      <div class="tags">
+        <span><%= stats.materialCount %> materi</span>
+        <span><%= stats.evaluationCount %> evaluasi</span>
+        <span><%= stats.reviewCount %> ulasan</span>
+        <% if (stats.averageRating) { %><span>★ <%= stats.averageRating.toFixed(1) %></span><% } %>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec-title">
+    <h2>Program pelatihan</h2>
+    <a class="small" href="/program">Lihat semua →</a>
+  </div>
+  <% if (!programs.length) { %>
+    <div class="card"><div class="empty">Program pelatihan belum tersedia. Silakan hubungi kami untuk informasi jadwal berikutnya.</div></div>
+  <% } else { %>
+    <div class="grid g3">
+      <% programs.forEach(function (p, i) { %>
+        <%- include('../partials/program-card', { p, i }) %>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <div class="sec-title"><h2>Mengapa Sopinsya Educenter</h2></div>
+  <div class="grid g3">
+    <div class="card">
+      <h3>Terpusat</h3>
+      <p class="muted small" style="margin:0">Informasi program, silabus, materi, studi kasus, video, dan SOP berada dalam satu tempat — tanpa berpindah platform.</p>
+    </div>
+    <div class="card">
+      <h3>Evaluasi terukur</h3>
+      <p class="muted small" style="margin:0">Pre-test dan Post-test dengan soal acak dan penilaian otomatis. Nilai Pre-test tidak ditampilkan langsung kepada peserta.</p>
+    </div>
+    <div class="card">
+      <h3>Audit terdokumentasi</h3>
+      <p class="muted small" style="margin:0">Register temuan Major, Minor, dan Observasi lengkap dengan tindak lanjut serta laporan siap cetak.</p>
+    </div>
+  </div>
+
+  <% if (sops.length) { %>
+    <div class="sec-title">
+      <h2>Pustaka SOP</h2>
+      <a class="small" href="/pustaka-sop">Lihat pustaka →</a>
+    </div>
+    <div class="card">
+      <ul class="list">
+        <% sops.forEach(function (s) { %>
+          <li>
+            <span><strong class="mono"><%= s.code %></strong> — <%= s.title %> <span class="small muted">rev. <%= s.version %></span></span>
+            <a class="btn sm ghost" href="<%= s.url %>" target="_blank" rel="noopener">Buka</a>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  <% } %>
+
+  <section class="hero" style="margin-top:26px;grid-template-columns:1fr">
+    <div>
+      <div class="eyebrow">Butuh informasi lebih lanjut?</div>
+      <h1 style="font-size:1.6rem">Konsultasikan kebutuhan pelatihan dan audit Anda</h1>
+      <p>Tim Sopinsya Educenter siap membantu memilih program yang sesuai dengan kebutuhan organisasi.</p>
+      <a class="btn" href="/kontak">Hubungi Kami</a>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/public-footer', { settings, waLink }) %>
+<%- include('../partials/foot') %>

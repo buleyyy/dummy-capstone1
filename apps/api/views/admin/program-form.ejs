@@ -1,0 +1,67 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/internal-topbar', { user }) %>
+<div class="app">
+  <%- include('../partials/internal-sidebar', { user, active }) %>
+  <div class="app-main">
+    <main class="container narrow">
+      <%- include('../partials/flash', { ok, err }) %>
+      <div class="pagehead">
+        <div>
+          <h1>Tambah Program</h1>
+          <div class="sub">Program baru tersimpan sebagai draft sampai status publikasi diaktifkan.</div>
+        </div>
+        <div class="actions"><a class="btn ghost" href="/admin/program">Kembali</a></div>
+      </div>
+
+      <form class="card" method="post" action="/admin/program">
+        <div class="row">
+          <label class="field" style="flex:2">
+            <span>Nama program <span class="req">*</span></span>
+            <input name="title" required maxlength="200" placeholder="Contoh: Pelatihan ISO/IEC 17025:2017" />
+          </label>
+          <label class="field">
+            <span>Kategori</span>
+            <select name="categoryId">
+              <option value="">— Tanpa kategori —</option>
+              <% categories.forEach(function (c) { %><option value="<%= c.id %>"><%= c.name %></option><% }) %>
+            </select>
+          </label>
+        </div>
+        <label class="field">
+          <span>Ringkasan singkat</span>
+          <input name="summary" maxlength="300" placeholder="Satu kalimat yang tampil pada kartu katalog" />
+        </label>
+        <label class="field">
+          <span>Deskripsi program</span>
+          <textarea name="description" rows="4" placeholder="Tujuan, sasaran peserta, dan cakupan pelatihan"></textarea>
+        </label>
+        <label class="field">
+          <span>Silabus</span>
+          <textarea name="syllabus" rows="4" placeholder="Satu topik per baris"></textarea>
+        </label>
+        <div class="row">
+          <label class="field">
+            <span>Trainer</span>
+            <input name="trainerName" maxlength="120" placeholder="Nama trainer" />
+          </label>
+          <label class="field">
+            <span>Tautan pertemuan daring</span>
+            <input name="meetingUrl" type="url" placeholder="https://zoom.us/… atau https://meet.google.com/…" />
+          </label>
+        </div>
+        <label class="field">
+          <span>Gambar sampul (URL)</span>
+          <input name="coverUrl" type="url" placeholder="https://…/cover.jpg" />
+        </label>
+        <label class="check">
+          <input type="checkbox" name="isPublished" /> Publikasikan sekarang (tampil di katalog peserta)
+        </label>
+        <div class="actions">
+          <button class="btn" type="submit">Simpan Program</button>
+          <a class="btn ghost" href="/admin/program">Batal</a>
+        </div>
+      </form>
+    </main>
+  </div>
+</div>
+<%- include('../partials/foot') %>

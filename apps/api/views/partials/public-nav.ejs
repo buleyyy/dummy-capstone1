@@ -1,0 +1,28 @@
+<header class="topbar">
+  <a class="brand" href="/">
+    <span class="logo" aria-hidden="true"></span>
+    <span class="brand-text">SopinsyaEducenter<span class="brand-role-badge">Peserta</span></span>
+  </a>
+
+  <nav class="pillnav" aria-label="Navigasi utama">
+    <a href="/" class="<%= locals.active === 'beranda' ? 'on' : '' %>">Beranda</a>
+    <a href="/program" class="<%= locals.active === 'program' ? 'on' : '' %>">Program</a>
+    <a href="/pustaka-sop" class="<%= locals.active === 'pustaka' ? 'on' : '' %>">Pustaka SOP</a>
+    <a href="/tentang" class="<%= locals.active === 'tentang' ? 'on' : '' %>">Tentang Kami</a>
+  </nav>
+
+  <a class="btn btn-sm" href="/kontak">Konsultasi</a>
+
+  <% if (locals.user) { %>
+    <nav class="topbar-actions" aria-label="Navigasi akun">
+      <div class="user-menu">
+        <div class="user-name"><%= user.name %></div>
+        <div class="user-role"><%= user.role === 'ADMIN' ? 'Admin' : 'Auditor' %></div>
+      </div>
+      <div class="avatar" aria-hidden="true"><%= user.name.charAt(0).toUpperCase() %></div>
+      <form method="post" action="/logout">
+        <button class="logout-btn" type="submit">Keluar</button>
+      </form>
+    </nav>
+  <% } %>
+</header>

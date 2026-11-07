@@ -1,0 +1,290 @@
+// Prisma schema — Sopinsya Educenter (Capstone PPSI Kelompok 1)
+// Sumber: SRS v1.2 (2 Nov 2026), docs/ERD.md, docs/DATA-DICTIONARY.md.
+// Database produksi: MySQL (SRS B-02/K-02). Skema SQLite untuk pengembangan
+// lokal diturunkan otomatis oleh scripts/make-sqlite-schema.mjs.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// URL koneksi diatur di prisma.config.ts (CLI) dan driver adapter di src/config/db.js.
+datasource db {
+  provider = "mysql"
+}
+
+// ---------- Akun internal & sesi (KF-19, KF-20, KF-33) ----------
+
+enum Role {
+  ADMIN
+  AUDITOR
+}
+
+model InternalUser {
+  id           Int      @id @default(autoincrement())
+  name         String   @db.VarChar(120)
+  email        String   @unique @db.VarChar(190)
+  passwordHash String   @map("password_hash") @db.VarChar(255)
+  role         Role
+  isActive     Boolean  @default(true) @map("is_active")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  sessions AuthSession[]
+  findings Finding[]
+
+  @@map("internal_user")
+}
+
+model AuthSession {
+  id        String   @id @db.Char(64)
+  userId    Int      @map("user_id")
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user InternalUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("auth_session")
+}
+
+// ---------- Program pelatihan & katalog (KF-01, KF-02, KF-03, KF-04..KF-07) ----------
+
+model Category {
+  id        Int    @id @default(autoincrement())
+  name      String @db.VarChar(120)
+  slug      String @unique @db.VarChar(140)
+  sortOrder Int    @default(0) @map("sort_order")
+
+  programs Program[]
+
+  @@map("category")
+}
+
+model Program {
+  id          Int      @id @default(autoincrement())
+  categoryId  Int?     @map("category_id")
+  slug        String   @unique @db.VarChar(160)
+  title       String   @db.VarChar(200)
+  summary     String?  @db.VarChar(300)
+  coverUrl    String?  @map("cover_url") @db.VarChar(500)
+  description String?  @db.Text
+  syllabus    String?  @db.Text
+  meetingUrl  String?  @map("meeting_url") @db.VarChar(500)
+  trainerName String?  @map("trainer_name") @db.VarChar(120)
+  isPublished Boolean  @default(false) @map("is_published")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  category   Category?      @relation(fields: [categoryId], references: [id])
+  materials  Material[]
+  evaluations Evaluation[]
+  reviews    ProgramReview[]
+  programSops ProgramSop[]
+
+  @@index([categoryId])
+  @@map("program")
+}
+
+// ---------- Materi, video, studi kasus, dan Pustaka SOP (KF-07, KF-08, KF-30) ----------
+
+enum MaterialType {
+  SILABUS
+  MATERI
+  STUDI_KASUS
+  VIDEO
+  QUIZ
+  SOP
+  DOKUMEN
+}
+
+model Material {
+  id          Int          @id @default(autoincrement())
+  programId   Int          @map("program_id")
+  type        MaterialType
+  title       String       @db.VarChar(200)
+  description String?      @db.Text
+  url         String?      @db.VarChar(500)
+  filePath    String?      @map("file_path") @db.VarChar(500)
+  sortOrder   Int          @default(0) @map("sort_order")
+  isPublished Boolean      @default(true) @map("is_published")
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+
+  program Program @relation(fields: [programId], references: [id], onDelete: Cascade)
+
+  @@index([programId, type])
+  @@map("material")
+}
+
+model SopDocument {
+  id          Int      @id @default(autoincrement())
+  code        String   @unique @db.VarChar(40)
+  title       String   @db.VarChar(200)
+  version     String   @default("1.0") @db.VarChar(30)
+  description String?  @db.Text
+  url         String   @db.VarChar(500)
+  isPublished Boolean  @default(false) @map("is_published")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  programSops ProgramSop[]
+
+  @@map("sop_document")
+}
+
+model ProgramSop {
+  programId Int @map("program_id")
+  sopId     Int @map("sop_id")
+
+  program Program     @relation(fields: [programId], references: [id], onDelete: Cascade)
+  sop     SopDocument @relation(fields: [sopId], references: [id], onDelete: Cascade)
+
+  @@id([programId, sopId])
+  @@map("program_sop")
+}
+
+// ---------- Evaluasi: pre-test, post-test, kuis (KF-09..KF-16) ----------
+
+enum EvaluationType {
+  PRE_TEST
+  POST_TEST
+  QUIZ
+}
+
+model Evaluation {
+  id           Int            @id @default(autoincrement())
+  programId    Int            @map("program_id")
+  type         EvaluationType
+  title        String         @db.VarChar(200)
+  instructions String?        @db.Text
+  shuffle      Boolean        @default(true)
+  isPublished  Boolean        @default(false) @map("is_published")
+  createdAt    DateTime       @default(now()) @map("created_at")
+  updatedAt    DateTime       @updatedAt @map("updated_at")
+
+  program   Program    @relation(fields: [programId], references: [id], onDelete: Cascade)
+  questions Question[]
+  attempts  Attempt[]
+
+  @@unique([programId, type])
+  @@map("evaluation")
+}
+
+model Question {
+  id            Int      @id @default(autoincrement())
+  evaluationId  Int      @map("evaluation_id")
+  sortOrder     Int      @default(0) @map("sort_order")
+  text          String   @db.Text
+  // Array opsi disimpan sebagai JSON string: ["Opsi A", "Opsi B", ...]
+  options       String   @db.Text
+  // Huruf opsi yang benar: A, B, C, ...
+  correctAnswer String   @map("correct_answer") @db.VarChar(5)
+  score         Int      @default(1)
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  evaluation     Evaluation      @relation(fields: [evaluationId], references: [id], onDelete: Cascade)
+  attemptAnswers AttemptAnswer[]
+
+  @@index([evaluationId])
+  @@map("question")
+}
+
+model Attempt {
+  id           Int       @id @default(autoincrement())
+  evaluationId Int       @map("evaluation_id")
+  takerName    String    @map("taker_name") @db.VarChar(120)
+  takerEmail   String    @map("taker_email") @db.VarChar(190)
+  takerPhone   String?   @map("taker_phone") @db.VarChar(30)
+  takerTitle   String?   @map("taker_title") @db.VarChar(120)
+  startedAt    DateTime  @default(now()) @map("started_at")
+  submittedAt  DateTime? @map("submitted_at")
+  score        Int?
+  maxScore     Int?      @map("max_score")
+
+  evaluation Evaluation      @relation(fields: [evaluationId], references: [id], onDelete: Cascade)
+  answers    AttemptAnswer[]
+
+  @@index([evaluationId, submittedAt])
+  @@map("attempt")
+}
+
+model AttemptAnswer {
+  id         Int     @id @default(autoincrement())
+  attemptId  Int     @map("attempt_id")
+  questionId Int     @map("question_id")
+  answer     String? @db.VarChar(5)
+  isCorrect  Boolean @default(false) @map("is_correct")
+
+  attempt  Attempt  @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([attemptId, questionId])
+  @@map("attempt_answer")
+}
+
+// ---------- Rating & ulasan anonim (KF-31) ----------
+
+model ProgramReview {
+  id           Int      @id @default(autoincrement())
+  programId    Int      @map("program_id")
+  reviewerName String   @default("Anonim") @map("reviewer_name") @db.VarChar(120)
+  rating       Int
+  comment      String?  @db.Text
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  program Program @relation(fields: [programId], references: [id], onDelete: Cascade)
+
+  @@index([programId])
+  @@map("program_review")
+}
+
+// ---------- Register Temuan Audit (KF-21..KF-28) ----------
+
+enum FindingCategory {
+  MAJOR
+  MINOR
+  OBSERVASI
+}
+
+enum FindingStatus {
+  OPEN
+  CLOSED
+}
+
+model Finding {
+  id                 Int            @id @default(autoincrement())
+  code               String         @unique @db.VarChar(40)
+  auditorId          Int            @map("auditor_id")
+  source             String         @default("Internal") @db.VarChar(60)
+  clause             String         @db.VarChar(160)
+  description        String         @db.Text
+  category           FindingCategory
+  rootCause          String?        @map("root_cause") @db.Text
+  correction         String?        @db.Text
+  correctiveAction   String?        @map("corrective_action") @db.Text
+  verificationResult String?        @map("verification_result") @db.Text
+  status             FindingStatus  @default(OPEN)
+  targetDate         DateTime?      @map("target_date")
+  evidenceUrl        String?        @map("evidence_url") @db.VarChar(500)
+  reportedAt         DateTime       @default(now()) @map("reported_at")
+  verifiedAt         DateTime?      @map("verified_at")
+  requestId          String?        @unique @map("request_id") @db.VarChar(36)
+  createdAt          DateTime       @default(now()) @map("created_at")
+  updatedAt          DateTime       @updatedAt @map("updated_at")
+
+  auditor InternalUser @relation(fields: [auditorId], references: [id])
+
+  @@index([category, status])
+  @@map("finding")
+}
+
+// ---------- Pengaturan situs & header dokumen audit (KF-29, KF-28) ----------
+
+model Setting {
+  key       String   @id @db.VarChar(80)
+  value     String   @db.Text
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("setting")
+}

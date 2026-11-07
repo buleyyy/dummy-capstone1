@@ -3,16 +3,35 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Express API untuk Sopinsya (Capstone PPSI Kelompok 01)",
+  "description": "Express API + halaman EJS Sopinsya (Capstone PPSI Kelompok 01)",
   "scripts": {
     "dev": "node --watch src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "db:generate": "prisma generate && node scripts/make-sqlite-schema.mjs && prisma generate --schema=prisma/schema.sqlite.prisma",
+    "db:sqlite:push": "prisma db push --schema=prisma/schema.sqlite.prisma",
+    "db:sqlite:sql": "prisma migrate diff --from-empty --to-schema prisma/schema.sqlite.prisma --script",
+    "db:setup": "npm run db:generate && npm run db:sqlite:push && npm run db:seed",
+    "db:seed": "node prisma/seed.js",
+    "db:migrate:dev": "prisma migrate dev",
+    "db:deploy": "prisma migrate deploy"
   },
   "dependencies": {
+    "@libsql/client": "^0.6.2",
+    "@prisma/adapter-libsql": "^7.10.1",
+    "@prisma/adapter-mariadb": "^7.10.1",
+    "@prisma/client": "^7.10.1",
+    "better-sqlite3": "^12.11.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "mysql2": "^3.11.5",
-    "zod": "^3.24.1"
-  }
+    "ejs": "^7.0.2",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "prisma": "^7.10.1"
+  },
+  "allowScripts": [
+    "better-sqlite3",
+    "@prisma/engines",
+    "prisma"
+  ]
 }

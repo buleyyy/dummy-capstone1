@@ -1,0 +1,51 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/public-nav', { user, active }) %>
+
+<main class="container">
+  <%- include('../partials/flash', { ok, err }) %>
+  <div class="pagehead">
+    <div>
+      <h1>Hubungi Kami</h1>
+      <div class="sub">Konsultasikan kebutuhan pelatihan dan audit organisasi Anda.</div>
+    </div>
+  </div>
+
+  <div class="grid g-side">
+    <div class="card">
+      <h3>Kanal komunikasi</h3>
+      <dl class="kv" style="grid-template-columns:110px 1fr">
+        <dt>WhatsApp</dt>
+        <dd><%= settings.whatsapp || 'Belum dikonfigurasi' %></dd>
+        <dt>Email</dt><dd><a href="mailto:<%= settings.email %>"><%= settings.email %></a></dd>
+        <dt>Alamat</dt><dd><%= settings.address %></dd>
+        <dt>Jam kerja</dt><dd><%= settings.operatingHours %></dd>
+      </dl>
+      <div style="margin-top:14px">
+        <% if (waLink) { %>
+          <a class="btn" href="<%= waLink %>" target="_blank" rel="noopener">Buka WhatsApp</a>
+        <% } else { %>
+          <div class="hint">Nomor WhatsApp belum dikonfigurasi oleh Admin.</div>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Konsultasi langsung melalui WhatsApp</h3>
+      <p class="muted">
+        Klik tombol WhatsApp untuk membuka percakapan dengan tim Sopinsya Educenter. Konsultasi dilakukan
+        melalui layanan WhatsApp, bukan fitur percakapan internal website.
+      </p>
+      <ul class="list">
+        <li><span>Informasi jadwal dan biaya pelatihan</span><span class="small muted">WhatsApp</span></li>
+        <li><span>Permintaan pelatihan in-house</span><span class="small muted">WhatsApp</span></li>
+        <li><span>Pendampingan audit internal</span><span class="small muted">WhatsApp</span></li>
+      </ul>
+      <% if (waLink) { %>
+        <a class="btn teal" style="margin-top:12px" href="<%= waLink %>" target="_blank" rel="noopener">Mulai konsultasi</a>
+      <% } %>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/public-footer', { settings, waLink }) %>
+<%- include('../partials/foot') %>

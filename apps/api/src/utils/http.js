@@ -27,3 +27,10 @@ export const forbidden = (message = 'Akses ditolak') =>
 
 export const badRequest = (message = 'Permintaan tidak valid', details) =>
   new ApiError(400, 'BAD_REQUEST', message, details);
+
+export const conflict = (message = 'Data sudah ada') =>
+  new ApiError(409, 'CONFLICT', message);
+
+// Express 4 tidak menangkap promise rejection dari handler async.
+export const wrap = (fn) => (req, res, next) =>
+  Promise.resolve(fn(req, res, next)).catch(next);

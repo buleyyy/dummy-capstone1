@@ -1,0 +1,70 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/internal-topbar', { user }) %>
+<div class="app">
+  <%- include('../partials/internal-sidebar', { user, active }) %>
+  <div class="app-main">
+    <main class="container">
+      <%- include('../partials/flash', { ok, err }) %>
+      <div class="pagehead">
+        <div>
+          <h1>Pustaka SOP</h1>
+          <div class="sub">Dokumen SOP terpusat. SOP yang dipublikasikan tampil pada situs peserta dan dapat dihubungkan ke program.</div>
+        </div>
+      </div>
+
+      <div class="grid g-side">
+        <div class="card">
+          <h3>Tambah SOP</h3>
+          <form method="post" action="/admin/sop">
+            <label class="field"><span>Kode SOP <span class="req">*</span></span><input name="code" required placeholder="SOP-01" /></label>
+            <label class="field"><span>Judul <span class="req">*</span></span><input name="title" required /></label>
+            <label class="field"><span>Versi</span><input name="version" value="1.0" /></label>
+            <label class="field"><span>Tautan dokumen <span class="req">*</span></span><input name="url" type="url" required placeholder="https://drive.google.com/…" /></label>
+            <label class="field"><span>Deskripsi</span><textarea name="description" rows="2"></textarea></label>
+            <label class="check"><input type="checkbox" name="isPublished" /> Publikasikan</label>
+            <button class="btn wide" type="submit">Simpan SOP</button>
+          </form>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Kode</th><th>Judul</th><th>Versi</th><th>Status</th><th class="right">Aksi</th></tr></thead>
+            <tbody>
+              <% sops.forEach(function (s) { %>
+                <tr>
+                  <td class="mono"><%= s.code %></td>
+                  <td>
+                    <strong><%= s.title %></strong>
+                    <% if (s.description) { %><div class="small muted"><%= s.description %></div><% } %>
+                    <a class="small" href="<%= s.url %>" target="_blank" rel="noopener">Buka dokumen</a>
+                  </td>
+                  <td><%= s.version %></td>
+                  <td><span class="badge <%= s.isPublished ? 'b-ok' : 'b-mut' %>"><%= s.isPublished ? 'Terbit' : 'Draft' %></span></td>
+                  <td class="right nowrap">
+                    <details style="text-align:left">
+                      <summary class="btn sm ghost" style="display:inline-flex;cursor:pointer">Ubah</summary>
+                      <form method="post" action="/admin/sop/<%= s.id %>" style="margin-top:10px;min-width:240px">
+                        <label class="field"><span>Kode</span><input name="code" value="<%= s.code %>" required /></label>
+                        <label class="field"><span>Judul</span><input name="title" value="<%= s.title %>" required /></label>
+                        <label class="field"><span>Versi</span><input name="version" value="<%= s.version %>" /></label>
+                        <label class="field"><span>Tautan</span><input name="url" type="url" value="<%= s.url %>" required /></label>
+                        <label class="field"><span>Deskripsi</span><textarea name="description" rows="2"><%= s.description || '' %></textarea></label>
+                        <label class="check"><input type="checkbox" name="isPublished" <%= s.isPublished ? 'checked' : '' %> /> Publikasikan</label>
+                        <button class="btn sm" type="submit">Simpan</button>
+                      </form>
+                    </details>
+                    <form method="post" action="/admin/sop/<%= s.id %>/hapus" style="display:inline" data-confirm="Hapus SOP <%= s.code %>?">
+                      <button class="btn sm danger" type="submit">Hapus</button>
+                    </form>
+                  </td>
+                </tr>
+              <% }) %>
+              <% if (!sops.length) { %><tr><td colspan="5"><div class="empty">Belum ada dokumen SOP.</div></td></tr><% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<%- include('../partials/foot') %>

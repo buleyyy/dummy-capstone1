@@ -1,0 +1,20 @@
+<%- include('partials/header', { title: 'Masuk' }) %>
+
+<h1>Masuk</h1>
+<p class="muted">
+  Gunakan akun internal yang diberikan admin. Area internal: Admin dan Auditor (RD 2 N-01).
+</p>
+<form class="login" data-login-form>
+  <label>
+    Email
+    <input type="email" name="email" required autocomplete="email" />
+  </label>
+  <label>
+    Kata sandi
+    <input type="password" name="password" required autocomplete="current-password" />
+  </label>
+  <button type="submit">Masuk</button>
+  <p class="error" data-login-error hidden></p>
+</form>
+
+<%- include('partials/footer') %>

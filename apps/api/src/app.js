@@ -1,54 +1,83 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import express from 'express';
 import cors from 'cors';
 import env from './config/env.js';
-import { pingDb } from './config/db.js';
-import { ok } from './utils/http.js';
-import { attachUser } from './middleware/auth.js';
+import { attachUser, sameOriginGuard } from './middleware/auth.js';
 import { notFoundHandler, errorHandler } from './middleware/errorHandler.js';
+import { formatDate, formatShortDate, formatDateTimeInput, MATERIAL_LABELS, EVALUATION_LABELS, CATEGORY_LABELS, FINDING_STATUS_LABELS, CATEGORY_BADGE, STATUS_BADGE } from './utils/format.js';
 
+import healthRouter from './health/router.js';
 import authRouter from './modules/auth/router.js';
 import usersRouter from './modules/users/router.js';
-import trainingsRouter from './modules/trainings/router.js';
-import schedulesRouter from './modules/schedules/router.js';
-import registrationsRouter from './modules/registrations/router.js';
-import materialsRouter from './modules/materials/router.js';
-import testsRouter from './modules/tests/router.js';
-import gradingRouter from './modules/grading/router.js';
+import programsRouter from './modules/programs/router.js';
+import sopsRouter from './modules/sops/router.js';
+import evaluationsRouter from './modules/evaluations/router.js';
+import auditRouter from './modules/audit/router.js';
 import reportsRouter from './modules/reports/router.js';
-import contactRouter from './modules/contact/router.js';
+import settingsRouter from './modules/settings/router.js';
+
+import publicPages from './routes/public.js';
+import adminPages from './routes/admin.js';
+import auditPages from './routes/audit.js';
 
 const app = express();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// Di Vercel fungsi serverless dijalankan dari root repo (process.cwd()),
+// sedangkan di lokal folder berada di samping src/. Pilih yang ada.
+function resolveAssetDir(name) {
+  const candidates = [
+    path.resolve(__dirname, '..', name),
+    path.resolve(process.cwd(), 'apps/api', name),
+  ];
+  return candidates.find((dir) => fs.existsSync(dir)) ?? candidates[0];
+}
+
+// View EJS (halaman dirender server) + aset hasil build Vite/Tailwind.
+app.set('view engine', 'ejs');
+app.set('views', resolveAssetDir('views'));
+app.use(express.static(resolveAssetDir('public')));
 
 app.use(cors({ origin: env.webOrigin, credentials: true }));
-app.use(express.json());
+app.use(express.json({ limit: '2mb' }));
+app.use(express.urlencoded({ extended: true, limit: '2mb' }));
+app.use(sameOriginGuard);
+
+// Helper tampilan tersedia di semua template.
+app.locals.helpers = {
+  formatDate,
+  formatShortDate,
+  formatDateTimeInput,
+  MATERIAL_LABELS,
+  EVALUATION_LABELS,
+  CATEGORY_LABELS,
+  FINDING_STATUS_LABELS,
+  CATEGORY_BADGE,
+  STATUS_BADGE,
+};
+
+// Halaman (EJS). attachUser dipasang lebih dulu agar navigasi tahu peran.
 app.use(attachUser);
-
-// Health check — tidak membutuhkan MySQL agar tetap menjawab saat DB mati.
-app.get('/api/health', async (_req, res, next) => {
-  try {
-    let db = 'ok';
-    try {
-      await pingDb();
-    } catch {
-      db = 'unavailable';
-    }
-    ok(res, { status: 'ok', uptime: process.uptime(), db });
-  } catch (err) {
-    next(err);
-  }
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
 });
+app.use('/', publicPages);
+app.use('/admin', adminPages);
+app.use('/audit', auditPages);
 
-// Router modul (M1–M10) di bawah /api/v1.
+// API JSON /api/v1.
+app.use('/api/v1/health', healthRouter);
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', usersRouter);
-app.use('/api/v1/trainings', trainingsRouter);
-app.use('/api/v1/schedules', schedulesRouter);
-app.use('/api/v1/registrations', registrationsRouter);
-app.use('/api/v1/materials', materialsRouter);
-app.use('/api/v1/tests', testsRouter);
-app.use('/api/v1/grading', gradingRouter);
+app.use('/api/v1/programs', programsRouter);
+app.use('/api/v1/sops', sopsRouter);
+app.use('/api/v1/evaluations', evaluationsRouter);
+app.use('/api/v1/findings', auditRouter);
 app.use('/api/v1/reports', reportsRouter);
-app.use('/api/v1/contact', contactRouter);
+app.use('/api/v1/settings', settingsRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);

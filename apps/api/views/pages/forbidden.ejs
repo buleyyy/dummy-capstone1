@@ -1,0 +1,17 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/public-nav', { user }) %>
+
+<main class="container narrow">
+  <div class="card center" style="padding:34px">
+    <div class="badge b-bad">403</div>
+    <h1 style="margin-top:12px">Akses Ditolak</h1>
+    <p class="muted">Peran akun Anda tidak berwenang membuka halaman ini. Hubungi Admin bila akses diperlukan.</p>
+    <div class="actions" style="justify-content:center">
+      <a class="btn" href="<%= user && user.role === 'ADMIN' ? '/admin' : '/audit' %>">Kembali ke area saya</a>
+      <a class="btn ghost" href="/">Situs publik</a>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/public-footer') %>
+<%- include('../partials/foot') %>

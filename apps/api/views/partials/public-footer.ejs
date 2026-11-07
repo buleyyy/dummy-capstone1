@@ -1,0 +1,35 @@
+<footer class="site-footer">
+  <div class="footer-eyebrow">Platform pembelajaran &amp; pelatihan standar ISO</div>
+  <div class="fcols">
+    <div>
+      <div class="footer-brand">
+        <div class="footer-logo" aria-hidden="true"></div>
+        <div>
+          <div class="footer-name">Sopinsya Educenter</div>
+          <div class="footer-tagline"><%= locals.settings ? locals.settings.tagline : 'Pelatihan, konsultasi, dan audit internal dalam satu platform.' %></div>
+          <div class="small" style="margin-top:6px;color:var(--muted)"><%= locals.settings ? locals.settings.address : '' %></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h4>Navigasi</h4>
+      <ul>
+        <li><a href="/">Beranda</a></li>
+        <li><a href="/program">Program Pelatihan</a></li>
+        <li><a href="/pustaka-sop">Pustaka SOP</a></li>
+        <li><a href="/tentang">Tentang Kami</a></li>
+        <li><a href="/kontak">Hubungi Kami</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Kontak</h4>
+      <ul>
+        <% if (locals.waLink) { %><li><a href="<%= waLink %>" target="_blank" rel="noopener">WhatsApp</a></li><% } %>
+        <% if (locals.settings && locals.settings.email) { %><li><a href="mailto:<%= locals.settings.email %>"><%= locals.settings.email %></a></li><% } %>
+        <% if (locals.settings && locals.settings.operatingHours) { %><li><%= locals.settings.operatingHours %></li><% } %>
+
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">© <%= new Date().getFullYear() %> Sopinsya Educenter — Capstone PPSI Kelompok 1, Universitas Gunadarma.</div>
+</footer>

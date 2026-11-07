@@ -1,0 +1,73 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/public-nav', { user, active }) %>
+
+<main class="container narrow">
+  <%- include('../partials/flash', { ok, err }) %>
+  <div class="pagehead">
+    <div>
+      <h1>Rating &amp; Ulasan</h1>
+      <div class="sub"><%= program.title %> · penilaian dikirim secara anonim.</div>
+    </div>
+    <div class="actions"><a class="btn ghost" href="/program/<%= program.slug %>">Kembali</a></div>
+  </div>
+
+  <form class="card" method="post" action="/program/<%= program.slug %>/ulasan">
+    <h3>Bagaimana pengalaman Anda?</h3>
+    <p class="small muted">Pilih rating bintang dan tuliskan ulasan bila berkenan. Identitas Anda tidak ditampilkan.</p>
+
+    <div class="field">
+      <span>Rating <span class="req">*</span></span>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <% [1,2,3,4,5].forEach(function (star) { %>
+          <label class="chip" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px">
+            <input type="radio" name="rating" value="<%= star %>" required style="width:auto" />
+            <%= star %> <span class="stars">★</span>
+          </label>
+        <% }) %>
+      </div>
+    </div>
+
+    <label class="field">
+      <span>Ulasan (opsional)</span>
+      <textarea name="comment" rows="4" maxlength="1000" placeholder="Materi, trainer, atau hal yang membantu Anda…"></textarea>
+    </label>
+
+    <div class="actions">
+      <button class="btn" type="submit">Kirim Ulasan</button>
+      <a class="btn ghost" href="/program/<%= program.slug %>#ulasan">Batal</a>
+    </div>
+  </form>
+
+  <div class="card">
+    <h3>Ulasan peserta <span class="badge b-warn"><%= reviews.count %></span></h3>
+    <div class="review-summary">
+      <div class="center">
+        <div class="review-score"><%= reviews.average ? reviews.average.toFixed(1) : '0.0' %></div>
+        <div class="stars"><%= '★'.repeat(Math.round(reviews.average || 0)) %><%= '☆'.repeat(5 - Math.round(reviews.average || 0)) %></div>
+        <div class="small muted">dari <%= reviews.count %> ulasan</div>
+      </div>
+      <div class="rating-bars">
+        <% [5,4,3,2,1].forEach(function (star) {
+             const total = reviews.distribution[star] || 0;
+             const pct = reviews.count ? Math.round((total / reviews.count) * 100) : 0;
+        %>
+          <div class="bar"><span><%= star %></span><div class="progress"><i style="width:<%= pct %>%"></i></div><span><%= total %></span></div>
+        <% }) %>
+      </div>
+    </div>
+    <% if (!reviews.reviews.length) { %><div class="empty">Belum ada ulasan.</div><% } %>
+    <% reviews.reviews.forEach(function (r) { %>
+      <div class="review-row">
+        <div class="review-avatar">A</div>
+        <div style="flex:1">
+          <div><strong>Anonim</strong> <span class="stars"><%= '★'.repeat(r.rating) %><%= '☆'.repeat(5 - r.rating) %></span></div>
+          <div class="small muted"><%= helpers.formatDate(r.createdAt) %></div>
+          <% if (r.comment) { %><div class="small" style="margin-top:4px"><%= r.comment %></div><% } %>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</main>
+
+<%- include('../partials/public-footer', { settings, waLink }) %>
+<%- include('../partials/foot') %>

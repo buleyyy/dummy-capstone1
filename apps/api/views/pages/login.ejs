@@ -1,0 +1,35 @@
+<%- include('../partials/head', { title }) %>
+
+<header class="topbar">
+  <a class="brand" href="/"><div class="logo" aria-hidden="true"></div><span class="brand-text">Sopinsya Educenter</span></a>
+  <nav><a href="/">← Situs publik</a></nav>
+</header>
+
+<div class="login-wrap">
+  <div class="login-card">
+    <img class="logo-main" src="/assets/logo-icon.svg" alt="Sopinsya Educenter" />
+    <h1 style="font-size:1.3rem;margin-bottom:4px">Masuk area internal</h1>
+    <p class="small muted" style="margin:0 0 18px">Halaman ini untuk Admin dan Auditor. Peserta tidak memerlukan akun.</p>
+
+    <%- include('../partials/flash', { ok: info, err: error }) %>
+
+    <form method="post" action="/login">
+      <input type="hidden" name="next" value="<%= next || '' %>" />
+      <label class="field">
+        <span>Email <span class="req">*</span></span>
+        <input name="email" type="email" required autocomplete="username" autofocus />
+      </label>
+      <label class="field">
+        <span>Kata sandi <span class="req">*</span></span>
+        <input name="password" type="password" required autocomplete="current-password" />
+      </label>
+      <button class="btn wide" type="submit">Masuk</button>
+    </form>
+
+    <p class="small muted" style="margin-top:16px">
+      Lupa kata sandi? Hubungi Admin untuk pengaturan ulang melalui menu <em>Akun &amp; Hak Akses</em>.
+    </p>
+  </div>
+</div>
+
+<%- include('../partials/foot') %>

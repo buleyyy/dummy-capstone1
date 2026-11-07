@@ -1,0 +1,96 @@
+<%
+  const payload = {
+    evaluationId: evaluation.id,
+    type: evaluation.type,
+    title: evaluation.title,
+    programTitle: program.title,
+    questions: questions,
+    submitUrl: `/api/v1/evaluations/${evaluation.id}/attempts`,
+  };
+  const payloadJson = JSON.stringify(payload).replace(/</g, '\\u003c');
+%>
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/public-nav', { user, active }) %>
+
+<main class="container">
+  <div class="quiz-shell">
+    <aside class="quiz-side">
+      <div class="small muted" style="text-transform:uppercase;letter-spacing:.08em;font-weight:700">Peserta</div>
+      <h3 style="margin:4px 0 10px"><%= evaluation.title %></h3>
+      <div class="small muted"><%= program.title %></div>
+      <% if (program.trainerName) { %><div class="small muted">Trainer: <%= program.trainerName %></div><% } %>
+
+      <div style="margin-top:16px" class="small"><strong>Progres Pengerjaan</strong></div>
+      <div class="quiz-progress"><i data-progress></i></div>
+      <div class="small muted" data-progress-label>Belum dimulai</div>
+
+      <div style="margin-top:14px" class="small muted">Daftar soal</div>
+      <ol data-qlist style="display:flex;flex-wrap:wrap;gap:6px;padding:0;list-style:none;margin:8px 0 0"></ol>
+
+      <div class="actions" style="margin-top:18px">
+        <button class="btn sm ghost" type="button" data-reset>Reset</button>
+        <a class="btn sm ghost" href="/program/<%= program.slug %>">Keluar</a>
+      </div>
+      <p class="small muted" style="margin-top:12px">
+        <% if (evaluation.type === 'PRE_TEST') { %>
+          Nilai Pre-test tidak ditampilkan langsung setelah pengerjaan (KF-15).
+        <% } else { %>
+          Nilai akan ditampilkan setelah jawaban dikirim.
+        <% } %>
+      </p>
+    </aside>
+
+    <div>
+      <div class="q-card" data-step="identity">
+        <div class="qno">Langkah 1 dari 2</div>
+        <h2 style="margin:6px 0 4px">Identitas peserta</h2>
+        <p class="muted small">Isi data berikut sebelum mengerjakan <%= evaluation.title %>. Data digunakan untuk merekap hasil evaluasi.</p>
+        <form data-identity-form novalidate>
+          <div class="identity-grid">
+            <label class="field"><span>Nama lengkap <span class="req">*</span></span><input name="name" required autocomplete="name" /></label>
+            <label class="field"><span>Email <span class="req">*</span></span><input name="email" type="email" required autocomplete="email" /></label>
+            <label class="field"><span>Nomor telepon <span class="req">*</span></span><input name="phone" required inputmode="tel" autocomplete="tel" /></label>
+            <label class="field"><span>Jabatan <span class="req">*</span></span><input name="position" required /></label>
+          </div>
+          <div class="err-note" data-identity-error hidden></div>
+          <div class="actions">
+            <button class="btn" type="submit">Lanjutkan</button>
+            <a class="btn ghost" href="/program/<%= program.slug %>">Batal</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="q-card" data-step="quiz" hidden>
+        <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
+          <div class="qno">Pertanyaan <span data-q-number>1</span></div>
+          <div class="small muted"><span data-q-counter>1</span> dari <%= questions.length %></div>
+        </div>
+        <div class="qtext" data-qtext></div>
+        <div class="opts" data-options></div>
+        <div class="err-note" data-quiz-error hidden style="margin-top:12px"></div>
+        <div class="quiz-bar">
+          <div class="quiz-nav">
+            <button class="btn ghost" type="button" data-prev>← Sebelumnya</button>
+            <button class="btn ghost" type="button" data-next>Berikutnya →</button>
+          </div>
+          <button class="btn teal" type="button" data-submit>Selesai &amp; kirim</button>
+        </div>
+      </div>
+
+      <div class="q-card" data-step="done" hidden>
+        <div class="qno">Selesai</div>
+        <h2 data-result-title>Jawaban berhasil terkirim.</h2>
+        <p class="muted" data-result-text></p>
+        <div class="actions">
+          <a class="btn" href="/program/<%= program.slug %>">Kembali ke program</a>
+          <a class="btn ghost" href="/program/<%= program.slug %>/ulasan">Beri rating &amp; ulasan</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script type="application/json" id="eval-data"><%- payloadJson %></script>
+
+<%- include('../partials/public-footer', { settings, waLink }) %>
+<%- include('../partials/foot') %>

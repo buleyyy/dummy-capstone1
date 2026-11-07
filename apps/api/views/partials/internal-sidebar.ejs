@@ -1,0 +1,22 @@
+<aside class="side" aria-label="Menu utama">
+  <% if (user.role === 'ADMIN') { %>
+    <div class="grp">Ikhtisar</div>
+    <a href="/admin" class="<%= locals.active === 'dashboard' ? 'on' : '' %>"><span class="ic">▦</span> Dashboard</a>
+    <div class="grp">Konten Pelatihan</div>
+    <a href="/admin/program" class="<%= locals.active === 'program' ? 'on' : '' %>"><span class="ic">▤</span> Program &amp; Materi</a>
+    <a href="/admin/sop" class="<%= locals.active === 'sop' ? 'on' : '' %>"><span class="ic">▥</span> Pustaka SOP</a>
+    <a href="/admin/hasil" class="<%= locals.active === 'hasil' ? 'on' : '' %>"><span class="ic">▧</span> Hasil Evaluasi</a>
+    <a href="/admin/ulasan" class="<%= locals.active === 'ulasan' ? 'on' : '' %>"><span class="ic">★</span> Rating &amp; Ulasan</a>
+    <div class="grp">Sistem</div>
+    <a href="/admin/akun" class="<%= locals.active === 'akun' ? 'on' : '' %>"><span class="ic">☰</span> Akun &amp; Hak Akses</a>
+    <a href="/admin/pengaturan" class="<%= locals.active === 'pengaturan' ? 'on' : '' %>"><span class="ic">⚙</span> Pengaturan</a>
+  <% } else { %>
+    <div class="grp">Audit Internal</div>
+    <a href="/audit" class="<%= locals.active === 'dashboard' ? 'on' : '' %>"><span class="ic">▦</span> Dashboard Audit</a>
+    <a href="/audit/temuan" class="<%= locals.active === 'temuan' ? 'on' : '' %>"><span class="ic">▤</span> Register Temuan</a>
+    <a href="/audit/temuan/baru" class="<%= locals.active === 'temuan-baru' ? 'on' : '' %>"><span class="ic">＋</span> Tambah Temuan</a>
+    <a href="/audit/laporan" class="<%= locals.active === 'laporan' ? 'on' : '' %>"><span class="ic">⎙</span> Laporan Audit</a>
+    <div class="grp">Referensi</div>
+    <a href="/audit/pustaka-sop" class="<%= locals.active === 'sop' ? 'on' : '' %>"><span class="ic">▥</span> Pustaka SOP</a>
+  <% } %>
+</aside>

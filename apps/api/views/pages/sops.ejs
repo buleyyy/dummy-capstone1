@@ -1,0 +1,34 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/public-nav', { user, active }) %>
+
+<main class="container">
+  <div class="pagehead">
+    <div>
+      <h1>Pustaka SOP</h1>
+      <div class="sub">Dokumen prosedur operasional standar yang dapat diakses peserta.</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Kode</th><th>Judul</th><th>Versi</th><th class="right">Dokumen</th></tr></thead>
+      <tbody>
+        <% sops.forEach(function (s) { %>
+          <tr>
+            <td class="mono"><%= s.code %></td>
+            <td>
+              <strong><%= s.title %></strong>
+              <% if (s.description) { %><div class="small muted"><%= s.description %></div><% } %>
+            </td>
+            <td><%= s.version %></td>
+            <td class="right"><a class="btn sm ghost" href="<%= s.url %>" target="_blank" rel="noopener">Buka</a></td>
+          </tr>
+        <% }) %>
+        <% if (!sops.length) { %><tr><td colspan="4"><div class="empty">Belum ada SOP yang dipublikasikan.</div></td></tr><% } %>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<%- include('../partials/public-footer', { settings, waLink }) %>
+<%- include('../partials/foot') %>

@@ -1,0 +1,49 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/public-nav', { user, active }) %>
+
+<main class="container">
+  <%- include('../partials/flash', { ok, err }) %>
+  <div class="pagehead">
+    <div>
+      <h1>Program Pelatihan</h1>
+      <div class="sub">Temukan program sesuai kebutuhan kompetensi dan standar yang Anda terapkan.</div>
+    </div>
+  </div>
+
+  <form class="toolbar" method="get" action="/program">
+    <label class="field" style="flex:1;min-width:260px">
+      <span>Cari program</span>
+      <input type="search" name="q" value="<%= q %>" placeholder="Kata kunci program…" />
+    </label>
+    <% if (category) { %><input type="hidden" name="category" value="<%= category %>" /><% } %>
+    <button class="btn" type="submit">Cari</button>
+    <% if (q || category) { %><a class="btn ghost" href="/program">Reset</a><% } %>
+  </form>
+
+  <div class="chips">
+    <a class="chip <%= !category ? 'on' : '' %>" href="/program<%= q ? '?q=' + encodeURIComponent(q) : '' %>">Semua kategori</a>
+    <% categories.forEach(function (c) { %>
+      <a class="chip <%= category === c.slug ? 'on' : '' %>" href="/program?category=<%= c.slug %><%= q ? '&q=' + encodeURIComponent(q) : '' %>"><%= c.name %></a>
+    <% }) %>
+  </div>
+
+  <% if (!programs.length) { %>
+    <div class="card">
+      <div class="empty">
+        <p><strong>Program tidak ditemukan.</strong></p>
+        <p class="small">Coba kata kunci lain atau pilih kategori berbeda.</p>
+        <a class="btn sm ghost" href="/program">Lihat seluruh program</a>
+      </div>
+    </div>
+  <% } else { %>
+    <p class="small muted"><%= programs.length %> program ditemukan<%= q ? ' untuk “' + q + '”' : '' %>.</p>
+    <div class="grid g3">
+      <% programs.forEach(function (p, i) { %>
+        <%- include('../partials/program-card', { p, i }) %>
+      <% }) %>
+    </div>
+  <% } %>
+</main>
+
+<%- include('../partials/public-footer', { settings, waLink }) %>
+<%- include('../partials/foot') %>

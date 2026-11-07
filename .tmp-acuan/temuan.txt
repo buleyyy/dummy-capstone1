@@ -1,0 +1,1251 @@
+         SopinsyaEducenter                                                                                                    Dashboard          Daftar Temuan  Cetak Hasil                    Tambah Temuan                      Tony Stark TS  Keluar
+                                                                                                                                                                                                                                 Lead Auditor
+            Audit
+                                                                                                                                                                                               Ubah Header Dokumen                               Cetak / Simpan PDF
+Pratinjau Formulir Resmi Dokumen
+
+Tata letak formulir akurat sesuai format dokumen Laboratorium Avenger untuk dicetak atau disimpan sebagai PDF.
+
+       LABORATORIUM BBWS                                                                                                                   FORMULIR                              No Dokumen    : F.12-01
+                                                                                                                                                                                 Revisi        : 00
+      SISTEM MANAJEMEN MUTU ISO 17025                                        LAPORAN KETIDAKSESUAIAN DAN TINDAKAN KOREKTIF                                                       Tgl Terbit    : 2 Sept 2026
+                                                                                                                                                                                 Halaman       : Otomatis saat dicetak
+
+SUMBER KETIDAKSESUAIAN:              Ketidaksesuaian Internal                Audit Pemantauan                        Keluhan  Lainnya: _________
+
+No.   Acuan Ketidaksesuaian                 Uraian Ketidaksesuaian (PLOR)                                       Kat           Akar Penyebab                 Perbaikan / Koreksi                Tindakan Korektif                   Hasil
+                                                                                                                                                                                                                                 Verifikasi
+ (1)                          (2)                              (3)                                              (4)                         (5)                       (6)                                       (7)
+                                                                                                                                                                                                                                     (8)
+1. SNI ISO/IEC 17025:2017-         Disarankan untuk menyediakan ruangan dan petugas                              O                -                                   -                        Tindakan Peningkatan:
+      4.1.1                                                                                                      2                                                                                                                Closed
+                                   untuk menerima layanan pengujian laboratorium                                     Belum memahami SOP              Menentukan persyaratan fasilitas dan      Menyediakan Ruangan                Closed
+2. SNI ISO/IEC 17025:2017-         secara terpadu, sehingga bisa menjaga                                         2                                   kondisi lingkungan menggunakan            Sekretariat Layanan
+      6.3.2                                                                                                          Pengelolaan Fasilitas dan                                                 Laboratorium secara terpadu        Closed
+                                   ketidakberpihakan Laboratorium.                                               2   Kondisi Lingkungan              formulir F.03-01 dan menyediakan
+3. SNI ISO/IEC 17025:2017-                                                                                       2                                                                             Pelaksana: Tim Mutu                Closed
+      6.3.3                        Laboratorium Beton belum menentukan persyaratan                                   Laboratorium No SOP.03          peralatan pemantauannya                                                     Closed
+                                   kondisi lingkungan di masing-masing                                                                                                                         Target Selesai: April 2024
+4. SNI ISO/IEC 17025:2017-                                                                                           Belum ditentukannya lokasi      (termometer).                             Bukti: Terlampir
+      6.4.6                        laboratoriumnya dan belum menyediakan peralatan                                   pengujian sehingga seluruh
+                                   dan formulir pemantauannya.                                                       pengujian dilakukan di ruangan  Pelaksana: Tim Laboratorium Beton         (SK_Ruang_Layanan_Terpadu_20
+5. SNI ISO/IEC 17025:2017-                                                                                                                           Target Selesai: Januari 2024
+      7.4.1                        Pada saat observasi laboratorium didapatkan suhu                                  terbuka.                        Bukti: Terlampir                          24.pdf)
+                                                                                                                                                     (Foto_Termometer_Form_F.03-01.jpg)
+                                   ruangan laboratorium Beton yang cukup panas, hal                                  Belum tersedianya program                                                 Sosialisasi SOP Pengelolaan
+                                   ini bisa berpengaruh pada saat pengujian yang                                                                     Menyediakan ruangan pengujian yang        Fasilitas dan Kondisi
+                                                                                                                     dan anggaran kalibrasi berkala                                            Lingkungan Laboratorium No
+                                   membutuhkan kontrol suhu.                                                         untuk seluruh alat ukur.        tertutup agar suhu bisa lebih terkontrol
+                                                                                                                                                                                               SOP.03 ke seluruh personil
+                                   Pada saat observasi ditemukan peralatan yang                                      Belum ditentukannya lokasi      menggunakan AC.
+                                                                                                                                                     Pelaksana: Tim Laboratorium Beton         laboratorium.
+                                   belum terkalibrasi, antara lain: compressive test,                                penyimpanan sampel sehingga     Target Selesai: April 2024
+                                   sieve shaker, dan hammer test, Saringan (analisa                                  seluruh sampel disimpan di      Bukti: Terlampir                          Pelaksana: Tim Mutu
+                                   saringan), air entrainmeter (uji rongga udara), set                               ruangan terbuka.                (Foto_Ruang_Pengujian_AC_Beton.jpg)
+                                   alat berat jenis (ex: piknometer glass) uji berat jenis                                                                                                     Target Selesai: Januari 2024
+                                   agregat halus, alat los angeles, dan set slump test.                                                              Mengkalibrasi peralatan ke                Bukti: Terlampir
+                                                                                                                                                     laboratorium kalibrasi terakreditasi      (Daftar_Hadir_Sosialisasi_SOP.03
+                                   Belum ditemukannya ruangan penyimpanan sampel                                                                     KAN.                                      .pdf)
+
+                                   dan atau sisa sampel sesuai persyaratan (misal: suhu                                                              Pelaksana: Tim Laboratorium Beton         Menentukan jenis pengujian
+                                                                                                                                                     Target Selesai: April 2024                dan lokasi pengujiannya
+                                   harus dijaga 25-30 캜) di Laboratorium Beton.                                                                     Bukti: Terlampir
+                                                                                                                                                     (Sertifikat_Kalibrasi_KAN_2024.pdf)       sesuai persyaratan
+                                                                                                                                                                                               lingkungan yang telah
+                                                                                                                                                     Menyediakan ruangan penyimpanan           ditentukan di SNI.
+                                                                                                                                                     sampel yang tertutup agar suhu bisa
+                                                                                                                                                                                               Pelaksana: Tim Laboratorium
+                                                                                                                                                     lebih terkontrol menggunakan AC.
+                                                                                                                                                     Pelaksana: Tim Laboratorium Beton         Beton
+                                                                                                                                                     Target Selesai: April 2024                Target Selesai: Januari 2024
+                                                                                                                                                     Bukti: Terlampir                          Bukti: Terlampir
+                                                                                                                                                     (Foto_Ruang_Simpan_Sampel_Beton.jpg)      (Penetapan_Zonasi_Pengujian_S
+                                                                                                                                                                                               NI.pdf)
+
+                                                                                                                                                                                               Menyediakan program dan
+                                                                                                                                                                                               anggaran kalibrasi peralatan
+                                                                                                                                                                                               secara terstruktur tahunan.
+
+                                                                                                                                                                                               Pelaksana: Tim Administrasi
+
+                                                                                                                                                                                               Target Selesai: Januari 2024
+                                                                                                                                                                                               Bukti: Terlampir
+
+                                                                                                                                                                                               (Rencana_Anggaran_Kalibrasi_Ta
+
+                                                                                                                                                                                               hunan.xlsx)
+
+                                                                                                                                                                                               Menentukan jenis sampel dan
+
+                                                                                                                                                                                               lokasi simpannya sesuai
+                                                                                                                                                                                               persyaratan lingkungan yang
+                                                                                                                                                                                               telah ditentukan di SNI.
+
+                                                                                                                                                                                               Pelaksana: Tim Laboratorium
+
+                                                                                                                                                                                               Beton
+                                                                                                                                                                                               Target Selesai: Januari 2024
+                                                                                                                                                                                               Bukti: Terlampir
+
+                                                                                                                                                                                               (SOP_Penyimpanan_Penanganan
+
+                                                                                                                                                                                               _Sampel.pdf)
+
+Jumlah temuan kategori 1 (Mayor): 0                                                            Jumlah temuan kategori 2 (Minor): 4                                                             Jumlah temuan Observasi (O): 1
+
+                DILAPORKAN TANGGAL: 21/12/2023                                            DITINDAKLANJUTI TANGGAL: 22/12/2023                                                  DIVERIFIKASI TANGGAL: 30/04/2024
+
+NAMA PELAPOR / AUDITOR:                                                      NAMA TERLAPOR / AUDITI:                                                            NAMA VERIFIKATOR / AUDITOR:
+
+1. Tony Stark (TS) - Lead Auditor                                            � Hank Pym (Manajer Mutu)                                                          1. Tony Stark (TS) - Lead Auditor
+2. Bruce Banner (BB) - Auditor                                               � Scott Lang (Staf Mutu)                                                           2. Bruce Banner (BB) - Auditor
+                                                                             � Natasha Romanoff (Manajer Adm.)
+3. Peter Parker (PP) - Auditor                                               � Carol Danvers (Manajer Teknis)                                                   3. Peter Parker (PP) - Auditor
+                                                                             � Steve Rogers (Teknisi)
+                                                                                                                                                                                       STATUS: CLOSED (EFEKTIF)
+
+KETERANGAN & PETUNJUK PENGISIAN FORMULIR:                                    DI-ISI OLEH TERLAPOR/AUDITI:                                                   DI-ISI OLEH VERIFIKATOR/AUDITOR:
+
+DI-ISI OLEH PELAPOR/AUDITOR:                                                 5. Akar masalah penyebab (Khusus Kat. 1 & 2).                                  8. Hasil verifikasi efektivitas (Pilih Closed / Efektif jika tindakan menyelesaikan
+                                                                                                                                                            akar masalah atau inisiatif peningkatan telah terlaksana efektif, atau Open /
+1. Nomor urut temuan ketidaksesuaian.                                        6. Perbaikan langsung/koreksi & PIC (Khusus Kat. 1 & 2).                       Belum Efektif jika sebaliknya).
+
+2. No klausul SNI ISO/IEC 17025:2017 yang dilanggar.                         7. Tindakan korektif (Kat. 1 & 2) ATAU Tindakan Peningkatan (Khusus Observasi
+3. Uraian temuan dengan metode PLOR (Problem, Location, Objective evidence,
+Reference).                                                                  O).
+4. Kategori: 1 (Mayor), 2 (Minor), O (Observasi).
+    SopinsyaEducenter                                                                                                            Dashboard     Daftar Temuan  Cetak Hasil            Tambah Temuan                           Tony Stark TS          Keluar
+                                                                                                                                                                                                                            Lead Auditor
+    Audit
+
+Daftar Temuan
+
+Cari, filter, dan kelola seluruh temuan ketidaksesuaian beserta akar masalah, koreksi, tindakan korektif, dan hasil verifikasi.
+
+    Cari uraian, klausul, PIC...                      Semua Kategori                           Semua Status                                                                          Reset Data Default                     Tambah Temuan
+
+                                                      Semua Kategori
+
+NO  ACUAN KLAUSUL                                                      Kategori 1 (Mayor)                      KAT  AKAR MASALAH               PERBAIKAN / KOREKSI                   TINDAKAN KOREKTIF                      VERIFIKASI              AKSI
+                             URAIAN KETIDAKSESUAIAN (PLOR) Kategori 2 (MiAnoUrD)ITOR & AUDITI                Obs O
+                                                                                                                     - Tidak dipersyaratkan -   - Cukup Tindakan Peningkatan -       Menyediakan Ruangan                                Closed
+                                                                       Kategori 0 (Observasi)                                                                                        Sekretariat Layanan
+                                                                                                                                                                                     Laboratorium secara terpadu               Efektif. Ruangan
+1   SNI ISO/IEC              Disarankan untuk menyediakan               Auditor: -
+                                                                                                                                           telah tersedia dan
+                             ruangan dan petugas untuk menerima         Auditi: -                                                                                                    Pelaksana: Tim Mutu
+    17025:2017- 4.1.1        layanan pengujian laboratorium secara                                                                                                                   Target: April 2024                           beroperasi.
+                             terpadu, sehingga bisa menjaga
+                             ketidakberpihakan Laboratorium.                                                                                                                               Bukti Peningkatan:
+                                                                                                                                                                                           SK_Ruang_Layanan_Terpadu
+                                                                                                                                                                                           _2024.pdf
+
+2   SNI ISO/IEC              Laboratorium Beton belum                   Auditor: -
+                          Kat 2  Belum memahami SOP         Menentukan persyaratan                Sosialisasi SOP Pengelolaan                       Closed
+                             menentukan persyaratan kondisi             Auditi: -                                   Pengelolaan Fasilitas      fasilitas dan kondisi lingkungan      Fasilitas dan Kondisi
+    17025:2017- 6.3.2        lingkungan di masing-masing                                                            dan Kondisi Lingkungan     menggunakan formulir F.03-01          Lingkungan Laboratorium No             Efektif. Formulir dan
+                             laboratoriumnya dan belum                                                              Laboratorium No SOP.03     dan menyediakan peralatan             SOP.03 ke seluruh personil               termometer telah
+                             menyediakan peralatan dan formulir                                                                                pemantauannya (termometer).           laboratorium.
+                             pemantauannya.                                                                                                                                                                                 tersedia & sosialisasi
+                                                                                                                                               Pelaksana: Tim Laboratorium Beton     Pelaksana: Tim Mutu                          terlaksana.
+                                                                                                                                               Target: Januari 2024                  Target: Januari 2024
+
+                                                                                                                                                     Bukti Koreksi:                        Bukti Tindakan:
+                                                                                                                                                     Foto_Termometer_Form_F.03-01.         Daftar_Hadir_Sosialisasi_SOP.03
+                                                                                                                                                     jpg                                   .pdf
+
+3   SNI ISO/IEC              Pada saat observasi laboratorium           Auditor: -
+                          Kat 2  Belum ditentukannya        Menyediakan ruangan                   Menentukan jenis pengujian dan                    Closed
+                                                                        Auditi: -                            Kat 2  lokasi pengujian           pengujian yang tertutup agar          lokasi pengujiannya sesuai
+    17025:2017- 6.3.3        didapatkan suhu ruangan                                                         Kat 2  sehingga seluruh           suhu bisa lebih terkontrol            persyaratan lingkungan yang              Efektif. AC telah
+                                                                                                                    pengujian dilakukan di     menggunakan AC.                       telah ditentukan di SNI.               terpasang dan suhu
+                             laboratorium Beton yang cukup panas,                                                   ruangan terbuka.
+                                                                                                                                               Pelaksana: Tim Laboratorium Beton     Pelaksana: Tim Laboratorium Beton        terpantau stabil.
+                             hal ini bisa berpengaruh pada saat                                                                                Target: April 2024                    Target: Januari 2024
+
+                             pengujian yang membutuhkan kontrol                                                                                      Bukti Koreksi:                        Bukti Tindakan:
+                                                                                                                                                     Foto_Ruang_Pengujian_AC_Beto          Penetapan_Zonasi_Pengujian_S
+                             suhu.                                                                                                                   n.jpg                                 NI.pdf
+
+4   SNI ISO/IEC              Pada saat observasi ditemukan              Auditor: -
+                                 Belum tersedianya          Mengkalibrasi peralatan ke            Menyediakan program dan                          Closed
+                                                                        Auditi: -                                   program dan anggaran       laboratorium kalibrasi                anggaran kalibrasi peralatan
+    17025:2017- 6.4.6        peralatan yang belum terkalibrasi,                                                     kalibrasi berkala untuk    terakreditasi KAN.                    secara terstruktur tahunan.             Efektif. Sertifikat
+                                                                                                                    seluruh alat ukur.                                                                                         kalibrasi KAN
+                             antara lain: compressive test, sieve                                                                              Pelaksana: Tim Laboratorium Beton     Pelaksana: Tim Administrasi
+                                                                                                                                               Target: April 2024                    Target: Januari 2024                   lengkap dan stiker
+                             shaker, dan hammer test, Saringan                                                                                                                                                              kalibrasi terpasang.
+                                                                                                                                                     Bukti Koreksi:                        Bukti Tindakan:
+                             (analisa saringan), air entrainmeter (uji                                                                               Sertifikat_Kalibrasi_KAN_2024.        Rencana_Anggaran_Kalibrasi_Ta
+                                                                                                                                                     pdf                                   hunan.xlsx
+                             rongga udara), set alat berat jenis (ex:
+
+                             piknometer glass) uji berat jenis
+
+                             agregat halus, alat los angeles, dan
+
+                             set slump test.
+
+5   SNI ISO/IEC              Belum ditemukannya ruangan                 Auditor: -
+                                 Belum ditentukannya        Menyediakan ruangan                   Menentukan jenis sampel dan                      Closed
+                             penyimpanan sampel dan atau sisa           Auditi: -                                   lokasi penyimpanan         penyimpanan sampel yang               lokasi simpannya sesuai
+    17025:2017- 7.4.1        sampel sesuai persyaratan (misal:                                                      sampel sehingga seluruh    tertutup agar suhu bisa lebih         persyaratan lingkungan yang               Efektif. Ruang
+                             suhu harus dijaga 25-30 캜) di                                                         sampel disimpan di         terkontrol menggunakan AC.            telah ditentukan di SNI.                 simpan sampel
+                             Laboratorium Beton.                                                                    ruangan terbuka.                                                                                        berpendingin telah
+                                                                                                                                               Pelaksana: Tim Laboratorium Beton     Pelaksana: Tim Laboratorium Beton
+                                                                                                                                               Target: April 2024                    Target: Januari 2024                       difungsikan.
+
+                                                                                                                                                     Bukti Koreksi:                        Bukti Tindakan:
+                                                                                                                                                     Foto_Ruang_Simpan_Sampel_Be           SOP_Penyimpanan_Penanganan
+                                                                                                                                                     ton.jpg                               _Sampel.pdf
+
+Menampilkan 5 dari 5 temuan                                                                                                                                                          Metode Penulisan: Problem, Location, Objective evidence, Reference (PLOR)
+         SopinsyaEducenter                                                                                                    Dashboard          Daftar Temuan               Cetak Hasil               Tambah Temuan                     Tony Stark TS  Keluar
+                                                                                                                                                                                                                                        Lead Auditor
+            Audit
+                                                                                                                                                                                                       Ubah Header Dokumen                          Cetak / Simpan PDF
+Pratinjau Formulir Resmi Dokumen
+
+Tata letak formulir akurat sesuai format dokumen Laboratorium Avenger untuk dicetak atau disimpan sebagai PDF.
+
+       LABORATORIUM BBWS               Pengaturan Header Dokumen                                                     FORMULIR                                                                 No Dokumen  : F.12-01
+                                                                                                                                                                                              Revisi      : 00
+      SISTEM MANAJEMEN MUTU ISO 17025  Ubah identitas formulir yang tampil pada hasil cetak                                                                                                   Tgl Terbit  : 2 Sept 2026
+
+                                                                             LAPORAN KETIDAKSESUAIAN DAN TINDAKAN KOREKTIF
+
+                                       Nama Laboratorium / Instansi *                                                                                                                         Halaman     : Otomatis saat dicetak
+
+                                       Contoh: Laboratorium BBWS
+
+SUMBER KETIDAKSESUAIAN:              Ketidaksesuaian Internal                Audit Pemantauan                        Keluhan   Lainnya: _________
+
+                                       Nama Jenis *
+
+No.   Acuan Ketidaksesuaian            CUoranitaonhK: eStiisdtaekmseMsuaaniaajnem (PeLnORM)utu                  Kat           Akar Penyebab                 Perbaikan / Koreksi                        Tindakan Korektif                  Hasil
+                                                                                                                (4)                                                                                                                     Verifikasi
+ (1)                          (2)                       (3)                                                                    (5)                                    (6)                                               (7)
+                                                                                                                                                                                                                                            (8)
+1. SNI ISO/IEC 17025:2017-             Nomor ISO *                                                              O              -                                          -                           Tindakan Peningkatan:
+      4.1.1                        Disarankan untuk menyediakan ruangan dan petugas                                                                                                                                                      Closed
+                                                                                                                                                                                                      Menyediakan Ruangan                Closed
+                                   untuk menerima layanan pengujian laboratorium                                                                                                                      Sekretariat Layanan
+                                       Contoh: ISO 17025                                                                                                                                              Laboratorium secara terpadu        Closed
+                                   secara terpadu, sehingga bisa menjaga
+                                                                                                                                                                                                      Pelaksana: Tim Mutu                Closed
+                                   ketidakberpihakan Laboratorium.                                                                                                                                                                      Closed
+                                                                                                                                                                                                      Target Selesai: April 2024
+                                       Nama Formulir *                                                                                                                                                Bukti: Terlampir
+
+                                       Contoh: Laporan Ketidaksusaian dan Tindakan Korektif                                                                                                           (SK_Ruang_Layanan_Terpadu_20
+
+2. SNI ISO/IEC 17025:2017-         N Laboratoorim umorBDetooknubmeleunm menentukan persyaratanRevisi2                Belum memahami SOP            TaMngegneanl tTuekrabnitpersyaratan fasilitas dan  24.pdf)
+      6.3.2
+                                   kondisi lingkungan di masing-masing                                               Pengelolaan Fasilitas dan     kondisi lingkungan menggunakan                     Sosialisasi SOP Pengelolaan
+                                                                                                                                                                                                      Fasilitas dan Kondisi
+                                   laboratoriuFm.12ny-a01dan belum menyediakan peralatan 01                          Kondisi Lingkungan            f0o2rm/0u8li/r2F0.0236-01 dan menyediakan          Lingkungan Laboratorium No
+
+                                   dan formulir pemantauannya.                                                       Laboratorium No SOP.03        peralatan pemantauannya                            SOP.03 ke seluruh personil
+
+                                                                                                                                                   (termometer).                                      laboratorium.
+
+                                                                                                                                                   Pelaksana: Tim Laboratorium Beton                  Pelaksana: Tim Mutu
+                                                                                                                                                   Target Selesai: Januari 2024
+                                                                                                                                                   BuktiB: Taetralalmpir                              Target Selesai: Januari 2024
+                                                                                                                                                                          Simpan Header               Bukti: Terlampir
+                                                                                                                                                   (Foto_Termometer_Form_F.03-01.jpg)                 (Daftar_Hadir_Sosialisasi_SOP.03
+                                                                                                                                                                                                      .pdf)
+3. SNI ISO/IEC 17025:2017-         Pada saat observasi laboratorium didapatkan suhu                             2    Belum ditentukannya lokasi    Menyediakan ruangan pengujian yang
+      6.3.3                                                                                                                                                                                           Menentukan jenis pengujian
+                                   ruangan laboratorium Beton yang cukup panas, hal                                  pengujian sehingga seluruh    tertutup agar suhu bisa lebih terkontrol           dan lokasi pengujiannya
+                                   ini bisa berpengaruh pada saat pengujian yang
+                                                                                                                     pengujian dilakukan di ruangan menggunakan AC.                                   sesuai persyaratan
+                                   membutuhkan kontrol suhu.                                                                                                                                          lingkungan yang telah
+                                                                                                                     terbuka.                      Pelaksana: Tim Laboratorium Beton                  ditentukan di SNI.
+                                                                                                                                                   Target Selesai: April 2024
+                                                                                                                                                   Bukti: Terlampir                                   Pelaksana: Tim Laboratorium
+                                                                                                                                                   (Foto_Ruang_Pengujian_AC_Beton.jpg)
+                                                                                                                                                                                                      Beton
+4. SNI ISO/IEC 17025:2017-         Pada saat observasi ditemukan peralatan yang                                 2    Belum tersedianya program     Mengkalibrasi peralatan ke                         Target Selesai: Januari 2024
+      6.4.6                                                                                                                                                                                           Bukti: Terlampir
+                                   belum terkalibrasi, antara lain: compressive test,                                dan anggaran kalibrasi berkala laboratorium kalibrasi terakreditasi              (Penetapan_Zonasi_Pengujian_S
+5. SNI ISO/IEC 17025:2017-         sieve shaker, dan hammer test, Saringan (analisa                                                                                                                   NI.pdf)
+      7.4.1                        saringan), air entrainmeter (uji rongga udara), set                               untuk seluruh alat ukur.      KAN.
+                                   alat berat jenis (ex: piknometer glass) uji berat jenis                                                                                                            Menyediakan program dan
+                                   agregat halus, alat los angeles, dan set slump test.                                                            Pelaksana: Tim Laboratorium Beton                  anggaran kalibrasi peralatan
+                                                                                                                                                   Target Selesai: April 2024                         secara terstruktur tahunan.
+                                                                                                                                                   Bukti: Terlampir
+                                                                                                                                                   (Sertifikat_Kalibrasi_KAN_2024.pdf)                Pelaksana: Tim Administrasi
+
+                                   Belum ditemukannya ruangan penyimpanan sampel                                2    Belum ditentukannya lokasi    Menyediakan ruangan penyimpanan                    Target Selesai: Januari 2024
+                                                                                                                                                                                                      Bukti: Terlampir
+                                   dan atau sisa sampel sesuai persyaratan (misal: suhu                              penyimpanan sampel sehingga   sampel yang tertutup agar suhu bisa
+                                                                                                                     seluruh sampel disimpan di                                                       (Rencana_Anggaran_Kalibrasi_Ta
+                                   harus dijaga 25-30 캜) di Laboratorium Beton.                                                                   lebih terkontrol menggunakan AC.
+                                                                                                                                                                                                      hunan.xlsx)
+                                                                                                                     ruangan terbuka.              Pelaksana: Tim Laboratorium Beton
+                                                                                                                                                   Target Selesai: April 2024                         Menentukan jenis sampel dan
+                                                                                                                                                   Bukti: Terlampir
+                                                                                                                                                   (Foto_Ruang_Simpan_Sampel_Beton.jpg)               lokasi simpannya sesuai
+                                                                                                                                                                                                      persyaratan lingkungan yang
+                                                                                                                                                                                                      telah ditentukan di SNI.
+
+                                                                                                                                                                                                      Pelaksana: Tim Laboratorium
+
+                                                                                                                                                                                                      Beton
+                                                                                                                                                                                                      Target Selesai: Januari 2024
+                                                                                                                                                                                                      Bukti: Terlampir
+
+                                                                                                                                                                                                      (SOP_Penyimpanan_Penanganan
+
+                                                                                                                                                                                                      _Sampel.pdf)
+
+Jumlah temuan kategori 1 (Mayor): 0                                                             Jumlah temuan kategori 2 (Minor): 4                                                                       Jumlah temuan Observasi (O): 1
+
+                DILAPORKAN TANGGAL: 21/12/2023                                            DITINDAKLANJUTI TANGGAL: 22/12/2023                                                            DIVERIFIKASI TANGGAL: 30/04/2024
+
+NAMA PELAPOR / AUDITOR:                                                      NAMA TERLAPOR / AUDITI:                                                                      NAMA VERIFIKATOR / AUDITOR:
+
+1. Tony Stark (TS) - Lead Auditor                                            � Hank Pym (Manajer Mutu)                                                                    1. Tony Stark (TS) - Lead Auditor
+2. Bruce Banner (BB) - Auditor                                               � Scott Lang (Staf Mutu)                                                                     2. Bruce Banner (BB) - Auditor
+                                                                             � Natasha Romanoff (Manajer Adm.)
+3. Peter Parker (PP) - Auditor                                               � Carol Danvers (Manajer Teknis)                                                             3. Peter Parker (PP) - Auditor
+                                                                             � Steve Rogers (Teknisi)
+                                                                                                                                                                                                 STATUS: CLOSED (EFEKTIF)
+
+KETERANGAN & PETUNJUK PENGISIAN FORMULIR:                                    DI-ISI OLEH TERLAPOR/AUDITI:                                                   DI-ISI OLEH VERIFIKATOR/AUDITOR:
+
+DI-ISI OLEH PELAPOR/AUDITOR:                                                 5. Akar masalah penyebab (Khusus Kat. 1 & 2).                                  8. Hasil verifikasi efektivitas (Pilih Closed / Efektif jika tindakan menyelesaikan
+                                                                                                                                                            akar masalah atau inisiatif peningkatan telah terlaksana efektif, atau Open /
+1. Nomor urut temuan ketidaksesuaian.                                        6. Perbaikan langsung/koreksi & PIC (Khusus Kat. 1 & 2).                       Belum Efektif jika sebaliknya).
+
+2. No klausul SNI ISO/IEC 17025:2017 yang dilanggar.                         7. Tindakan korektif (Kat. 1 & 2) ATAU Tindakan Peningkatan (Khusus Observasi
+3. Uraian temuan dengan metode PLOR (Problem, Location, Objective evidence,
+Reference).                                                                  O).
+4. Kategori: 1 (Mayor), 2 (Minor), O (Observasi).
+    SopinsyaEducenter                                                                                                            Dashboard     Daftar Temuan  Cetak Hasil            Tambah Temuan                           Tony Stark TS          Keluar
+                                                                                                                                                                                                                            Lead Auditor
+    Audit
+
+Daftar Temuan
+
+Cari, filter, dan kelola seluruh temuan ketidaksesuaian beserta akar masalah, koreksi, tindakan korektif, dan hasil verifikasi.
+
+    Cari uraian, klausul, PIC...                            Semua Kategori                Semua Status                                                                               Reset Data Default                     Tambah Temuan
+
+NO  ACUAN KLAUSUL            URAIAN KETIDAKSESUAIAN (PLOR)              AUDITOR & AUDITI  Semua Status              AKAR MASALAH               PERBAIKAN / KOREKSI                   TINDAKAN KOREKTIF                      VERIFIKASI              AKSI
+
+                                                                                          Closed (Terverifikasi)     - Tidak dipersyaratkan -   - Cukup Tindakan Peningkatan -       Menyediakan Ruangan                                Closed
+                                                                                          Open (Belum SelesaKiA) T                                                                   Sekretariat Layanan
+                                                                                                                                                                                     Laboratorium secara terpadu               Efektif. Ruangan
+1   SNI ISO/IEC              Disarankan untuk menyediakan               Auditor: -
+                     Obs O                                                                                                                 telah tersedia dan
+                             ruangan dan petugas untuk menerima         Auditi: -                                                                                                    Pelaksana: Tim Mutu
+    17025:2017- 4.1.1        layanan pengujian laboratorium secara                                                                                                                   Target: April 2024                           beroperasi.
+                             terpadu, sehingga bisa menjaga
+                             ketidakberpihakan Laboratorium.                                                                                                                               Bukti Peningkatan:
+                                                                                                                                                                                           SK_Ruang_Layanan_Terpadu
+                                                                                                                                                                                           _2024.pdf
+
+2   SNI ISO/IEC              Laboratorium Beton belum                   Auditor: -
+                     Kat 2       Belum memahami SOP         Menentukan persyaratan                Sosialisasi SOP Pengelolaan                       Closed
+                             menentukan persyaratan kondisi             Auditi: -                                   Pengelolaan Fasilitas      fasilitas dan kondisi lingkungan      Fasilitas dan Kondisi
+    17025:2017- 6.3.2        lingkungan di masing-masing                                                            dan Kondisi Lingkungan     menggunakan formulir F.03-01          Lingkungan Laboratorium No             Efektif. Formulir dan
+                             laboratoriumnya dan belum                                                              Laboratorium No SOP.03     dan menyediakan peralatan             SOP.03 ke seluruh personil               termometer telah
+                             menyediakan peralatan dan formulir                                                                                pemantauannya (termometer).           laboratorium.
+                             pemantauannya.                                                                                                                                                                                 tersedia & sosialisasi
+                                                                                                                                               Pelaksana: Tim Laboratorium Beton     Pelaksana: Tim Mutu                          terlaksana.
+                                                                                                                                               Target: Januari 2024                  Target: Januari 2024
+
+                                                                                                                                                     Bukti Koreksi:                        Bukti Tindakan:
+                                                                                                                                                     Foto_Termometer_Form_F.03-01.         Daftar_Hadir_Sosialisasi_SOP.03
+                                                                                                                                                     jpg                                   .pdf
+
+3   SNI ISO/IEC              Pada saat observasi laboratorium           Auditor: -
+                     Kat 2       Belum ditentukannya        Menyediakan ruangan                   Menentukan jenis pengujian dan                    Closed
+                                                                        Auditi: -                       Kat 2       lokasi pengujian           pengujian yang tertutup agar          lokasi pengujiannya sesuai
+    17025:2017- 6.3.3        didapatkan suhu ruangan                                                    Kat 2       sehingga seluruh           suhu bisa lebih terkontrol            persyaratan lingkungan yang              Efektif. AC telah
+                                                                                                                    pengujian dilakukan di     menggunakan AC.                       telah ditentukan di SNI.               terpasang dan suhu
+                             laboratorium Beton yang cukup panas,                                                   ruangan terbuka.
+                                                                                                                                               Pelaksana: Tim Laboratorium Beton     Pelaksana: Tim Laboratorium Beton        terpantau stabil.
+                             hal ini bisa berpengaruh pada saat                                                                                Target: April 2024                    Target: Januari 2024
+
+                             pengujian yang membutuhkan kontrol                                                                                      Bukti Koreksi:                        Bukti Tindakan:
+                                                                                                                                                     Foto_Ruang_Pengujian_AC_Beto          Penetapan_Zonasi_Pengujian_S
+                             suhu.                                                                                                                   n.jpg                                 NI.pdf
+
+4   SNI ISO/IEC              Pada saat observasi ditemukan              Auditor: -
+                                 Belum tersedianya          Mengkalibrasi peralatan ke            Menyediakan program dan                          Closed
+                                                                        Auditi: -                                   program dan anggaran       laboratorium kalibrasi                anggaran kalibrasi peralatan
+    17025:2017- 6.4.6        peralatan yang belum terkalibrasi,                                                     kalibrasi berkala untuk    terakreditasi KAN.                    secara terstruktur tahunan.             Efektif. Sertifikat
+                                                                                                                    seluruh alat ukur.                                                                                         kalibrasi KAN
+                             antara lain: compressive test, sieve                                                                              Pelaksana: Tim Laboratorium Beton     Pelaksana: Tim Administrasi
+                                                                                                                                               Target: April 2024                    Target: Januari 2024                   lengkap dan stiker
+                             shaker, dan hammer test, Saringan                                                                                                                                                              kalibrasi terpasang.
+                                                                                                                                                     Bukti Koreksi:                        Bukti Tindakan:
+                             (analisa saringan), air entrainmeter (uji                                                                               Sertifikat_Kalibrasi_KAN_2024.        Rencana_Anggaran_Kalibrasi_Ta
+                                                                                                                                                     pdf                                   hunan.xlsx
+                             rongga udara), set alat berat jenis (ex:
+
+                             piknometer glass) uji berat jenis
+
+                             agregat halus, alat los angeles, dan
+
+                             set slump test.
+
+5   SNI ISO/IEC              Belum ditemukannya ruangan                 Auditor: -
+                                 Belum ditentukannya        Menyediakan ruangan                   Menentukan jenis sampel dan                      Closed
+                             penyimpanan sampel dan atau sisa           Auditi: -                                   lokasi penyimpanan         penyimpanan sampel yang               lokasi simpannya sesuai
+    17025:2017- 7.4.1        sampel sesuai persyaratan (misal:                                                      sampel sehingga seluruh    tertutup agar suhu bisa lebih         persyaratan lingkungan yang               Efektif. Ruang
+                             suhu harus dijaga 25-30 캜) di                                                         sampel disimpan di         terkontrol menggunakan AC.            telah ditentukan di SNI.                 simpan sampel
+                             Laboratorium Beton.                                                                    ruangan terbuka.                                                                                        berpendingin telah
+                                                                                                                                               Pelaksana: Tim Laboratorium Beton     Pelaksana: Tim Laboratorium Beton
+                                                                                                                                               Target: April 2024                    Target: Januari 2024                       difungsikan.
+
+                                                                                                                                                     Bukti Koreksi:                        Bukti Tindakan:
+                                                                                                                                                     Foto_Ruang_Simpan_Sampel_Be           SOP_Penyimpanan_Penanganan
+                                                                                                                                                     ton.jpg                               _Sampel.pdf
+
+Menampilkan 5 dari 5 temuan                                                                                                                                                          Metode Penulisan: Problem, Location, Objective evidence, Reference (PLOR)
+         SopinsyaEducenter                                                                                                    Dashboard          Daftar Temuan  Cetak Hasil                    Tambah Temuan                      Tony Stark TS  Keluar
+                                                                                                                                                                                                                                 Lead Auditor
+            Audit
+                                                                                                                                                                                               Ubah Header Dokumen                               Cetak / Simpan PDF
+Pratinjau Formulir Resmi Dokumen
+
+Tata letak formulir akurat sesuai format dokumen Laboratorium Avenger untuk dicetak atau disimpan sebagai PDF.
+
+       LABORATORIUM BBWS                                                                                                                   FORMULIR                              No Dokumen    : F.12-01
+                                                                                                                                                                                 Revisi        : 00
+      SISTEM MANAJEMEN MUTU ISO 17025                                        LAPORAN KETIDAKSESUAIAN DAN TINDAKAN KOREKTIF                                                       Tgl Terbit    : 2 Sept 2026
+                                                                                                                                                                                 Halaman       : Otomatis saat dicetak
+
+SUMBER KETIDAKSESUAIAN:              Ketidaksesuaian Internal                Audit Pemantauan                        Keluhan  Lainnya: _________
+
+No.   Acuan Ketidaksesuaian                 Uraian Ketidaksesuaian (PLOR)                                       Kat           Akar Penyebab                 Perbaikan / Koreksi                Tindakan Korektif                   Hasil
+                                                                                                                                                                                                                                 Verifikasi
+ (1)                          (2)                              (3)                                              (4)                         (5)                       (6)                                       (7)
+                                                                                                                                                                                                                                     (8)
+1. SNI ISO/IEC 17025:2017-         Disarankan untuk menyediakan ruangan dan petugas                              O                -                                   -                        Tindakan Peningkatan:
+      4.1.1                                                                                                      2                                                                                                                Closed
+                                   untuk menerima layanan pengujian laboratorium                                     Belum memahami SOP              Menentukan persyaratan fasilitas dan      Menyediakan Ruangan                Closed
+2. SNI ISO/IEC 17025:2017-         secara terpadu, sehingga bisa menjaga                                         2                                   kondisi lingkungan menggunakan            Sekretariat Layanan
+      6.3.2                                                                                                          Pengelolaan Fasilitas dan                                                 Laboratorium secara terpadu        Closed
+                                   ketidakberpihakan Laboratorium.                                               2   Kondisi Lingkungan              formulir F.03-01 dan menyediakan
+3. SNI ISO/IEC 17025:2017-                                                                                       2                                                                             Pelaksana: Tim Mutu                Closed
+      6.3.3                        Laboratorium Beton belum menentukan persyaratan                                   Laboratorium No SOP.03          peralatan pemantauannya                                                     Closed
+                                   kondisi lingkungan di masing-masing                                                                                                                         Target Selesai: April 2024
+4. SNI ISO/IEC 17025:2017-                                                                                           Belum ditentukannya lokasi      (termometer).                             Bukti: Terlampir
+      6.4.6                        laboratoriumnya dan belum menyediakan peralatan                                   pengujian sehingga seluruh
+                                   dan formulir pemantauannya.                                                       pengujian dilakukan di ruangan  Pelaksana: Tim Laboratorium Beton         (SK_Ruang_Layanan_Terpadu_20
+5. SNI ISO/IEC 17025:2017-                                                                                                                           Target Selesai: Januari 2024
+      7.4.1                        Pada saat observasi laboratorium didapatkan suhu                                  terbuka.                        Bukti: Terlampir                          24.pdf)
+                                                                                                                                                     (Foto_Termometer_Form_F.03-01.jpg)
+                                   ruangan laboratorium Beton yang cukup panas, hal                                  Belum tersedianya program                                                 Sosialisasi SOP Pengelolaan
+                                   ini bisa berpengaruh pada saat pengujian yang                                                                     Menyediakan ruangan pengujian yang        Fasilitas dan Kondisi
+                                                                                                                     dan anggaran kalibrasi berkala                                            Lingkungan Laboratorium No
+                                   membutuhkan kontrol suhu.                                                         untuk seluruh alat ukur.        tertutup agar suhu bisa lebih terkontrol
+                                                                                                                                                                                               SOP.03 ke seluruh personil
+                                   Pada saat observasi ditemukan peralatan yang                                      Belum ditentukannya lokasi      menggunakan AC.
+                                                                                                                                                     Pelaksana: Tim Laboratorium Beton         laboratorium.
+                                   belum terkalibrasi, antara lain: compressive test,                                penyimpanan sampel sehingga     Target Selesai: April 2024
+                                   sieve shaker, dan hammer test, Saringan (analisa                                  seluruh sampel disimpan di      Bukti: Terlampir                          Pelaksana: Tim Mutu
+                                   saringan), air entrainmeter (uji rongga udara), set                               ruangan terbuka.                (Foto_Ruang_Pengujian_AC_Beton.jpg)
+                                   alat berat jenis (ex: piknometer glass) uji berat jenis                                                                                                     Target Selesai: Januari 2024
+                                   agregat halus, alat los angeles, dan set slump test.                                                              Mengkalibrasi peralatan ke                Bukti: Terlampir
+                                                                                                                                                     laboratorium kalibrasi terakreditasi      (Daftar_Hadir_Sosialisasi_SOP.03
+                                   Belum ditemukannya ruangan penyimpanan sampel                                                                     KAN.                                      .pdf)
+
+                                   dan atau sisa sampel sesuai persyaratan (misal: suhu                                                              Pelaksana: Tim Laboratorium Beton         Menentukan jenis pengujian
+                                                                                                                                                     Target Selesai: April 2024                dan lokasi pengujiannya
+                                   harus dijaga 25-30 캜) di Laboratorium Beton.                                                                     Bukti: Terlampir
+                                                                                                                                                     (Sertifikat_Kalibrasi_KAN_2024.pdf)       sesuai persyaratan
+                                                                                                                                                                                               lingkungan yang telah
+                                                                                                                                                     Menyediakan ruangan penyimpanan           ditentukan di SNI.
+                                                                                                                                                     sampel yang tertutup agar suhu bisa
+                                                                                                                                                                                               Pelaksana: Tim Laboratorium
+                                                                                                                                                     lebih terkontrol menggunakan AC.
+                                                                                                                                                     Pelaksana: Tim Laboratorium Beton         Beton
+                                                                                                                                                     Target Selesai: April 2024                Target Selesai: Januari 2024
+                                                                                                                                                     Bukti: Terlampir                          Bukti: Terlampir
+                                                                                                                                                     (Foto_Ruang_Simpan_Sampel_Beton.jpg)      (Penetapan_Zonasi_Pengujian_S
+                                                                                                                                                                                               NI.pdf)
+
+                                                                                                                                                                                               Menyediakan program dan
+                                                                                                                                                                                               anggaran kalibrasi peralatan
+                                                                                                                                                                                               secara terstruktur tahunan.
+
+                                                                                                                                                                                               Pelaksana: Tim Administrasi
+
+                                                                                                                                                                                               Target Selesai: Januari 2024
+                                                                                                                                                                                               Bukti: Terlampir
+
+                                                                                                                                                                                               (Rencana_Anggaran_Kalibrasi_Ta
+
+                                                                                                                                                                                               hunan.xlsx)
+
+                                                                                                                                                                                               Menentukan jenis sampel dan
+
+                                                                                                                                                                                               lokasi simpannya sesuai
+                                                                                                                                                                                               persyaratan lingkungan yang
+                                                                                                                                                                                               telah ditentukan di SNI.
+
+                                                                                                                                                                                               Pelaksana: Tim Laboratorium
+
+                                                                                                                                                                                               Beton
+                                                                                                                                                                                               Target Selesai: Januari 2024
+                                                                                                                                                                                               Bukti: Terlampir
+
+                                                                                                                                                                                               (SOP_Penyimpanan_Penanganan
+
+                                                                                                                                                                                               _Sampel.pdf)
+
+Jumlah temuan kategori 1 (Mayor): 0                                                            Jumlah temuan kategori 2 (Minor): 4                                                             Jumlah temuan Observasi (O): 1
+
+                DILAPORKAN TANGGAL: 21/12/2023                                            DITINDAKLANJUTI TANGGAL: 22/12/2023                                                  DIVERIFIKASI TANGGAL: 30/04/2024
+
+NAMA PELAPOR / AUDITOR:                                                      NAMA TERLAPOR / AUDITI:                                                            NAMA VERIFIKATOR / AUDITOR:
+
+1. Tony Stark (TS) - Lead Auditor                                            � Hank Pym (Manajer Mutu)                                                          1. Tony Stark (TS) - Lead Auditor
+2. Bruce Banner (BB) - Auditor                                               � Scott Lang (Staf Mutu)                                                           2. Bruce Banner (BB) - Auditor
+                                                                             � Natasha Romanoff (Manajer Adm.)
+3. Peter Parker (PP) - Auditor                                               � Carol Danvers (Manajer Teknis)                                                   3. Peter Parker (PP) - Auditor
+                                                                             � Steve Rogers (Teknisi)
+                                                                                                                                                                                       STATUS: CLOSED (EFEKTIF)
+
+KETERANGAN & PETUNJUK PENGISIAN FORMULIR:                                    DI-ISI OLEH TERLAPOR/AUDITI:                                                   DI-ISI OLEH VERIFIKATOR/AUDITOR:
+
+DI-ISI OLEH PELAPOR/AUDITOR:                                                 5. Akar masalah penyebab (Khusus Kat. 1 & 2).                                  8. Hasil verifikasi efektivitas (Pilih Closed / Efektif jika tindakan menyelesaikan
+                                                                                                                                                            akar masalah atau inisiatif peningkatan telah terlaksana efektif, atau Open /
+1. Nomor urut temuan ketidaksesuaian.                                        6. Perbaikan langsung/koreksi & PIC (Khusus Kat. 1 & 2).                       Belum Efektif jika sebaliknya).
+
+2. No klausul SNI ISO/IEC 17025:2017 yang dilanggar.                         7. Tindakan korektif (Kat. 1 & 2) ATAU Tindakan Peningkatan (Khusus Observasi
+3. Uraian temuan dengan metode PLOR (Problem, Location, Objective evidence,
+Reference).                                                                  O).
+4. Kategori: 1 (Mayor), 2 (Minor), O (Observasi).
+    SopinsyaEducenter                                                                                                            Dashboard  Daftar Temuan  Cetak Hasil           Tambah Temuan                          Tony Stark TS          Keluar
+                                                                                                                                                                                                                       Lead Auditor
+    Audit
+
+Daftar Temuan
+
+Cari, filter, dan kelola seluruh temuan ketidaksesuaian beserta akar masalah, koreksi, tindakan korektif, dan hasil verifikasi.
+
+    Cari uraian, klausul, PIC...                            Semua Kategori                Semua Status                                                                           Reset Data Default                    Tambah Temuan
+
+NO  ACUAN KLAUSUL            URAIAN KETIDAKSESUAIAN (PLOR)              AUDITOR & AUDITI                  KAT  AKAR MASALAH                 PERBAIKAN / KOREKSI                  TINDAKAN KOREKTIF                     VERIFIKASI              AKSI
+                                                                                                        Obs O
+1   SNI ISO/IEC              Disarankan untuk menyediakan               Auditor: -
+                             - Tidak dipersyaratkan -     - Cukup Tindakan Peningkatan -          TINDAKAN PENINGKATAN                          Closed
+                             ruangan dan petugas untuk menerima         Auditi: -
+    17025:2017- 4.1.1        layanan pengujian laboratorium secara                                                                                                                 Menyediakan Ruangan                    Efektif. Ruangan
+                             terpadu, sehingga bisa menjaga                                                                                                                                                              telah tersedia dan
+                             ketidakberpihakan Laboratorium.                                                                                                                        Sekretariat Layanan
+                                                                                                                                                                                                                             beroperasi.
+                                                                                                                                                                                   Laboratorium secara
+                                                                                                                                                                                   terpadu
+
+                                                                                                                                                                                   Pelaksana: Tim Mutu
+                                                                                                                                                                                   Target: April 2024
+
+                                                                                                                                                                                          Bukti Peningkatan:
+                                                                                                                                                                                          SK_Ruang_Layanan_Terpadu
+                                                                                                                                                                                          _2024.pdf
+
+2   SNI ISO/IEC              Laboratorium Beton belum                   Auditor: -
+                     Kat 2  Belum memahami SOP           Menentukan persyaratan               Sosialisasi SOP Pengelolaan                      Closed
+                             menentukan persyaratan kondisi             Auditi: -                       Kat 2  Pengelolaan Fasilitas
+    17025:2017- 6.3.2        lingkungan di masing-masing                                                Kat 2  dan Kondisi Lingkungan       fasilitas dan kondisi lingkungan     Fasilitas dan Kondisi                 Efektif. Formulir dan
+                             laboratoriumnya dan belum                                                         Laboratorium No SOP.03                                            Lingkungan Laboratorium No             termometer telah
+                             menyediakan peralatan dan formulir                                                                             menggunakan formulir F.03-01         SOP.03 ke seluruh personil            tersedia & sosialisasi
+                             pemantauannya.                                                                                                                                      laboratorium.
+                                                                                                                                            dan menyediakan peralatan                                                        terlaksana.
+                                                                                                                                                                                 Pelaksana: Tim Mutu
+                                                                                                                                            pemantauannya (termometer).
+                                                                                                                                                                                 Target: Januari 2024
+                                                                                                                                            Pelaksana: Tim Laboratorium Beton
+                                                                                                                                                                                       Bukti Tindakan:
+                                                                                                                                            Target: Januari 2024
+                                                                                                                                                                                      Daftar_Hadir_Sosialisasi_SOP.03
+                                                                                                                                                  Bukti Koreksi:
+                                                                                                                                                                                       .pdf
+                                                                                                                                                 Foto_Termometer_Form_F.03-01.
+                                                                                                                                                 jpg
+
+3   SNI ISO/IEC              Pada saat observasi laboratorium           Auditor: -
+                            Belum ditentukannya          Menyediakan ruangan                  Menentukan jenis pengujian dan                   Closed
+                                                                        Auditi: -                                                           pengujian yang tertutup agar         lokasi pengujiannya sesuai
+    17025:2017- 6.3.3        didapatkan suhu ruangan                                                           lokasi pengujian             suhu bisa lebih terkontrol                                                   Efektif. AC telah
+                                                                                                               sehingga seluruh                                                  persyaratan lingkungan yang           terpasang dan suhu
+                             laboratorium Beton yang cukup panas,                                              pengujian dilakukan di       menggunakan AC.
+                                                                                                               ruangan terbuka.                                                  telah ditentukan di SNI.                terpantau stabil.
+                             hal ini bisa berpengaruh pada saat                                                                             Pelaksana: Tim Laboratorium Beton
+                                                                                                                                            Target: April 2024                   Pelaksana: Tim Laboratorium Beton
+                             pengujian yang membutuhkan kontrol
+                                                                                                                                                  Bukti Koreksi:                 Target: Januari 2024
+                             suhu.
+                                                                                                                                                 Foto_Ruang_Pengujian_AC_Beto          Bukti Tindakan:
+                                                                                                                                                 n.jpg
+                                                                                                                                                                                      Penetapan_Zonasi_Pengujian_S
+
+                                                                                                                                                                                       NI.pdf
+
+4   SNI ISO/IEC              Pada saat observasi ditemukan              Auditor: -
+                            Belum tersedianya            Mengkalibrasi peralatan ke           Menyediakan program dan                         Closed
+                                                                        Auditi: -                              program dan anggaran         laboratorium kalibrasi               anggaran kalibrasi peralatan
+    17025:2017- 6.4.6        peralatan yang belum terkalibrasi,                                                                                                                  secara terstruktur tahunan.            Efektif. Sertifikat
+                                                                                                               kalibrasi berkala untuk      terakreditasi KAN.                                                            kalibrasi KAN
+                             antara lain: compressive test, sieve                                                                                                                Pelaksana: Tim Administrasi
+                                                                                                               seluruh alat ukur.           Pelaksana: Tim Laboratorium Beton                                          lengkap dan stiker
+                             shaker, dan hammer test, Saringan                                                                              Target: April 2024                   Target: Januari 2024                  kalibrasi terpasang.
+
+                             (analisa saringan), air entrainmeter (uji                                                                            Bukti Koreksi:                       Bukti Tindakan:
+
+                             rongga udara), set alat berat jenis (ex:                                                                            Sertifikat_Kalibrasi_KAN_2024.       Rencana_Anggaran_Kalibrasi_Ta
+                                                                                                                                                                                      hunan.xlsx
+                             piknometer glass) uji berat jenis                                                                                    pdf
+
+                             agregat halus, alat los angeles, dan
+
+                             set slump test.
+
+5   SNI ISO/IEC              Belum ditemukannya ruangan                 Auditor: -
+                     Kat 2  Belum ditentukannya          Menyediakan ruangan                  Menentukan jenis sampel dan                     Closed
+                                                                        Auditi: -                              lokasi penyimpanan
+    17025:2017- 7.4.1        penyimpanan sampel dan atau sisa                                                  sampel sehingga seluruh      penyimpanan sampel yang              lokasi simpannya sesuai                  Efektif. Ruang
+                                                                                                               sampel disimpan di                                                persyaratan lingkungan yang
+                             sampel sesuai persyaratan (misal:                                                                              tertutup agar suhu bisa lebih                                                simpan sampel
+                                                                                                               ruangan terbuka.                                                  telah ditentukan di SNI.
+                             suhu harus dijaga 25-30 캜) di                                                                                 terkontrol menggunakan AC.                                                 berpendingin telah
+                                                                                                                                                                                 Pelaksana: Tim Laboratorium Beton         difungsikan.
+                             Laboratorium Beton.                                                                                            Pelaksana: Tim Laboratorium Beton
+                                                                                                                                            Target: April 2024                   Target: Januari 2024
+
+                                                                                                                                                  Bukti Koreksi:                       Bukti Tindakan:
+                                                                                                                                                                                       SOP_Penyimpanan_Penanganan
+                                                                                                                                                 Foto_Ruang_Simpan_Sampel_Be           _Sampel.pdf
+                                                                                                                                                 ton.jpg
+
+Menampilkan 5 dari 5 temuan                                                                                                                                                      Metode Penulisan: Problem, Location, Objective evidence, Reference (PLOR)
+    SopinsyaEducenter                                                                                 Dashboard  Daftar Temuan  Cetak Hasil                         Tambah Temuan   Tony Stark TS   Keluar
+                                                                                                                                                                                   Lead Auditor
+    Audit
+
+       Audit Mutu Internal & Pemantauan                                                                                                                                            Format Formulir
+
+Status Tindakan Korektif (CAPA)
+
+Pemantauan kepatuhan persyaratan SNI ISO/IEC 37001: 2025. Seluruh perbaikan dan tindakan korektif
+diverifikasi efektivitasnya oleh Lead Auditor.
+
+TOTAL TEMUAN                       KATEGORI 1 (MAYOR)                   KATEGORI 2 (MINOR)                                                     OBSERVASI (O)                            SELESAI (CLOSED)
+
+5 / klausul                        0                                    4                                                  1                                              100% 5/5
+
+Klausul audit                      Ketidakmampuan sistem                Inkonsistensi / standar                                                Peluang peningkatan                      Terverifikasi efektif
+
+ Distribusi Kategori Temuan          0% (0)                      Informasi Dokumen & Tim Verifikasi              TERLAPOR / AUDITI                                                                        Terbit: 2 September 2023 � Rev 00
+                                   80% (4)
+ Kategori 1 (Mayor)                 20% (1)                          PELAPOR / AUDITOR                           Astari Cipta Rahma                                 HASIL VERIFIKASI AKHIR
+ Kategori 2 (Minor)
+ Observasi (O)                                                      Fikri Nurrahman                              Auditi                                                  Semua Temuan Efektif
+                                                                                                                 Tim: Natasha, Scott, Carol, Steve
+                                                                     Auditor                                                                                        Diverifikasi: 30/04/2024
+                                                                     Tim: Bruce Banner, Peter Parker
+                                                                                                                                                                    Status Dokumen: Disetujui (Closed)
+
+Ringkasan Ketidaksesuaian Terbaru                                                                                                                                                  Buka Tabel Lengkap
+
+Pantau status tindakan perbaikan dan tanggal batas penyelesaian                                                                                                                                          Status
+                                                                                                                                                                                                          Closed
+No  Klausul SNI ISO 17025          Uraian Masalah                                                       Kat      Koreksi & Pelaksana                                Target
+                                                                                                      Obs O
+                                   Disarankan untuk menyediakan ruangan dan petugas                   Kat 2      Menyediakan Ruangan Sekretariat Layanan            April 2024
+                                                                                                      Kat 2      Laboratorium secara terpadu
+1   SNI ISO/IEC 17025:2017- 4.1.1  untuk menerima layanan pengujian laboratorium                      Kat 2
+                                                                                                      Kat 2      PIC: Tim Mutu � Peningkatan
+                                   secara terpadu, sehi...                                                          Bukti terlampir
+
+                                   Laboratorium Beton belum menentukan persyaratan                               Menentukan persyaratan fasilitas dan kondisi
+
+2   SNI ISO/IEC 17025:2017- 6.3.2  kondisi lingkungan di masing-masing                                           lingkungan menggunakan formulir F.03-01 dan        Januari 2024                    Closed
+                                                                                                                 meny...
+                                   laboratoriumnya dan belum menye...
+                                                                                                                 PIC: Tim Laboratorium Beton
+                                   Pada saat observasi laboratorium didapatkan suhu
+                                                                                                                    Bukti terlampir
+3   SNI ISO/IEC 17025:2017- 6.3.3  ruangan laboratorium Beton yang cukup panas, hal                                                                                 April 2024                      Closed
+                                                                                                                 Menyediakan ruangan pengujian yang tertutup        April 2024                      Closed
+                                   ini bisa berpenga...                                                          agar suhu bisa lebih terkontrol menggunakan        April 2024                      Closed
+                                                                                                                 AC.
+                                   Pada saat observasi ditemukan peralatan yang
+                                                                                                                 PIC: Tim Laboratorium Beton
+4   SNI ISO/IEC 17025:2017- 6.4.6  belum terkalibrasi, antara lain: compressive test,
+                                                                                                                    Bukti terlampir
+                                   sieve shaker, dan h...
+                                                                                                                 Mengkalibrasi peralatan ke laboratorium
+                                   Belum ditemukannya ruangan penyimpanan sampel
+                                                                                                                 kalibrasi terakreditasi KAN.
+5   SNI ISO/IEC 17025:2017- 7.4.1  dan atau sisa sampel sesuai persyaratan (misal: suhu
+                                                                                                                 PIC: Tim Laboratorium Beton
+                                   harus dijaga 25-...
+                                                                                                                    Bukti terlampir
+
+                                                                                                                 Menyediakan ruangan penyimpanan sampel
+
+                                                                                                                 yang tertutup agar suhu bisa lebih terkontrol
+                                                                                                                 mengguna...
+
+                                                                                                                 PIC: Tim Laboratorium Beton
+
+                                                                                                                    Bukti terlampir
+    SopinsyaEducenter                                                                                                            Dashboard  Daftar Temuan  Cetak Hasil            Tambah Temuan                           Tony Stark TS          Keluar
+                                                                                                                                                                                                                         Lead Auditor
+    Audit
+
+Daftar Temuan
+
+Cari, filter, dan kelola seluruh temuan ketidaksesuaian beserta akar masalah, koreksi, tindakan korektif, dan hasil verifikasi.
+
+    Cari uraian, klausul, PIC...                            Semua Kategori                Semua Status                                                                            Reset Data Default                     Tambah Temuan
+
+NO  ACUAN KLAUSUL            URAIAN KETIDAKSESUAIAN (PLOR)              AUDITOR & AUDITI                  KAT  AKAR MASALAH                 PERBAIKAN / KOREKSI                   TINDAKAN KOREKTIF                      VERIFIKASI              AKSI
+                                                                                                        Obs O
+1   SNI ISO/IEC              Disarankan untuk menyediakan               Auditor: -
+                             - Tidak dipersyaratkan -     - Cukup Tindakan Peningkatan -       Menyediakan Ruangan                                Closed
+                             ruangan dan petugas untuk menerima         Auditi: -                       Kat 2                                                                     Sekretariat Layanan
+    17025:2017- 4.1.1        layanan pengujian laboratorium secara                                                                                                                Laboratorium secara terpadu               Efektif. Ruangan
+                             terpadu, sehingga bisa menjaga                                             Kat 2                                                                                                              telah tersedia dan
+                             ketidakberpihakan Laboratorium.                                                                                                                      Pelaksana: Tim Mutu
+                                                                                                        Kat 2                                                                     Target: April 2024                           beroperasi.
+
+                                                                                                                                                                                        Bukti Peningkatan:
+                                                                                                                                                                                        SK_Ruang_Layanan_Terpadu
+                                                                                                                                                                                        _2024.pdf
+
+2   SNI ISO/IEC              Laboratorium Beton belum                   Auditor: -
+                            Belum memahami SOP           Menentukan persyaratan                Sosialisasi SOP Pengelolaan                       Closed
+                             menentukan persyaratan kondisi             Auditi: -                              Pengelolaan Fasilitas        fasilitas dan kondisi lingkungan      Fasilitas dan Kondisi
+    17025:2017- 6.3.2        lingkungan di masing-masing                                                       dan Kondisi Lingkungan       menggunakan formulir F.03-01          Lingkungan Laboratorium No             Efektif. Formulir dan
+                             laboratoriumnya dan belum                                                         Laboratorium No SOP.03       dan menyediakan peralatan             SOP.03 ke seluruh personil               termometer telah
+                             menyediakan peralatan dan formulir                                                                             pemantauannya (termometer).           laboratorium.
+                             pemantauannya.                                                                                                                                                                              tersedia & sosialisasi
+                                                                                                                                            Pelaksana: Tim Laboratorium Beton     Pelaksana: Tim Mutu                          terlaksana.
+                                                                                                                                            Target: Januari 2024                  Target: Januari 2024
+
+                                                                                                                                                  Bukti Koreksi:                        Bukti Tindakan:
+                                                                                                                                                  Foto_Termometer_Form_F.03-01.         Daftar_Hadir_Sosialisasi_SOP.03
+                                                                                                                                                  jpg                                   .pdf
+
+3   SNI ISO/IEC              Pada saat observasi laboratorium           Auditor: -
+                            Belum ditentukannya          Menyediakan ruangan                   Menentukan jenis pengujian dan                    Closed
+                                                                        Auditi: -                              lokasi pengujian             pengujian yang tertutup agar          lokasi pengujiannya sesuai
+    17025:2017- 6.3.3        didapatkan suhu ruangan                                                           sehingga seluruh             suhu bisa lebih terkontrol            persyaratan lingkungan yang              Efektif. AC telah
+                                                                                                               pengujian dilakukan di       menggunakan AC.                       telah ditentukan di SNI.               terpasang dan suhu
+                             laboratorium Beton yang cukup panas,                                              ruangan terbuka.
+                                                                                                                                            Pelaksana: Tim Laboratorium Beton     Pelaksana: Tim Laboratorium Beton        terpantau stabil.
+                             hal ini bisa berpengaruh pada saat                                                                             Target: April 2024                    Target: Januari 2024
+
+                             pengujian yang membutuhkan kontrol                                                                                   Bukti Koreksi:                        Bukti Tindakan:
+                                                                                                                                                  Foto_Ruang_Pengujian_AC_Beto          Penetapan_Zonasi_Pengujian_S
+                             suhu.                                                                                                                n.jpg                                 NI.pdf
+
+4   SNI ISO/IEC              Pada saat observasi ditemukan              Auditor: -
+                            Belum tersedianya            Mengkalibrasi peralatan ke            Menyediakan program dan                          Closed
+                                                                        Auditi: -                              program dan anggaran         laboratorium kalibrasi                anggaran kalibrasi peralatan
+    17025:2017- 6.4.6        peralatan yang belum terkalibrasi,                                                kalibrasi berkala untuk      terakreditasi KAN.                    secara terstruktur tahunan.             Efektif. Sertifikat
+                                                                                                               seluruh alat ukur.                                                                                           kalibrasi KAN
+                             antara lain: compressive test, sieve                                                                           Pelaksana: Tim Laboratorium Beton     Pelaksana: Tim Administrasi
+                                                                                                                                            Target: April 2024                    Target: Januari 2024                   lengkap dan stiker
+                             shaker, dan hammer test, Saringan                                                                                                                                                           kalibrasi terpasang.
+                                                                                                                                                  Bukti Koreksi:                        Bukti Tindakan:
+                             (analisa saringan), air entrainmeter (uji                                                                            Sertifikat_Kalibrasi_KAN_2024.        Rencana_Anggaran_Kalibrasi_Ta
+                                                                                                                                                  pdf                                   hunan.xlsx
+                             rongga udara), set alat berat jenis (ex:
+
+                             piknometer glass) uji berat jenis
+
+                             agregat halus, alat los angeles, dan
+
+                             set slump test.
+
+Menampilkan 5 dari 5 temuan                                                                                                                                                                                             Temuan no. 5 berhasil dihapus
+
+                                                                                                                                                                                  Metode Penulisan: Problem, Location, Objective evidence, Reference (PLOR)
+    SopinsyaEducenter                                                                                                            Dashboard            Daftar Temuan  Cetak Hasil            Tambah Temuan                          Tony Stark TS          Keluar
+                                                                                                                                                                                                                                  Lead Auditor
+    Audit
+
+Daftar Temuan
+
+Cari, filter, dan kelola seluruh temuan ketidaksesuaian beserta akar masalah, koreksi, tindakan korektif, dan hasil verifikasi.
+
+    Cari uraian, klausul, PIC...                            Semua Kategori           Semua Status                                                                                           Reset Data Default                    Tambah Temuan
+
+NO  ACUAN KLAUSUL            URAIAN KETIDAKSESUAIAN (PLOR)              BukAtiU:DSITKOR_R& AuUaDnITgI _Layanan_TerpaKdATu_202A4K.ApRdMfASALAH         PERBAIKAN / KOREKSI                   TINDAKAN KOREKTIF                     VERIFIKASI              AKSI
+                                                                                                                                                                                                                                              Closed
+                                                                        Temuan No. 4 (SNI ISO/IEC 17025:2017- 4.1.1) � Kategori 0                      - Cukup Tindakan Peningkatan -           TINDAKAN PENINGKATAN
+                                                                                                                                                                                                                                     Efektif. Ruangan
+1   SNI ISO/IEC              Disarankan untuk menyediakan               Auditor: -
+                Obs O  - Tidak dipersyaratkan -                                                            Menyediakan Ruangan                   telah tersedia dan
+                             ruangan dan petugas untuk menerima         Auditi: -
+    17025:2017- 4.1.1        layanan pengujian laboratorium secara                                                                                                                             Sekretariat Layanan                      beroperasi.
+                             terpadu, sehingga bisa menjaga
+                             ketidakberpihakan Laboratorium.                                                                                                                                  Laboratorium secara                             Closed
+                                                                                                                                                                                              terpadu
+                                                                                        SK_Ruang_Layanan_Terpadu_2024.pdf                                                                                                         Efektif. Formulir dan
+                                                                                                                                                                                              Pelaksana: Tim Mutu                   termometer telah
+                                                                                     Surat Keputusan dan Denah Ruang Sekretariat Terpadu                                                      Target: April 2024                  tersedia & sosialisasi
+
+                                                                                                                                                                                                     Bukti Peningkatan:                 terlaksana.
+                                                                                                                                                                                                     SK_Ruang_Layanan_Terpadu
+                                                                                                                                                                                                     _2024.pdf
+
+2   SNI ISO/IEC              Laboratorium Beton belum                   Auditor: -
+                Kat 2  TervaBleidluamsi omleehmTahimamAiuSdOitPor  Menentukan persyaratan                Sosialisasi SOP Pengelolaan
+                             menentukan persyaratan kondisi             Auditi: -                              Pengelolaan Fasilitas
+    17025:2017- 6.3.2        lingkungan di masing-masing                                                       dan Kondisi Lingkungan                 fasilitas dan kondisi lingkungan      Fasilitas dan Kondisi
+                             laboratoriumnya dan belum                                                         Laboratorium No SOP.03                                                       Lingkungan Laboratorium No
+                             menyediakan peralatan dan formulir                                                                                       menggunakan formulir F.03-01          SOP.03 ke seluruh personil
+                             pemantauannya.                        245 KB � Surat Keputusan dan Denah Ruang Sekretariat Terpadu                                                             laboratorium.
+                                                                                                                                                      dan menyediakan peralatan
+                                                                                                                                                                                            Pelaksana: Tim Mutu
+                                                                                                                                                      pemantauannya (termometer).
+                                                                                                                                                                                            Target: Januari 2024
+                                                                                                                                                      Pelaksana: Tim Laboratorium Beton
+                                                                                                                                                                                                  Bukti Tindakan:
+                                                                                                                                                      Target: Januari 2024 Tutup Pratinjau
+                                                                                                                                                                                                 Daftar_Hadir_Sosialisasi_SOP.03
+                                                                                                                                                            Bukti Koreksi:
+                                                                                                                                                                                                  .pdf
+                                                                                                                                                           Foto_Termometer_Form_F.03-01.
+                                                                                                                                                           jpg
+
+3   SNI ISO/IEC              Pada saat observasi laboratorium           Auditor: -
+                Kat 2  Belum ditentukannya                         Menyediakan ruangan                   Menentukan jenis pengujian dan                   Closed
+                                                                        Auditi: -                                                                     pengujian yang tertutup agar          lokasi pengujiannya sesuai
+    17025:2017- 6.3.3        didapatkan suhu ruangan                                                      lokasi pengujian                            suhu bisa lebih terkontrol                                                    Efektif. AC telah
+                                                                                                          sehingga seluruh                                                                  persyaratan lingkungan yang           terpasang dan suhu
+                             laboratorium Beton yang cukup panas,                                         pengujian dilakukan di                      menggunakan AC.
+                                                                                                          ruangan terbuka.                                                                  telah ditentukan di SNI.                terpantau stabil.
+                             hal ini bisa berpengaruh pada saat                                                                                       Pelaksana: Tim Laboratorium Beton
+                                                                                                                                                      Target: April 2024                    Pelaksana: Tim Laboratorium Beton
+                             pengujian yang membutuhkan kontrol
+                                                                                                                                                            Bukti Koreksi:                  Target: Januari 2024
+                             suhu.
+                                                                                                                                                           Foto_Ruang_Pengujian_AC_Beto           Bukti Tindakan:
+                                                                                                                                                           n.jpg
+                                                                                                                                                                                                 Penetapan_Zonasi_Pengujian_S
+
+                                                                                                                                                                                                  NI.pdf
+
+4   SNI ISO/IEC              Pada saat observasi ditemukan              Auditor: -
+                Kat 2  Belum tersedianya                           Mengkalibrasi peralatan ke            Menyediakan program dan                         Closed
+                                                                        Auditi: -                         program dan anggaran                        laboratorium kalibrasi                anggaran kalibrasi peralatan
+    17025:2017- 6.4.6        peralatan yang belum terkalibrasi,                                                                                                                             secara terstruktur tahunan.            Efektif. Sertifikat
+                                                                                                          kalibrasi berkala untuk                     terakreditasi KAN.                                                             kalibrasi KAN
+                             antara lain: compressive test, sieve                                                                                                                           Pelaksana: Tim Administrasi
+                                                                                                          seluruh alat ukur.                          Pelaksana: Tim Laboratorium Beton                                           lengkap dan stiker
+                             shaker, dan hammer test, Saringan                                                                                        Target: April 2024                    Target: Januari 2024                  kalibrasi terpasang.
+
+                             (analisa saringan), air entrainmeter (uji                                                                                      Bukti Koreksi:                        Bukti Tindakan:
+
+                             rongga udara), set alat berat jenis (ex:                                                                                      Sertifikat_Kalibrasi_KAN_2024.        Rencana_Anggaran_Kalibrasi_Ta
+                                                                                                                                                                                                 hunan.xlsx
+                             piknometer glass) uji berat jenis                                                                                              pdf
+
+                             agregat halus, alat los angeles, dan
+
+                             set slump test.
+
+5   SNI ISO/IEC              Belum ditemukannya ruangan                 Auditor: -
+                Kat 2  Belum ditentukannya                         Menyediakan ruangan                   Menentukan jenis sampel dan                     Closed
+                                                                        Auditi: -                         lokasi penyimpanan
+    17025:2017- 7.4.1        penyimpanan sampel dan atau sisa                                             sampel sehingga seluruh                     penyimpanan sampel yang               lokasi simpannya sesuai                  Efektif. Ruang
+                                                                                                          sampel disimpan di                                                                persyaratan lingkungan yang
+                             sampel sesuai persyaratan (misal:                                                                                        tertutup agar suhu bisa lebih                                                 simpan sampel
+                                                                                                          ruangan terbuka.                                                                  telah ditentukan di SNI.
+                             suhu harus dijaga 25-30 캜) di                                                                                           terkontrol menggunakan AC.                                                  berpendingin telah
+                                                                                                                                                                                            Pelaksana: Tim Laboratorium Beton         difungsikan.
+                             Laboratorium Beton.                                                                                                      Pelaksana: Tim Laboratorium Beton
+                                                                                                                                                      Target: April 2024                    Target: Januari 2024
+
+                                                                                                                                                            Bukti Koreksi:                        Bukti Tindakan:
+                                                                                                                                                                                                  SOP_Penyimpanan_Penanganan
+                                                                                                                                                           Foto_Ruang_Simpan_Sampel_Be            _Sampel.pdf
+                                                                                                                                                           ton.jpg
+
+Menampilkan 5 dari 5 temuan                                                                                                                                                                 Metode Penulisan: Problem, Location, Objective evidence, Reference (PLOR)
+    SopinsyaEducenter                                                                                                                          Dashboard                    Daftar Temuan          Cetak Hasil  Tambah Temuan                       Tony Stark TS             Keluar
+                                                                                                                                                                                                                                                   Lead Auditor
+    Audit
+
+                                                        Tambah Temuan Ketidaksesuaian Baru
+
+                                                        Formulir Standar
+
+Daftar Temuan                                           Acuan Klausul SNI ISO/IEC 17025:2017 *                                                                              Kategori Temuan *
+                                                                                                                                                                               2 - Kategori Minor
+Cari, filter, dan kelola seluruh temuan ketidaksesuaian beserta akar masalah, koreksi, tindakan korektif, dan hasil verifikasi.
+
+                                                             SNI ISO/IEC 17025:2017- 6.3.2
+
+    Cari uraian, klausul, PIC...                        NSaemmauAauKdaittoergo*ri                 Semua Status                          Nama Auditi *                                                                                  Reset Data Default          Tambah Temuan
+                                                                                                                                           Contoh: Iqbal Zega
+                                                             Contoh: Martsya Adillah, Astari Cipta
+
+                                                        Tanggal Dilaporkan *                                    KAT                     Tanggal Ditindaklanjuti *
+NO  ACUAN KLAUSUL            URAIAN KETIDAKSESUAIAN (PLOR)               AUDITOR & AUDITI                                               AKAR MASALAH                        PERBAIKAN / KOREKSI                 TINDAKAN KOREKTIF                  VERIFIKASI                 AKSI
+
+                                                             29/10/2026                                                                        dd/mm/yy                                                                                                        Closed
+
+1   SNI ISO/IEC              Disarankan untuk menyediakan                Auditor: -
+                            Obs O                   - Tidak dipersyaratkan -            - Cukup Tindakan Peningkatan -      TINDAKAN PENINGKATAN                  Efektif. Ruangan
+                                                                                                                                                                                                                                                     telah tersedia dan
+    17025:2017- 4.1.1        ruangan dan petugas untuk menerima          Auditi: -                                                                                          Problem � Location � Objective evidence � Reference
+                                                                                                                                                                                                                           Menyediakan Ruangan           beroperasi.
+                                                        Uraian Ketidaksesuaian (Metode PLOR)
+                             layanan pengujian laboratorium secara
+                                                                                                                                                                                                                Sekretariat Layanan
+                             terpadu, sehingga bisa menjagaContoh: Pada saat observasi laboratorium beton ditemukan suhu ruangan cukup panas (33캜)...
+                             ketidakberpihakan Laboratorium.                                                                                                                                                    Laboratorium secara
+
+                                                                                                                                                                                                                terpadu
+
+                                                                                                                                                                                                                Pelaksana: Tim Mutu
+                                                                                                                                                                                                                Target: April 2024
+
+                                                        Akar Penyebab Ketidaksesuaian (Root Cause)                                                                                                              Bukti Peningkatan:
+                                                                                                                                                                                                                SK_Ruang_Layanan_Terpadu
+                                                          Contoh: Belum memahami SOP Pengelolaan Fasilitas dan Kondisi Lingkungan No SOP.03...                                                                  _2024.pdf
+
+2   SNI ISO/IEC              Laboratorium Beton belum                    Auditor: -
+                            Kat 2                   Belum memahami SOP                  Menentukan persyaratan              Sosialisasi SOP Pengelolaan                   Closed
+                             menentukan persyaratan kondisi              Auditi: -                                                      Pengelolaan Fasilitas
+    17025:2017- 6.3.2                                                                                                                                                       fasilitas dan kondisi lingkungan    Fasilitas dan Kondisi              Efektif. Formulir dan
+                                                                                                                                                                                                                                                    termometer telah
+                             lingkungan di masing-masing        PERBAIKAN / KOREKSI (TINDAKAN LANGSUNG)                                 dan Kondisi Lingkungan              menggunakan formulir F.03-01        Lingkungan Laboratorium No         tersedia & sosialisasi
+                                                                                                                                        Laboratorium No SOP.03                                                  SOP.03 ke seluruh personil
+                             laboratoriumnya dan belum                                                                                                                      dan menyediakan peralatan           laboratorium.                            terlaksana.
+
+                             menyediakan peralatan dan formulUirraian tindakan koreksi yang dilakukan langsung...                                                           pemantauannya (termometer).
+
+                             pemantauannya.                                                                                                                                 Pelaksana: Tim Laboratorium Beton   Pelaksana: Tim Mutu
+
+                                                                                                                                                                            Target: Januari 2024                Target: Januari 2024
+
+                                                             Pelaksana Koreksi (PIC)                                                           Target Selesai               Bukti Koreksi:                      Bukti Tindakan:
+
+                                                                Contoh: Tim Laboratorium Beton                                                   Contoh: Januari 2024       Foto_Termometer_Form_F.03-01.       Daftar_Hadir_Sosialisasi_SOP.03
+                                                                                                                                                                            jpg
+                                                                                                                                                                                                                .pdf
+
+3   SNI ISO/IEC              Pada saat observasi laboratorium            Auditor: -
+                            Kat 2                   Belum ditentukannya                 Menyediakan ruangan                 Menentukan jenis pengujian dan             Closed
+
+    17025:2017- 6.3.3        didapatkan suhu ruangan         Lampiran Bukti Perbaikan / Koreksi (Foto / Dokumen)                        lokasi pengujian                    pengujian yang tertutup agar        lokasi pengujiannya sesuai
+
+                                                                           Auditi: -                                                                                                                                                                       Efektif. AC telah
+
+                             laboratorium Beton yang cukup panas,  Pilih Bukti Koreksi                                                  sehingga seluruh                    suhu bisa lebih terkontrol          persyaratan lingkungan yang        terpasang dan suhu
+                                                                                                  Foto_Termometer_Form_F.03-01.jpg
+                             hal ini bisa berpengaruh pada saat                                                                         pengujian dilakukan di              menggunakan AC.                     telah ditentukan di SNI.                   terpantau stabil.
+
+                             pengujian yang membutuhkan kontrol                                                                         ruangan terbuka.                    Pelaksana: Tim Laboratorium Beton   Pelaksana: Tim Laboratorium Beton
+
+                             suhu.                                                                                                                                          Target: April 2024                  Target: Januari 2024
+
+                                                                TINDAKAN PERBAIKAN / KOREKTIF (PENCEGAHAN BERULANG)                                                         Bukti Koreksi:                      Bukti Tindakan:
+                                                                Tindakan sistemik untuk mengeliminasi akar penyebab masalah...
+                                                                                                                                                                            Foto_Ruang_Pengujian_AC_Beto        Penetapan_Zonasi_Pengujian_S
+                                                                                                                                                                            n.jpg
+                                                                                                                                                                                                                NI.pdf
+
+4   SNI ISO/IEC              Pada saat observasi ditemukan               Auditor: -
+                            Kat 2                   Belum tersedianya                   Mengkalibrasi peralatan ke          Menyediakan program dan                      Closed
+                                                                                                                                                                                                                anggaran kalibrasi peralatan
+    17025:2017- 6.4.6        peralatan yang belum terkalibraPsie, laksana TAinuddaitki:a-n (PIC)                                        program TdaarngeatngSgealersaani    laboratorium kalibrasi              secara terstruktur tahunan.         Efektif. Sertifikat
+                                                                                                                                                                                                                                                      kalibrasi KAN
+                             antara lain: compressive test, sieve                                                                       kalibrasi berkala untuk             terakreditasi KAN.                  Pelaksana: Tim Administrasi
+                                                                                                                                                                                                                                                   lengkap dan stiker
+                             shaker, dan hammer test, SaringanContoh: Tim Mutu / Tim Administrasi                                       seluruh alatCuoknutro.h: April 2024Pelaksana: Tim Laboratorium Beton    Target: Januari 2024               kalibrasi terpasang.
+
+                             (analisa saringan), air entrainmeter (uji                                                                                                      Target: April 2024
+
+                             rongga udara), set alat berat jenis (ex:                                                                                                       Bukti Koreksi:                      Bukti Tindakan:
+
+                                                                         Lampiran Bukti Tindakan Korektif (SOP / Sertifikat / Rekaman)                                      Sertifikat_Kalibrasi_KAN_2024.      Rencana_Anggaran_Kalibrasi_Ta
+                                                                                                                                                                                                                hunan.xlsx
+                             piknometer glass) uji berat jenis                                                                                                              pdf
+
+                             agregat halus, alat los angeles, dan  Pilih Bukti Tindakan           Daftar_Hadir_Sosialisasi_SOP.03.pdf
+                             set slump test.
+
+5                                                       Status Verifikasi Tindakan                                                      Belum  ditCeanttautkaannAnyuaditor  Verifikator                         Menentukan jenis sampel dan
+    SNI ISO/IEC              Belum ditemukannya ruangan                  Auditor: -
+                            Kat 2                                                                        ruangan                                                         Closed
+                                                                                                                                                                                Menyediakan
+                                                                                                                                                                                                                                                      Efektif. Ruang
+    17025:2017- 7.4.1        penyimpanan sampel dan atau sisa            Auditi: -                                                      lokasi penyimpanan                  penyimpanan sampel yang             lokasi simpannya sesuai
+                                                                                                                                                                                                                                                     simpan sampel
+                                                             Closed (Efektif / Selesai)                                                        Contoh: Telah diverifikasi dan bukti pemenuhan memadai
+                             sampel sesuai persyaratan (misal:                                                                          sampel sehingga seluruh tertutup agar suhu bisa lebih                   persyaratan lingkungan yang        berpendingin telah
+                                                                                                                                                                                                                                                       difungsikan.
+                             suhu harus dijaga 25-30 캜) di                                                                             sampel disimpan di                  terkontrol menggunakan AC.          telah ditentukan di SNI.
+
+                             Laboratorium Beton.                                                                                        ruangan terbuka.                    Pelaksana: Tim Laboratorium Beton   Pelaksana: Tim Laboratorium Beton
+
+                                                                                                                                                                            Target: April 2024                  Target: Januari 2024
+
+                                                                                                                                                                            BuktiBKaorteaklsi:      Simpan Data TemuaBnukti Tindakan:
+                                                                                                                                                                            Foto_Ruang_Simpan_Sampel_Be         SOP_Penyimpanan_Penanganan
+                                                                                                                                                                            ton.jpg
+                                                                                                                                                                                                                _Sampel.pdf
+
+Menampilkan 5 dari 5 temuan                                                                                                                                                                                     Metode Penulisan: Problem, Location, Objective evidence, Reference (PLOR)
+    SopinsyaEducenter                                                                                                                          Dashboard                    Daftar Temuan        Cetak Hasil       Tambah Temuan                       Tony Stark TS            Keluar
+                                                                                                                                                                                                                                                      Lead Auditor
+    Audit
+
+                                                        Tambah Temuan Ketidaksesuaian Baru
+
+                                                        Formulir Standar
+
+Daftar Temuan                                           Acuan Klausul SNI ISO/IEC 17025:2017 *                                                                              Kategori Temuan *
+
+Cari, filter, dan kelola seluruh temuan ketidaksesuaian beserta akar masalah, koreksi, tindakan korektif, dan hasil verifikasi.                                                2 - Kategori Minor
+
+                                                             SNI ISO/IEC 17025:2017- 6.3.2                                                                                    2 - Kategori Minor
+                                                                                                                                                                              1 - Kategori Mayor
+    Cari uraian, klausul, PIC...                        NSaemmauAauKdaittoergo*ri                 Semua Status                          Nama Auditi *                         0 - Observasi (Peluang Peningkatan)                        Reset Data Default          Tambah Temuan
+                                                                                                                                           Contoh: Iqbal Zega
+                                                             Contoh: Martsya Adillah, Astari Cipta
+
+                                                        Tanggal Dilaporkan *                                                            Tanggal Ditindaklanjuti *
+NO  ACUAN KLAUSUL            URAIAN KETIDAKSESUAIAN (PLOR)               AUDITOR & AUDITI                       KAT                     AKAR MASALAH                        PERBAIKAN / KOREKSI                    TINDAKAN KOREKTIF                  VERIFIKASI                AKSI
+
+                                                             29/10/2026                                                                        dd/mm/yy                                                                                                           Closed
+
+1   SNI ISO/IEC              Disarankan untuk menyediakan                Auditor: -
+                            Obs O                   - Tidak dipersyaratkan -            - Cukup Tindakan Peningkatan -         TINDAKAN PENINGKATAN                  Efektif. Ruangan
+                                                                                                                                                                                                                                                        telah tersedia dan
+    17025:2017- 4.1.1        ruangan dan petugas untuk menerima          Auditi: -                                                                                          Problem � Location � Objective evidence � Reference
+                                                                                                                                                                                                                           Menyediakan Ruangan              beroperasi.
+                                                        Uraian Ketidaksesuaian (Metode PLOR)
+                             layanan pengujian laboratorium secara
+                                                                                                                                                                                                                   Sekretariat Layanan
+                             terpadu, sehingga bisa menjagaContoh: Pada saat observasi laboratorium beton ditemukan suhu ruangan cukup panas (33캜)...
+                             ketidakberpihakan Laboratorium.                                                                                                                                                       Laboratorium secara
+
+                                                                                                                                                                                                                   terpadu
+
+                                                                                                                                                                                                                   Pelaksana: Tim Mutu
+                                                                                                                                                                                                                   Target: April 2024
+
+                                                        Akar Penyebab Ketidaksesuaian (Root Cause)                                                                                                                 Bukti Peningkatan:
+                                                                                                                                                                                                                   SK_Ruang_Layanan_Terpadu
+                                                          Contoh: Belum memahami SOP Pengelolaan Fasilitas dan Kondisi Lingkungan No SOP.03...                                                                     _2024.pdf
+
+2   SNI ISO/IEC              Laboratorium Beton belum                    Auditor: -
+                            Kat 2                   Belum memahami SOP                  Menentukan persyaratan                 Sosialisasi SOP Pengelolaan                   Closed
+                             menentukan persyaratan kondisi              Auditi: -                                                      Pengelolaan Fasilitas
+    17025:2017- 6.3.2                                                                                                                                                       fasilitas dan kondisi lingkungan       Fasilitas dan Kondisi              Efektif. Formulir dan
+                                                                                                                                                                                                                                                       termometer telah
+                             lingkungan di masing-masing        PERBAIKAN / KOREKSI (TINDAKAN LANGSUNG)                                 dan Kondisi Lingkungan              menggunakan formulir F.03-01           Lingkungan Laboratorium No         tersedia & sosialisasi
+                                                                                                                                        Laboratorium No SOP.03                                                     SOP.03 ke seluruh personil
+                             laboratoriumnya dan belum                                                                                                                      dan menyediakan peralatan              laboratorium.                            terlaksana.
+
+                             menyediakan peralatan dan formulUirraian tindakan koreksi yang dilakukan langsung...                                                           pemantauannya (termometer).
+
+                             pemantauannya.                                                                                                                                 Pelaksana: Tim Laboratorium Beton      Pelaksana: Tim Mutu
+
+                                                                                                                                                                            Target: Januari 2024                   Target: Januari 2024
+
+                                                             Pelaksana Koreksi (PIC)                                                           Target Selesai               Bukti Koreksi:                         Bukti Tindakan:
+
+                                                                Contoh: Tim Laboratorium Beton                                                   Contoh: Januari 2024       Foto_Termometer_Form_F.03-01.          Daftar_Hadir_Sosialisasi_SOP.03
+                                                                                                                                                                            jpg
+                                                                                                                                                                                                                   .pdf
+
+3   SNI ISO/IEC              Pada saat observasi laboratorium            Auditor: -
+                            Kat 2                   Belum ditentukannya                 Menyediakan ruangan                    Menentukan jenis pengujian dan            Closed
+
+    17025:2017- 6.3.3        didapatkan suhu ruangan         Lampiran Bukti Perbaikan / Koreksi (Foto / Dokumen)                        lokasi pengujian                    pengujian yang tertutup agar           lokasi pengujiannya sesuai
+
+                                                                           Auditi: -                                                                                                                                                                         Efektif. AC telah
+
+                             laboratorium Beton yang cukup panas,  Pilih Bukti Koreksi                                                  sehingga seluruh                    suhu bisa lebih terkontrol             persyaratan lingkungan yang        terpasang dan suhu
+                                                                                                  Foto_Termometer_Form_F.03-01.jpg
+                             hal ini bisa berpengaruh pada saat                                                                         pengujian dilakukan di              menggunakan AC.                        telah ditentukan di SNI.                  terpantau stabil.
+
+                             pengujian yang membutuhkan kontrol                                                                         ruangan terbuka.                    Pelaksana: Tim Laboratorium Beton      Pelaksana: Tim Laboratorium Beton
+
+                             suhu.                                                                                                                                          Target: April 2024                     Target: Januari 2024
+
+                                                                TINDAKAN PERBAIKAN / KOREKTIF (PENCEGAHAN BERULANG)                                                         Bukti Koreksi:                         Bukti Tindakan:
+                                                                Tindakan sistemik untuk mengeliminasi akar penyebab masalah...
+                                                                                                                                                                            Foto_Ruang_Pengujian_AC_Beto           Penetapan_Zonasi_Pengujian_S
+                                                                                                                                                                            n.jpg
+                                                                                                                                                                                                                   NI.pdf
+
+4   SNI ISO/IEC              Pada saat observasi ditemukan               Auditor: -
+                            Kat 2                   Belum tersedianya                   Mengkalibrasi peralatan ke             Menyediakan program dan                      Closed
+                                                                                                                                                                                                                   anggaran kalibrasi peralatan
+    17025:2017- 6.4.6        peralatan yang belum terkalibraPsie, laksana TAinuddaitki:a-n (PIC)                                        program TdaarngeatngSgealersaani    laboratorium kalibrasi                 secara terstruktur tahunan.         Efektif. Sertifikat
+                                                                                                                                                                                                                                                         kalibrasi KAN
+                             antara lain: compressive test, sieve                                                                       kalibrasi berkala untuk             terakreditasi KAN.                     Pelaksana: Tim Administrasi
+                                                                                                                                                                                                                                                      lengkap dan stiker
+                             shaker, dan hammer test, SaringanContoh: Tim Mutu / Tim Administrasi                                       seluruh alatCuoknutro.h: April 2024Pelaksana: Tim Laboratorium Beton       Target: Januari 2024               kalibrasi terpasang.
+
+                             (analisa saringan), air entrainmeter (uji                                                                                                      Target: April 2024
+
+                             rongga udara), set alat berat jenis (ex:                                                                                                       Bukti Koreksi:                         Bukti Tindakan:
+
+                                                                         Lampiran Bukti Tindakan Korektif (SOP / Sertifikat / Rekaman)                                      Sertifikat_Kalibrasi_KAN_2024.         Rencana_Anggaran_Kalibrasi_Ta
+                                                                                                                                                                                                                   hunan.xlsx
+                             piknometer glass) uji berat jenis                                                                                                              pdf
+
+                             agregat halus, alat los angeles, dan  Pilih Bukti Tindakan           Daftar_Hadir_Sosialisasi_SOP.03.pdf
+                             set slump test.
+
+5                                                       Status Verifikasi Tindakan                                                      Belum  ditCeanttautkaannAnyuaditor  Verifikator                            Menentukan jenis sampel dan
+    SNI ISO/IEC              Belum ditemukannya ruangan                  Auditor: -
+                            Kat 2                                                                        ruangan                                                            Closed
+                                                                                                                                                                                Menyediakan
+                                                                                                                                                                                                                                                         Efektif. Ruang
+    17025:2017- 7.4.1        penyimpanan sampel dan atau sisa            Auditi: -                                                      lokasi penyimpanan                  penyimpanan sampel yang                lokasi simpannya sesuai
+                                                                                                                                                                                                                                                        simpan sampel
+                                                             Closed (Efektif / Selesai)                                                        Contoh: Telah diverifikasi dan bukti pemenuhan memadai
+                             sampel sesuai persyaratan (misal:                                                                          sampel sehingga seluruh tertutup agar suhu bisa lebih                      persyaratan lingkungan yang        berpendingin telah
+                                                                                                                                                                                                                                                          difungsikan.
+                             suhu harus dijaga 25-30 캜) di                                                                             sampel disimpan di                  terkontrol menggunakan AC.             telah ditentukan di SNI.
+
+                             Laboratorium Beton.                                                                                        ruangan terbuka.                    Pelaksana: Tim Laboratorium Beton      Pelaksana: Tim Laboratorium Beton
+
+                                                                                                                                                                            Target: April 2024                     Target: Januari 2024
+
+                                                                                                                                                                            BuktiBKaorteaklsi:      Simpan Data TemuaBnukti Tindakan:
+                                                                                                                                                                            Foto_Ruang_Simpan_Sampel_Be            SOP_Penyimpanan_Penanganan
+                                                                                                                                                                            ton.jpg
+                                                                                                                                                                                                                   _Sampel.pdf
+
+Menampilkan 5 dari 5 temuan                                                                                                                                                                                        Metode Penulisan: Problem, Location, Objective evidence, Reference (PLOR)
+    SopinsyaEducenter                                                                                                             Dashboard                      Daftar Temuan     Cetak Hasil                                Tambah Temuan                          Tony Stark TS          Keluar
+                                                                                                                                                                                                                                                                    Lead Auditor
+    Audit
+
+Daftar Temuan
+
+Cari, filter, dan kelola seluruh temuan ketidaksesuaian beserta akar masalah, koreksi, tindakan korektif, dan hasil verifikasi.
+
+    Cari uraian, klausul, PIC...              TambaShem TeuamKuaatengoKrietidaksesuaSiaenmuBaaSrtuatus                                                                                                                                           Reset Data Default  Tambah Temuan
+
+                                              Formulir Standar
+
+NO  ACUAN KLAUSUL            URAIAN KETIDAKSESUAIAANc(uPLaOnRK) lausul SNI ISOA/UIEDCITO1R70&2A5U:D2I0TI17 *    KAT  AKAR MASALAH             Kategori TPeEmRuBAaInKA*N / KOREKSI                                             TINDAKAN KOREKTIF                     VERIFIKASI              AKSI
+                                                                                                              Obs O                                                                                                                                                             Closed
+                                              SNI ISO/IEC 17025:2017- 6.3.2                                                                                      0 - Observasi (Peluang Peningkatan)
+                                                                                                                                                                                                                                                                       Efektif. Ruangan
+1   SNI ISO/IEC              Disarankan untuk menyediakan              Auditor: -
+                                   - Tidak dipersyaratkan -                    - Cukup Tindakan Peningkatan -                               TINDAKAN PENINGKATAN                    telah tersedia dan
+
+    17025:2017- 4.1.1        ruangan dan petugas untuk menerima        Auditi: -                                                                                                                                                                                          beroperasi.
+                                                       Nama Auditor *
+                                                                                                                     Nama Auditi *                                                                                            Menyediakan Ruangan                               Closed
+                             layanan pengujian laboratorium secara                                                      Contoh: Iqbal Zega
+                                                                                                                                                                                                                              Sekretariat Layanan                   Efektif. Formulir dan
+                             terpadu, sehingga bisa menjaga                                                                                                                                                                                                           termometer telah
+                                                           Contoh: Martsya Adillah, Astari Cipta                                                                                                                              Laboratorium secara                   tersedia & sosialisasi
+                                                                                                                                                                                                                              terpadu
+                             ketidakberpihakan Laboratorium.                                                                                                                                                                                                              terlaksana.
+
+                                              Tanggal Dilaporkan *                                                   Tanggal Ditindaklanjuti *                                                                                Pelaksana: Tim Mutu                               Closed
+                                                                                                                                                                                                                              Target: April 2024
+                                                                                                                                                                                                                                                                       Efektif. AC telah
+                                              29/10/2026                                                             dd/mm/yy                                                                                                 Bukti Peningkatan:                    terpasang dan suhu
+                                                                                                                                                                                                                              SK_Ruang_Layanan_Terpadu
+                                                                                                                                                                                                                              _2024.pdf                                terpantau stabil.
+
+                                              Uraian Ketidaksesuaian (Metode PLOR)                                                                               Problem � Location � Objective evidence � Reference                                                            Closed
+
+2   SNI ISO/IEC              Laboratorium Beton beluDmisarankan untuk mAeundyietodri:a-k
+ an ruangan dan petugas unKtautk2meneriBmealulmayamneamnapheanmgui SjiaOnPlaboratoMrieunmensteuckaaran tpeerrpsaydaura..t.an         Sosialisasi SOP Pengelolaan             Efektif. Sertifikat
+                                                                                                                                                                                                                                                                        kalibrasi KAN
+    17025:2017- 6.3.2        menentukan persyaratan kondisi            Auditi: -                                     Pengelolaan Fasilitas                       fasilitas dan kondisi lingkungan                             Fasilitas dan Kondisi
+                             lingkungan di masing-masing                                                             dan Kondisi Lingkungan                                                                                   Lingkungan Laboratorium No             lengkap dan stiker
+                             laboratoriumnya dan belum                                                               Laboratorium No SOP.03                      menggunakan formulir F.03-01                                 SOP.03 ke seluruh personil             kalibrasi terpasang.
+                             menyediakan peralatan dan formulir                                                                                                                                                               laboratorium.
+                                                                                                                                                                 dan menyediakan peralatan                                                                                      Closed
+                                                                                                                                                                                                                              Pelaksana: Tim Mutu
+                                                                                                                                                                 pemantauannya (termometer).                                                                            Efektif. Ruang
+                                                                                                                                                                                                                              Target: Januari 2024
+                             pemantauannya.           TINDAKAN PENINGKATAN (OPPORTUNITY FOR IMPROVEMENT)                                                         Pelaksana: Tim Laboratorium Beton                                                                     simpan sampel
+                                                                                                                                                                                                                                    Bukti Tindakan:
+                                                                                                                                                                 TOabrgseertv: aJsain: Tuaanrpi 2a 0A2k4ar Masalah & Koreksi                                         berpendingin telah
+                                                                                                                                                                                                                                   Daftar_Hadir_Sosialisasi_SOP.03       difungsikan.
+                                              Temuan observasi tidak memerlukan identifikasi akar penyebab dan tindakan korektif, melainkan cukup dirumuBsukkatni KToinredkaski:an Peningkatan untuk
+                                                                                                                                                                 Foto_Termometer_Form_F.03-01.                                      .pdf
+                                              optimalisasi sistem manajemen laboratorium.                                                                        jpg
+                                                                                                                                                                                                                              Menentukan jenis pengujian dan
+                                              Rencana Tindakan Peningkatan *                                                                                                                                                  lokasi pengujiannya sesuai
+
+3   SNI ISO/IEC              Pada saat observasi laboratMoerinuymediakan RuAaundgiatnorS: e-
+kretariat Layanan LaboratoKraiutm2 secaraBteelurpmadduitentukannya  Menyediakan ruangan                                          persyaratan lingkungan yang
+                                                                                                                                                                 pengujian yang tertutup agar
+    17025:2017- 6.3.3        didapatkan suhu ruangan                   Auditi: -                                     lokasi pengujian                            suhu bisa lebih terkontrol                                   telah ditentukan di SNI.
+
+                             laboratorium Beton yang cukup panas,                                                    sehingga seluruh                            menggunakan AC.                                              Pelaksana: Tim Laboratorium Beton
+
+                             hal ini bisa berpengaruh pada saat                                                      pengujian dilakukan di                      Pelaksana: Tim Laboratorium Beton                            Target: Januari 2024
+                             pengujian yang membutuPheklaankskaonnatrPoel ningkatan (PIC)                            ruangan terbuka.                            Target: April 2024
+                                                                                                                                                                                                                                    Bukti Tindakan:
+                                                                                                                      Target Selesai                                   Bukti Koreksi:
+                                                                                                                                                                                                                                   Penetapan_Zonasi_Pengujian_S
+                             suhu.                                                                                                                                    Foto_Ruang_Pengujian_AC_Beto
+                                                                                                                                                                      n.jpg                                                         NI.pdf
+                                                      Tim Mutu                                                                    April 2024
+                                                                                                                                                                                                                              Menyediakan program dan
+                                              Lampiran Bukti Tindakan Peningkatan                                                                                                                                             anggaran kalibrasi peralatan
+                                                                                                                                                                                                                              secara terstruktur tahunan.
+4   SNI ISO/IEC              Pada saat observasi ditemukan             Auditor: -
+                            Kat 2  Belum tersedianya                           Mengkalibrasi peralatan ke
+                                                          Pilih Bukti Peningkatan              SK_Ruang_Layanan_Terpadu_2024.pdf                                 laboratorium kalibrasi                                       Pelaksana: Tim Administrasi
+    17025:2017- 6.4.6        peralatan yang belum terkalibrasi,        Auditi: -                                     program dan anggaran
+                                                                                                                                                                 terakreditasi KAN.                                           Target: Januari 2024
+                             antara lain: compressive test, sieve                                                    kalibrasi berkala untuk
+                                                                                                                                                                 Pelaksana: Tim Laboratorium Beton                                  Bukti Tindakan:
+                             shaker, dan hammer test, Saringan                                                       seluruh alat ukur.                          Target: April 2024
+                                                                                                                                                                                                                                   Rencana_Anggaran_Kalibrasi_Ta
+                                                                   Status Verifikasi Tindakan                          Catatan Auditor Verifikator                                                                                 hunan.xlsx
+
+                             (analisa saringan), air entrainmeter (uji
+
+                             rongga udara), set alat bCerloast ejedn(isEf(eekxt:if / Selesai)                                     Efektif. Ruangan telah tersediaBduaktni Kboererkospi:erasi.
+                             piknometer glass) uji berat jenis
+                                                                                                                                                                           Sertifikat_Kalibrasi_KAN_2024.
+                             agregat halus, alat los angeles, dan
+                                                                                                                                                                                pdf
+
+                             set slump test.
+
+5                                                                                                                                                                Batal          Simpan Data Temuan
+                             Belum ditemukannya ruangan                Auditor: -
+                                   Belum ditentukannya                         Menyediakan ruangan                                          Menentukan jenis sampel dan
+    SNI ISO/IEC                                                        Auditi: -                              Kat 2  lokasi penyimpanan
+                             penyimpanan sampel dan atau sisa                                                        sampel sehingga seluruh                                                                                  lokasi simpannya sesuai
+    17025:2017- 7.4.1                                                                                                sampel disimpan di                          penyimpanan sampel yang                                      persyaratan lingkungan yang
+                             sampel sesuai persyaratan (misal:
+                                                                                                                     ruangan terbuka.                            tertutup agar suhu bisa lebih                                telah ditentukan di SNI.
+                             suhu harus dijaga 25-30 캜) di
+                                                                                                                                                                 terkontrol menggunakan AC.                                   Pelaksana: Tim Laboratorium Beton
+                             Laboratorium Beton.
+                                                                                                                                                                 Pelaksana: Tim Laboratorium Beton                            Target: Januari 2024
+                                                                                                                                                                 Target: April 2024
+
+                                                                                                                                                                 Bukti Koreksi:                                               Bukti Tindakan:
+                                                                                                                                                                                                                              SOP_Penyimpanan_Penanganan
+                                                                                                                                                                 Foto_Ruang_Simpan_Sampel_Be                                  _Sampel.pdf
+                                                                                                                                                                 ton.jpg
+
+Menampilkan 5 dari 5 temuan                                                                                                                                                                                                   Metode Penulisan: Problem, Location, Objective evidence, Reference (PLOR)
+

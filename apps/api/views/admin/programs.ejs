@@ -1,0 +1,60 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/internal-topbar', { user }) %>
+<div class="app">
+  <%- include('../partials/internal-sidebar', { user, active }) %>
+  <div class="app-main">
+    <main class="container">
+      <%- include('../partials/flash', { ok, err }) %>
+      <div class="pagehead">
+        <div>
+          <h1>Program &amp; Materi</h1>
+          <div class="sub">Kelola katalog program, materi pembelajaran, bank soal, dan status publikasi.</div>
+        </div>
+        <div class="actions"><a class="btn" href="/admin/program/baru">＋ Tambah Program</a></div>
+      </div>
+
+      <form class="toolbar" method="get" action="/admin/program">
+        <label class="field" style="flex:1;min-width:240px">
+          <span>Cari program</span>
+          <input type="search" name="q" value="<%= q %>" placeholder="Nama program…" />
+        </label>
+        <button class="btn ghost" type="submit">Cari</button>
+      </form>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Program</th><th>Kategori</th><th>Status</th><th>Materi</th><th>Evaluasi</th><th>Ulasan</th><th class="right">Aksi</th></tr>
+          </thead>
+          <tbody>
+            <% programs.forEach(function (p) { %>
+              <tr>
+                <td>
+                  <strong><%= p.title %></strong>
+                  <div class="small muted">/program/<%= p.slug %></div>
+                </td>
+                <td class="small"><%= p.category ? p.category.name : '—' %></td>
+                <td>
+                  <span class="badge <%= p.isPublished ? 'b-ok' : 'b-mut' %>"><%= p.isPublished ? 'Published' : 'Draft' %></span>
+                </td>
+                <td><%= p._count.materials %></td>
+                <td><%= p._count.evaluations %></td>
+                <td><%= p._count.reviews %></td>
+                <td class="right nowrap">
+                  <a class="btn sm ghost" href="/admin/program/<%= p.id %>">Kelola</a>
+                  <form method="post" action="/admin/program/<%= p.id %>/hapus" style="display:inline" data-confirm="Hapus program “<%= p.title %>”? Data materi, evaluasi, dan ulasan ikut terhapus.">
+                    <button class="btn sm danger" type="submit">Hapus</button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+            <% if (!programs.length) { %>
+              <tr><td colspan="7"><div class="empty">Belum ada program. Tambahkan program pertama Anda.</div></td></tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+<%- include('../partials/foot') %>

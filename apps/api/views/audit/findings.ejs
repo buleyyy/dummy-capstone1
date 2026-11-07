@@ -1,0 +1,84 @@
+<%- include('../partials/head', { title }) %>
+<%- include('../partials/internal-topbar', { user, active }) %>
+
+<main class="container audit-main">
+  <%- include('../partials/flash', { ok, err }) %>
+
+  <div class="pagehead">
+    <div>
+      <h1>Register Temuan</h1>
+      <div class="sub">Daftar temuan audit beserta klasifikasi, auditor pencatat, target koreksi, dan status tindak lanjut.</div>
+    </div>
+    <div class="actions">
+      <a class="btn btn-sm ghost" href="/audit/laporan">&#9113; Cetak Hasil</a>
+      <a class="btn btn-sm" href="/audit/temuan/baru">+ Tambah Temuan</a>
+    </div>
+  </div>
+
+  <form class="toolbar" method="get" action="/audit/temuan">
+    <label class="field" style="flex:2;min-width:220px">
+      <span>Cari</span>
+      <input type="search" name="q" value="<%= filters.q || '' %>" placeholder="Kode, klausul, atau uraian…" />
+    </label>
+    <label class="field">
+      <span>Kategori</span>
+      <select name="category">
+        <option value="">Semua</option>
+        <% ['MAJOR','MINOR','OBSERVASI'].forEach(function (c) { %>
+          <option value="<%= c %>" <%= filters.category === c ? 'selected' : '' %>><%= helpers.CATEGORY_LABELS[c] %></option>
+        <% }) %>
+      </select>
+    </label>
+    <label class="field">
+      <span>Status</span>
+      <select name="status">
+        <option value="">Semua</option>
+        <% ['OPEN','CLOSED'].forEach(function (s) { %>
+          <option value="<%= s %>" <%= filters.status === s ? 'selected' : '' %>><%= helpers.FINDING_STATUS_LABELS[s] %></option>
+        <% }) %>
+      </select>
+    </label>
+    <label class="field">
+      <span>Sumber</span>
+      <select name="source">
+        <option value="">Semua</option>
+        <% sources.forEach(function (s) { %><option value="<%= s %>" <%= filters.source === s ? 'selected' : '' %>><%= s %></option><% }) %>
+      </select>
+    </label>
+    <button class="btn btn-sm" type="submit">Terapkan</button>
+    <a class="btn btn-sm ghost" href="/audit/temuan">Reset</a>
+  </form>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Kode</th><th>Acuan / uraian</th><th>Kategori</th><th>Auditor</th><th>Target koreksi</th><th>Status</th><th class="right">Aksi</th></tr>
+      </thead>
+      <tbody>
+        <% findings.forEach(function (f) { %>
+          <tr>
+            <td class="mono nowrap"><%= f.code %><div class="small muted"><%= helpers.formatShortDate(f.reportedAt) %></div></td>
+            <td>
+              <strong><%= f.clause %></strong>
+              <div class="small muted" style="max-width:420px"><%= f.description.length > 160 ? f.description.slice(0, 157) + '…' : f.description %></div>
+            </td>
+            <td><span class="badge <%= helpers.CATEGORY_BADGE[f.category] %>"><%= helpers.CATEGORY_LABELS[f.category] %></span></td>
+            <td class="small"><%= f.auditor.name %></td>
+            <td class="small nowrap"><%= helpers.formatShortDate(f.targetDate) %></td>
+            <td><span class="badge <%= helpers.STATUS_BADGE[f.status] %>"><%= helpers.FINDING_STATUS_LABELS[f.status] %></span></td>
+            <td class="right"><a class="btn btn-sm ghost" href="/audit/temuan/<%= f.id %>">Buka</a></td>
+          </tr>
+        <% }) %>
+        <% if (!findings.length) { %>
+          <tr><td colspan="7"><div class="empty">Tidak ada temuan yang sesuai filter.</div></td></tr>
+        <% } %>
+      </tbody>
+    </table>
+    <div class="table-foot">
+      <span>Menampilkan <%= findings.length %> temuan</span>
+      <span>Metode penulisan: Problem, Location, Objective evidence, Reference (PLOR)</span>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/foot') %>

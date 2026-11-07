@@ -2,6 +2,7 @@
   "name": "sopinsya-capstone",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "description": "Sopinsya - Sistem Informasi Pelatihan dan Konsultasi DMP (Capstone PPSI Kelompok 01)",
   "workspaces": [
     "apps/*"
@@ -14,5 +15,8 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "overrides": {
+    "better-sqlite3": "^12.11.1"
   }
 }

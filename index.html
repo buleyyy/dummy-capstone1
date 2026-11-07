@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sopinsya Educenter — Preview UI (Peserta · Admin · Auditor)</title>
+<style>
+:root{
+  --primary:#0F2942; --secondary:#0D9488; --tertiary:#F59E0B; --neutral:#64748B;
+  --bg:#F5F7FA; --card:#FFFFFF; --line:#E2E8F0;
+  --txt:#1A202C; --muted:#718096;
+  --accent:#14532D;
+  --side:250px; --top:60px;
+  --soft:#EDF2F7;
+  --font-sans:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font-sans);background:var(--bg);color:var(--txt);line-height:1.55;font-size:15px}
+h1,h2,h3,h4{margin:0 0 .5rem}
+a{color:var(--primary)}
+.muted{color:var(--muted)}
+.small{font-size:.85rem}
+.mono{font-family:ui-monospace,Consolas,monospace;font-size:.85rem}
+
+/* ===== Topbar ===== */
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:0 18px;height:var(--top);background:var(--primary);color:#fff}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem;letter-spacing:.4px}
+.brand .logo{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:#fff;color:var(--primary);font-weight:900}
+.roles{display:flex;gap:4px;background:rgba(255,255,255,.14);padding:4px;border-radius:10px}
+.roles button{border:0;background:transparent;color:#E2E8F0;font:inherit;font-size:.85rem;padding:7px 13px;border-radius:8px;cursor:pointer}
+.roles button.on{background:#fff;color:var(--primary);font-weight:600}
+.notebar{background:#FFFBEB;border-bottom:1px solid #FDE68A;color:#92400E;font-size:.79rem;padding:6px 18px}
+
+/* ===== Navigasi publik gaya wireframe ===== */
+.pubnav{position:sticky;top:var(--top);z-index:35;display:flex;align-items:center;justify-content:space-between;
+  padding:0 22px;height:52px;background:var(--card);border-bottom:1px solid var(--line)}
+.pubnav .links{display:flex;gap:22px}
+.pubnav .links a{color:var(--txt);text-decoration:none;font-size:.92rem;font-weight:500;padding:4px 2px;border-bottom:2px solid transparent;cursor:pointer}
+.pubnav .links a.on{color:var(--primary);border-bottom-color:var(--primary);font-weight:600}
+.pubnav .cta{background:var(--primary);color:#fff;border:0;padding:8px 15px;border-radius:8px;font:inherit;font-size:.87rem;cursor:pointer;transition:transform .15s ease}
+.pubnav .cta:hover{transform:translateY(-1px)}
+
+/* ===== Layout ===== */
+.layout{display:grid;grid-template-columns:var(--side) 1fr;min-height:calc(100vh - var(--top) - 30px)}
+.layout.pub{grid-template-columns:1fr}
+.side{background:var(--card);border-right:1px solid var(--line);padding:14px 10px;position:sticky;top:calc(var(--top) + 30px);
+  height:calc(100vh - var(--top) - 30px);overflow:auto}
+.side .grp{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:14px 8px 6px}
+.side a{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 10px;margin-bottom:2px;
+  border-radius:8px;color:var(--txt);text-decoration:none;font-size:.9rem;cursor:pointer}
+.side a:hover{background:var(--soft)}
+.side a.on{background:var(--primary);color:#fff}
+.side a .fc{font-size:.68rem;opacity:.6;border:1px solid currentColor;padding:0 5px;border-radius:5px}
+main{padding:22px 26px 60px;max-width:1200px;min-width:0}
+
+/* ===== Page head ===== */
+.page{display:none}
+.page.on{display:block;animation:fade .18s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.pagehead{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.pagehead h2{font-size:1.3rem;margin:0}
+.pagehead .sub{color:var(--muted);font-size:.88rem}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+
+/* ===== Komponen ===== */
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:14px}
+.card h3{font-size:1rem}
+.grid{display:grid;gap:14px;margin-bottom:14px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat .num{font-size:1.55rem;font-weight:700}
+.stat .lbl{color:var(--muted);font-size:.83rem}
+.badge{display:inline-block;font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:99px;border:1px solid transparent;white-space:nowrap}
+.b-ok{background:#ECFDF5;color:#047857;border-color:#A7F3D0}
+.b-warn{background:#FFFBEB;color:var(--tertiary);border-color:#FDE68A}
+.b-bad{background:#FEF2F2;color:#B91C1C;border-color:#FECACA}
+.b-info{background:#F0F9FF;color:#0369A1;border-color:#BAE6FD}
+.b-mut{background:#F3F4F6;color:var(--muted);border-color:#E5E7EB}
+.b-acc{background:#ECFDF5;color:var(--primary);border-color:#BBF7D0}
+.b-neutral{background:#F1F5F9;color:var(--neutral);border-color:#CBD5E1}
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--primary);color:#fff;border:0;padding:9px 15px;
+  border-radius:9px;font:inherit;font-size:.9rem;cursor:pointer;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 4px 8px rgba(15,41,66,.25)}
+.btn.ghost{background:var(--card);color:var(--primary);border:1px solid var(--primary)}
+.btn.sm{padding:5px 10px;font-size:.8rem;border-radius:7px}
+.btn.danger{background:var(--card);color:#B91C1C;border:1px solid #FCA5A5}
+.table-wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+th{color:var(--muted);font-weight:600;font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;background:#FAFBFA}
+.field{display:grid;gap:6px;margin-bottom:13px;font-size:.9rem;font-weight:500}
+.field input,.field select,.field textarea{padding:9px 11px;border:1px solid var(--line);border-radius:9px;font:inherit;font-weight:400;background:#fff;width:100%}
+.field textarea{min-height:90px;resize:vertical}
+.field .req{color:#DC2626}
+.row{display:flex;gap:12px}
+.row>.field{flex:1}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{padding:6px 13px;border:1px solid var(--line);background:#fff;border-radius:999px;font-size:.85rem;cursor:pointer}
+.chip.on{background:var(--primary);color:#fff;border-color:var(--primary)}
+.progress{height:8px;background:var(--soft);border-radius:99px;overflow:hidden}
+.progress i{display:block;height:100%;border-radius:99px}
+.progress.primary i{background:linear-gradient(90deg,var(--primary),#1A202C)}
+.progress.secondary i{background:linear-gradient(90deg,var(--secondary),#0F766E)}
+.progress.tertiary i{background:linear-gradient(90deg,var(--tertiary),#D97706)}
+.stars{color:#F59E0B;letter-spacing:2px}
+.hint{background:#FFFBEB;border:1px solid #FDE68A;color:#92400E;padding:10px 13px;border-radius:10px;font-size:.86rem;margin-bottom:14px}
+.ok-note{background:#ECFDF5;border:1px solid #A7F3D0;color:#065F46;padding:10px 13px;border-radius:10px;font-size:.86rem;margin-bottom:14px}
+.list{list-style:none;margin:0;padding:0}
+.list li{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:11px 4px;border-bottom:1px solid var(--line);font-size:.92rem}
+.list li:last-child{border-bottom:0}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:6px 12px;font-size:.9rem}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0;font-weight:500}
+.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:14px;flex-wrap:wrap}
+.tabs button{border:0;background:transparent;font:inherit;font-size:.9rem;padding:9px 13px;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent}
+.tabs button.on{color:var(--primary);font-weight:600;border-bottom-color:var(--primary)}
+.toast{position:fixed;bottom:18px;right:18px;background:#111;color:#fff;padding:11px 17px;border-radius:10px;
+  font-size:.87rem;opacity:0;transform:translateY(8px);transition:.25s;pointer-events:none;z-index:60;max-width:320px}
+.toast.on{opacity:1;transform:none}
+footer{border-top:1px solid var(--line);padding:26px;background:#fff;color:var(--muted);font-size:.85rem}
+footer .fcols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px;max-width:1200px;margin:0 auto}
+footer h4{color:var(--txt);font-size:.95rem}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--primary)}/* ===== Beranda wireframe ===== */
+.hero{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;background:linear-gradient(135deg,var(--primary),#1A202C 55%,#0F3D22);
+  color:#fff;border-radius:18px;padding:44px 38px;margin-bottom:22px;overflow:hidden;position:relative}
+.hero .eyebrow{font-size:.78rem;letter-spacing:2px;text-transform:uppercase;opacity:.8;margin-bottom:14px}
+.hero h1{font-size:2.1rem;line-height:1.15;margin-bottom:14px;max-width:520px}
+.hero p{max-width:520px;opacity:.9;margin:0 0 22px}
+.hero .btn{background:#fff;color:var(--primary)}
+.hero .panel{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:22px;align-self:center}
+.hero .panel .t{font-size:.78rem;letter-spacing:2px;text-transform:uppercase;opacity:.85;margin-bottom:10px}
+.hero .panel .big{font-size:1.5rem;font-weight:700;line-height:1.25;margin-bottom:14px}
+.hero .panel .tags{display:flex;gap:8px;flex-wrap:wrap}
+.hero .panel .tags span{background:rgba(255,255,255,.16);padding:4px 11px;border-radius:99px;font-size:.8rem}
+
+.sec-title{display:flex;justify-content:space-between;align-items:center;margin:26px 0 14px}
+.sec-title h2{font-size:1.25rem;margin:0}
+.prog{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:.15s}
+.prog:hover{border-color:var(--primary);transform:translateY(-2px)}
+.prog .cover{height:80px;display:flex;align-items:flex-end;padding:14px 16px;color:#fff;font-weight:800;font-size:1.5rem;
+  background:linear-gradient(120deg,var(--primary),var(--secondary))}
+.prog .cover.c2{background:linear-gradient(120deg,#0F766E,var(--secondary))}
+.prog .cover.c3{background:linear-gradient(120deg,#1E3A8A,#3B82F6)}
+.prog .cover.c4{background:linear-gradient(120deg,var(--tertiary),#D97706)}
+.prog .body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.prog .body h3{font-size:1rem;margin:0}
+.prog .body .std{font-weight:700;font-size:.95rem;color:var(--primary)}
+.prog .body p{margin:0;color:var(--muted);font-size:.88rem;flex:1}
+.prog .body .btn{margin-top:auto;justify-content:center}
+.numtag{position:absolute;top:14px;right:16px;font-size:.75rem;font-weight:700;opacity:.7}
+.prog .body{position:relative}
+
+/* ===== Area belajar ===== */
+.learn{display:grid;grid-template-columns:250px 1fr;gap:20px;align-items:start}
+.learn-side{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;position:sticky;top:calc(var(--top) + 70px)}
+.learn-side .meet{font-weight:700;font-size:.92rem;padding:8px 10px;border-radius:8px;background:var(--soft);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.learn-side ul{list-style:none;margin:0 0 10px;padding:0}
+.learn-side ul a{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;color:var(--txt);text-decoration:none;font-size:.88rem;cursor:pointer}
+.learn-side ul a:hover{background:var(--soft)}
+.learn-side ul a.on{background:var(--primary);color:#fff;font-weight:600}
+.learn-side ul a .ic{width:18px;text-align:center}
+.learn-head{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:16px}
+.learn-head h2{font-size:1.3rem}
+.meta{display:flex;gap:16px;flex-wrap:wrap;margin:8px 0;color:var(--muted);font-size:.88rem}
+.meta span{display:inline-flex;align-items:center;gap:5px}
+
+/* ===== Quiz ===== */
+.quiz-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:6px}
+.quiz-title{font-size:1.35rem}
+.quiz-sub{color:var(--muted);margin-bottom:16px}
+.q-counter{background:var(--soft);color:var(--primary);font-weight:700;padding:6px 14px;border-radius:99px;font-size:.9rem}
+.q-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:14px}
+.q-card .qno{color:var(--primary);font-weight:700;font-size:.85rem;margin-bottom:6px}
+.q-card .qtext{font-size:1rem;margin-bottom:16px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:13px 15px;border:1.5px solid var(--line);border-radius:10px;cursor:pointer;font-size:.92rem;background:#fff;transition:.12s}
+.opt:hover{border-color:var(--secondary);background:#F0FDF9}
+.opt.sel{border-color:var(--primary);background:#ECFDF5}
+.opt .key{display:grid;place-items:center;width:26px;height:26px;flex:none;border-radius:50%;background:var(--soft);color:var(--primary);font-weight:700;font-size:.82rem}
+.opt.sel .key{background:var(--primary);color:#fff}
+.opt .mark{margin-left:auto;font-weight:700;font-size:.82rem}
+.opt.correct{border-color:var(--secondary);background:#ECFDF5}
+.opt.correct .mark{color:#047857}
+.opt.wrong{border-color:#DC2626;background:#FEF2F2}
+.opt.wrong .mark{color:#B91C1C}
+.quiz-bar{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-top:6px}
+.quiz-nav{display:flex;gap:8px}
+.score-hero{background:linear-gradient(135deg,var(--primary),#166534);color:#fff;border-radius:14px;padding:24px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.score-hero .big{font-size:2.2rem;font-weight:800}
+.score-hero .btn{background:#fff;color:var(--primary)}
+.res-item{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:10px;background:#fff}
+.res-item .head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px}
+.res-item .qt{font-weight:600;font-size:.9rem}
+.res-item .ans{font-size:.85rem;color:var(--muted)}
+.res-item .ans b{color:var(--txt)}
+
+/* ===== Sections ===== */
+.section-program .sec-title{margin-top:0}
+.filter-kategori .meet{background:var(--soft);padding:8px 10px;border-radius:8px;font-weight:700;font-size:.92rem;margin-bottom:10px;border:1px solid var(--line)}
+.filter-kategori h3{font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 8px 6px}
+.filter-kategori ul{list-style:none;margin:0 0 10px;padding:0}
+.filter-kategori ul a{display:flex;padding:6px 10px;border-radius:8px;color:var(--muted);text-decoration:none;font-size:.88rem;border:1px solid transparent}
+.filter-kategori ul a.on{background:var(--primary);color:#fff;font-weight:600;border-color:var(--primary)}
+.filter-side .badge-cat{margin-top:.5rem;font-size:.78rem;color:var(--neutral)}
+
+.event-banner{background:linear-gradient(135deg,var(--primary),#166534);color:#fff;border-radius:16px;padding:24px;margin:28px 0}
+.event-banner h3{margin:0 0 6px;font-size:1.5rem}
+.event-banner p{margin:0 0 16px;color:#CBD5E1;font-size:.92rem}
+.event-banner .btn{background:#fff;color:var(--primary)}
+.verified-note{background:#ECFDF5;border:1px solid #A7F3D0;color:#065F46;padding:12px 16px;border-radius:10px;font-size:.9rem;margin:16px 0}
+.verified-note strong{color:#047857}
+
+.review-row{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.review-row:last-child{border-bottom:0}
+.review-head{font-weight:700;font-size:.95rem}
+.review-score{font-size:1.1rem;color:var(--primary);font-weight:800}
+.review-text{color:var(--muted);font-size:.88rem;margin-top:4px}
+.review-meta{color:var(--neutral);font-size:.78rem}
+
+@media (max-width:960px){
+  .layout,.learn{grid-template-columns:1fr}
+  .side,.learn-side{position:static;height:auto}
+  .hero{grid-template-columns:1fr;padding:30px 22px}
+  .g4,.g3{grid-template-columns:repeat(2,1fr)}
+  footer .fcols{grid-template-columns:1fr}
+  .pubnav .links{gap:14px}
+}
+@media (max-width:620px){
+  .g4,.g3,.g2,.row{grid-template-columns:1fr;flex-direction:column}
+  .kv{grid-template-columns:1fr}
+  .roles button{padding:7px 8px;font-size:.76rem}
+  main{padding:16px 14px 50px}
+  .pubnav .links{font-size:.82rem;gap:10px;overflow-x:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand"><span class="logo">S</span><span>SOPINSYA</span></div>
+  <nav class="roles" aria-label="Pilih peran">
+    <button data-role="user" class="on">👤 Peserta</button>
+    <button data-role="admin">🛠 Admin</button>
+    <button data-role="auditor">🔍 Auditor</button>
+  </nav>
+</header>
+<div class="notebar">Prototipe antarmuka mengikuti wireframe <strong>Wireframe Peserta</strong> — data contoh, tidak ada data dikirim ke server. Tombol &amp; form hanya simulasi.</div>
+
+<!-- ===== Navigasi publik (hanya versi Peserta) ===== -->
+<nav class="pubnav" id="pubnav">
+  <div class="links">
+    <a data-go="beranda" class="on">Beranda</a>
+    <a data-go="program">Program</a>
+    <a data-go="tentang">Tentang Kami</a>
+    <a data-go="hubungi">Hubungi Kami</a>
+  </div>
+  <button class="cta" data-go="masuk">Masuk</button>
+</nav>
+
+<div class="layout pub" id="layout">
+  <aside class="side" id="side" style="display:none"></aside>
+  <main>
+
+  <!-- ======================= PESERTA / USER ======================= -->
+
+  <!-- Beranda -->
+  <section class="page" id="page-beranda">
+    <div class="hero">
+      <div>
+        <div class="eyebrow">Platform Pembelajaran &amp; Pelatihan</div>
+        <h1>Tingkatkan kompetensi melalui pelatihan standar ISO</h1>
+        <p>Pelajari standar, pahami penerapkannya, dan ikuti evaluasi pembelajaran dalam satu platform yang praktis.</p>
+        <button class="btn" data-go="program">Jelajahi Pelatihan</button>
+      </div>
+      <div class="panel">
+        <div class="t">Sopinsya Learning</div>
+        <div class="big">Belajar terarah.<br />Kompetensi meningkat.</div>
+        <div class="tags"><span>ISO</span><span>SMK3</span><span>Risk</span></div>
+      </div>
+    </div>
+
+    <div class="sec-title"><h2>Pelatihan yang diikuti</h2></div>
+    <div class="grid g4">
+      <div class="prog" data-go="detail"><div class="cover">ISO 9001</div>
+        <div class="body"><span class="std">Sistem Manajemen Mutu</span>
+        <p>Fokus pada kualitas proses dan kepuasan pelanggan.</p>
+        <button class="btn sm ghost">Lihat detail</button></div></div>
+      <div class="prog" data-go="detail"><div class="cover c2">ISO 14001</div>
+        <div class="body"><span class="std">Sistem Manajemen Lingkungan</span>
+        <p>Pahami pengelolaan dampak lingkungan.</p>
+        <button class="btn sm ghost">Lihat detail</button></div></div>
+      <div class="prog" data-go="detail"><div class="cover c3">ISO 45001</div>
+        <div class="body"><span class="std">Kesehatan &amp; Keselamatan Kerja</span>
+        <p>Bangun lingkungan kerja yang lebih aman.</p>
+        <button class="btn sm ghost">Lihat detail</button></div></div>
+      <div class="prog" data-go="detail"><div class="cover c4">ISO 37001</div>
+        <div class="body"><span class="std">Sistem Manajemen Anti Penyuapan</span>
+        <p>Kenali pendekatan pencegahan penyuapan.</p>
+        <button class="btn sm ghost">Lihat detail</button></div></div>
+    </div>
+
+    <div class="event-banner">
+      <h3>Sesi reguler bulan depan sudah dibuka</h3>
+      <p>Daftar sekarang untuk pertemuan upcoming. Admin akan mengirimkan informasi lebih lanjut setelah pendaftaran.</p>
+      <button class="btn" data-go="program">Lihat Jadwal</button>
+    </div>
+
+    <div class="sec-title"><h2>Program Pelatihan</h2></div>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Pelatihan ISO</h3>
+        <p class="muted small">Seri pelatihan standar ISO untuk membangun sistem manajemen yang kuat: ISO 9001 (mutu), ISO 14001 (lingkungan), ISO 45001 (K3), dan ISO 37001 (anti penyuapan). Materi, studi kasus, pre-test dan post-test terintegrasi.</p>
+        <button class="btn sm" data-go="program">Lihat</button>
+      </div>
+      <div class="card">
+        <h3>Pelatihan Ahli K3 Umum</h3>
+        <p class="muted small">Program persiapan dan pendampingan Ahli K3 Umum: dasar regulasi K3, identifikasi bahaya, pengendalian risiko, hingga simulasi uji. Terdiri dari beberapa pertemuan dengan materi dan evaluasi berjenjang.</p>
+        <button class="btn sm" data-go="program">Lihat</button>
+      </div>
+    </div>
+
+    <div class="verified-note" style="margin-top:10px">
+      <strong>Akses terbatas.</strong> Halaman ini hanya ditujukan untuk peserta yang sudah terdaftar. Jika kamu belum memiliki izin akses, hubungi administrator.
+    </div>
+  </section>
+
+  <!-- Program / Katalog -->
+  <section class="page section-program" id="page-program">
+    <div class="learn" style="grid-template-columns:220px 1fr">
+      <div class="learn-side filter-kategori">
+        <div class="meet">Filter Program Pelatihan</div>
+        <div class="badge-cat">Kategori</div>
+        <ul>
+          <li><a class="on" data-kat="semua">Semua Pelatihan</a></li>
+          <li><a data-kat="iso37001">ISO 37001 — Anti Penyuapan</a></li>
+          <li><a data-kat="iso9001">ISO 9001 — Mutu</a></li>
+          <li><a data-kat="iso14001">ISO 14001 — Lingkungan</a></li>
+          <li><a data-kat="iso45001">ISO 45001 — K3</a></li>
+        </ul>
+        <div class="badge-cat" style="margin-top:12px">Jadwal Terbaru</div>
+        <div style="font-size:.88rem">
+          <div style="display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)"><span>ISO 37001: 2025</span><span style="color:var(--primary);font-weight:600">7 Nov</span></div>
+          <div style="display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)"><span>ISO 45001: 2025</span><span style="color:var(--primary);font-weight:600">12 Nov</span></div>
+          <div style="display:flex;justify-content:space-between;gap:10px;padding:8px 0"><span>ISO 14001: 2025</span><span style="color:var(--primary);font-weight:600">19 Nov</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="row" style="margin-bottom:16px">
+          <label class="field" style="flex:2">Cari Pelatihan<input id="cari" placeholder="Ketik nama atau standar pelatihan…" /></label>
+          <label class="field" style="flex:1">Kategori
+            <select id="kat-select">
+              <option>Semua Kategori</option><option>ISO 37001</option><option>ISO 9001</option>
+              <option>ISO 14001</option><option>ISO 45001</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="sec-title" style="margin-top:0"><h2>Pelatihan yang diikuti</h2><span class="badge b-ok">2 aktif</span></div>
+        <div class="grid g3">
+          <div class="prog" data-go="detail"><div class="cover c4">ISO 37001</div>
+            <div class="body"><span class="std">Sistem Manajemen Anti Penyuapan</span>
+            <p>3 Hari · Offline · Trainer Ahmad Fadillah</p>
+            <button class="btn sm ghost">Lanjutkan</button></div></div>
+          <div class="prog" data-go="detail"><div class="cover">ISO 9001</div>
+            <div class="body"><span class="std">Sistem Manajemen Mutu</span>
+            <p>3 Hari · Offline · Trainer Siti Nurhaliza</p>
+            <button class="btn sm ghost">Lanjutkan</button></div></div>
+        </div>
+
+        <div class="sec-title"><h2>Daftar Pelatihan</h2><span class="badge b-mut" id="jml-hasil">4 program</span></div>
+        <div class="grid g3" id="daftar-program">
+          <div class="prog" data-kat="iso14001" data-go="detail"><div class="cover c2">ISO 14001</div>
+            <div class="body"><span class="std">Sistem Manajemen Lingkungan</span>
+            <p>Pahami pengelolaan dampak lingkungan.</p>
+            <button class="btn sm ghost">Lihat detail</button></div></div>
+          <div class="prog" data-kat="iso45001" data-go="detail"><div class="cover c3">ISO 45001</div>
+            <div class="body"><span class="std">Kesehatan &amp; Keselamatan Kerja</span>
+            <p>Bangun lingkungan kerja yang lebih aman.</p>
+            <button class="btn sm ghost">Lihat detail</button></div></div>
+          <div class="prog" data-kat="iso37001" data-go="detail"><div class="cover c4">ISO 37001</div>
+            <div class="body"><span class="std">Sistem Manajemen Anti Penyuapan</span>
+            <p>Kenali pendekatan pencegahan penyuapan.</p>
+            <button class="btn sm ghost">Lihat detail</button></div></div>
+          <div class="prog" data-kat="iso9001" data-go="detail"><div class="cover">ISO 9001</div>
+            <div class="body"><span class="std">Sistem Manajemen Mutu</span>
+            <p>Fokus pada kualitas proses dan kepuasan pelanggan.</p>
+            <button class="btn sm ghost">Lihat detail</button></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detail / Mulai Pelatihan -->
+  <section class="page" id="page-detail">
+    <div class="learn-head">
+      <h2>ISO 37001: 2025</h2>
+      <div class="meta">
+        <span>⏱ 3 Hari</span><span>📍 Offline</span><span>👤 Trainer: Ahmad Fadillah</span>
+        <span class="badge b-ok">Sedang diikuti</span>
+      </div>
+      <p class="muted small" style="max-width:760px">Pelatihan Sistem Manajemen Anti Penyuapan berbasis ISO 37001. Pelajari prinsip pencegahan penyuapan, identifikasi risiko, due diligence, hingga pengendalian internal. Terdiri dari beberapa pertemuan dengan materi, studi kasus, pre-test dan post-test.</p>
+      <div class="actions" style="margin-top:12px">
+        <button class="btn" data-go="materi">Ikuti Pelatihan</button>
+        <button class="btn ghost" data-go="silabus">Lihat Silabus</button>
+      </div>
+    </div>
+    <div class="grid g4">
+      <div class="stat"><div class="num">2</div><div class="lbl">Pertemuan</div></div>
+      <div class="stat"><div class="num">8</div><div class="lbl">Item belajar</div></div>
+      <div class="stat"><div class="num">10</div><div class="lbl">Soal pre &amp; post test</div></div>
+      <div class="stat"><div class="num">100%</div><div class="lbl">Progres materi</div></div>
+    </div>
+    <div class="card">
+      <h3>Struktur Pertemuan</h3>
+      <ul class="list">
+        <li><span><strong>Pertemuan 1</strong> — Pengenalan ISO 37001 &amp; prinsip anti penyuapan</span><span class="badge b-ok">Selesai</span></li>
+        <li><span><strong>Pertemuan 2</strong> — Pengendalian internal &amp; studi kasus</span><span class="badge b-info">Berjalan</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Area belajar: Materi -->
+  <section class="page" id="page-materi">
+    <div class="learn">
+      <aside class="learn-side" data-learnside></aside>
+      <div>
+        <div class="learn-head">
+          <h2>ISO 37001: 2025</h2>
+          <div class="meta"><span>⏱ 3 Hari</span><span>📍 Offline</span><span>👤 Trainer: Ahmad Fadillah</span></div>
+        </div>
+        <div class="card">
+          <div class="row" style="justify-content:space-between;align-items:center">
+            <h3 style="margin:0">Materi ISO 37001: 2025</h3>
+            <span class="badge b-acc">1/2 · 100%</span>
+          </div>
+          <div class="progress primary" style="margin-top:12px"><i style="width:100%"></i></div>
+        </div>
+        <div class="card">
+          <h3>Pertemuan 1 — Pengenalan ISO 37001</h3>
+          <p class="muted small">ISO 37001:2025 menetapkan persyaratan dan memberikan panduan penerapan sistem manajemen anti penyuapan. Modul ini membahas ruang lingkup, istilah dasar, komitmen pimpinan, kebijakan anti penyuapan, serta peran pemangku kepentingan.</p>
+          <ul class="list">
+            <li><span>📄 Modul 1.1 — Ruang lingkup &amp; istilah (PDF)</span><button class="btn sm ghost">Unduh</button></li>
+            <li><span>📄 Modul 1.2 — Kebijakan &amp; komitmen pimpinan (PDF)</span><button class="btn sm ghost">Unduh</button></li>
+            <li><span>🎬 Video — Apa itu penyuapan &amp; gratifikasi</span><span class="badge b-info">Video</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Catatan Belajar</h3>
+          <label class="field">Tulis catatan / refleksi kamu<textarea placeholder="Contoh: poin penting modul 1…"></textarea></label>
+          <button class="btn sm">Simpan Catatan</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Silabus -->
+  <section class="page" id="page-silabus">
+    <div class="learn">
+      <aside class="learn-side" data-learnside></aside>
+      <div>
+        <div class="learn-head">
+          <h2>ISO 37001: 2025</h2>
+          <div class="meta"><span>⏱ 3 Hari</span><span>📍 Offline</span><span>👤 Trainer: Ahmad Fadillah</span></div>
+        </div>
+        <div class="card">
+          <h3>Silabus ISO 37001: 2025</h3>
+          <div class="table-wrap" style="border:0">
+            <table>
+              <tr><th>Hari</th><th>Topik</th><th>Metode</th></tr>
+              <tr><td>Hari 1</td><td>Pengenalan ISO 37001, ruang lingkup, istilah, komitmen pimpinan</td><td>Kelas</td></tr>
+              <tr><td>Hari 1</td><td>Penilaian risiko penyuapan &amp; kebijakan anti penyuapan</td><td>Kelas</td></tr>
+              <tr><td>Hari 2</td><td>Pengendalian, due diligence, pelaporan, investigasi</td><td>Kelas + diskusi</td></tr>
+              <tr><td>Hari 2</td><td>Studi kasus pencegahan penyuapan</td><td>Studi kasus</td></tr>
+              <tr><td>Hari 3</td><td>Evaluasi: pre-test, post-test, kuis</td><td>Daring</td></tr>
+              <tr><td>Hari 3</td><td>Sertifikasi &amp; penutupan</td><td>—</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pustaka SOP -->
+  <section class="page" id="page-sop">
+    <div class="learn">
+      <aside class="learn-side" data-learnside></aside>
+      <div>
+        <div class="learn-head">
+          <h2>ISO 37001: 2025</h2>
+          <div class="meta"><span>⏱ 3 Hari</span><span>📍 Offline</span><span>👤 Trainer: Ahmad Fadillah</span></div>
+        </div>
+        <div class="card">
+          <h3>Pustaka SOP ISO 37001: 2025</h3>
+          <p class="muted small">Dokumen SOP pendukung yang dapat dijadikan referensi penerapan sistem manajemen anti penyuapan.</p>
+          <ul class="list">
+            <li><span class="mono">SOP-ABMS-001</span><span>Kebijakan Anti Penyuapan</span><button class="btn sm ghost">Unduh</button></li>
+            <li><span class="mono">SOP-ABMS-002</span><span>Penilaian Risiko Penyuapan</span><button class="btn sm ghost">Unduh</button></li>
+            <li><span class="mono">SOP-ABMS-003</span><span>Due Diligence Pihak Ketiga</span><button class="btn sm ghost">Unduh</button></li>
+            <li><span class="mono">SOP-ABMS-004</span><span>Pelaporan &amp; Investigasi Dugaan</span><button class="btn sm ghost">Unduh</button></li>
+            <li><span class="mono">SOP-ABMS-005</span><span>Pemberian &amp; Penerimaan Hadiah</span><button class="btn sm ghost">Unduh</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Studi Kasus -->
+  <section class="page" id="page-studi">
+    <div class="learn">
+      <aside class="learn-side" data-learnside></aside>
+      <div>
+        <div class="learn-head">
+          <div class="muted small">Pertemuan 1 | ISO 37001: 2025</div>
+          <h2>Studi Kasus ISO 37001: 2025</h2>
+          <div class="meta"><span>⏱ 3 Hari</span><span>📍 Offline</span><span>👤 Trainer: Ahmad Fadillah</span></div>
+        </div>
+        <div class="card">
+          <h3>Studi Kasus ISO 37001</h3>
+          <ul class="list">
+            <li><span>📎 Studi_Kasus_ISO37001.pdf</span><button class="btn sm ghost">Unduh</button></li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="row" style="justify-content:space-between;align-items:center">
+            <h3 style="margin:0">Pengumpulan Tugas</h3>
+            <span class="badge b-warn">Belum diserahkan</span>
+          </div>
+          <div style="border:2px dashed var(--line);border-radius:12px;padding:26px;text-align:center;margin:14px 0;background:#FAFBFA">
+            <div class="muted small" style="margin-bottom:10px">Tambah atau Unggah</div>
+            <button class="btn ghost sm">📁 Pilih File (PDF/DOC)</button>
+            <div class="muted small" style="margin-top:10px">Maks. 10 MB · atau seret file ke sini</div>
+          </div>
+          <label class="field">Tambahkan komentar<textarea placeholder="Jelaskan hasil analisis studi kasus kamu…"></textarea></label>
+          <button class="btn">Serahkan Tugas</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Referensi -->
+  <section class="page" id="page-video">
+    <div class="learn">
+      <aside class="learn-side" data-learnside></aside>
+      <div>
+        <div class="learn-head">
+          <div class="muted small">Pertemuan 1 | ISO 37001: 2025</div>
+          <h2>Video Referensi ISO 37001: 2025</h2>
+          <div class="meta"><span>⏱ 3 Hari</span><span>📍 Offline</span><span>👤 Trainer: Ahmad Fadillah</span></div>
+        </div>
+        <div class="grid g3">
+          <div class="card" style="padding:0;overflow:hidden">
+            <div style="aspect-ratio:16/9;background:#0F2942;display:grid;place-items:center;color:#fff;font-size:2rem">▶</div>
+            <div style="padding:12px"><strong class="small">Video 1</strong><div class="muted small">Prinsip anti penyuapan ISO 37001</div></div>
+          </div>
+          <div class="card" style="padding:0;overflow:hidden">
+            <div style="aspect-ratio:16/9;background:#14532D;display:grid;place-items:center;color:#fff;font-size:2rem">▶</div>
+            <div style="padding:12px"><strong class="small">Video 2</strong><div class="muted small">Studi kasus gratifikasi</div></div>
+          </div>
+          <div class="card" style="padding:0;overflow:hidden">
+            <div style="aspect-ratio:16/9;background:#166534;display:grid;place-items:center;color:#fff;font-size:2rem">▶</div>
+            <div style="padding:12px"><strong class="small">Video 3</strong><div class="muted small">Due diligence pihak ketiga</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kuis Blooket -->
+  <section class="page" id="page-kuis">
+    <div class="learn">
+      <aside class="learn-side" data-learnside></aside>
+      <div>
+        <div class="learn-head">
+          <div class="muted small">Pertemuan 1 | ISO 37001: 2025</div>
+          <h2>Kuis Blooket ISO 37001: 2025</h2>
+          <div class="meta"><span>⏱ 3 Hari</span><span>📍 Offline</span><span>👤 Trainer: Ahmad Fadillah</span></div>
+        </div>
+        <div class="card" style="text-align:center;padding:40px">
+          <div style="font-size:2.4rem;margin-bottom:8px">🎮</div>
+          <h3>Kuis interaktif gaya Blooket</h3>
+          <p class="muted small" style="max-width:520px;margin:0 auto 16px">Uji pemahamanmu lewat kuis seru. Pada implementasi sesungguhnya, tombol ini mengarah ke permainan kuis eksternal (Blooket) yang dibuka di tab baru.</p>
+          <button class="btn">Mulai Kuis Blooket</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pre-test -->
+  <section class="page" id="page-pretest">
+    <div class="learn">
+      <aside class="learn-side" data-learnside></aside>
+      <div id="pretest-mount"></div>
+    </div>
+  </section>
+
+  <!-- Post-test -->
+  <section class="page" id="page-posttest">
+    <div class="learn">
+      <aside class="learn-side" data-learnside></aside>
+      <div id="posttest-mount"></div>
+    </div>
+  </section>
+
+  <!-- Tentang Kami -->
+  <section class="page" id="page-tentang">
+    <div class="learn" style="grid-template-columns:220px 1fr">
+      <div class="learn-side">
+        <div class="meet">Tentang Kami</div>
+        <ul>
+          <li><a class="on">Profil Sopinsya</a></li>
+          <li><a>Visi &amp; Misi</a></li>
+          <li><a>Tim Kami</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="card">
+          <h3>Profil Sopinsya</h3>
+          <p class="muted small">Sopinsya Educenter adalah penyelenggara pelatihan dan konsultasi berbasis standar ISO. Kami membantu organisasi dan individu membangun kompetensi sistem manajemen — dari mutu (ISO 9001), lingkungan (ISO 14001), K3 (ISO 45001), hingga anti penyuapan (ISO 37001) — melalui platform pembelajaran digital yang terstruktur.</p>
+        </div>
+        <div class="card">
+          <h3>Visi &amp; Misi</h3>
+          <ul class="list">
+            <li><span><strong>Visi</strong> — Menjadi platform pembelajaran standar ISO terpercaya di Indonesia.</span></li>
+            <li><span><strong>Misi</strong> — Menyediakan pelatihan terstruktur, materi berkualitas, dan evaluasi yang terukur.</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Tim Kami</h3>
+          <ul class="list">
+            <li><span>Ahmad Fadillah — Trainer ISO 37001</span><span class="badge b-acc">Lead Trainer</span></li>
+            <li><span>Siti Nurhaliza — Trainer ISO 9001</span><span class="badge b-acc">Trainer</span></li>
+            <li><span>Budi Santoso — Konsultan SMK3</span><span class="badge b-acc">Konsultan</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hubungi Kami -->
+  <section class="page" id="page-hubungi">
+    <div class="pagehead"><div><h2>Hubungi Kami</h2><div class="sub">Konsultasi program &amp; pendaftaran via WhatsApp</div></div></div>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Informasi Kontak</h3>
+        <dl class="kv">
+          <dt>WhatsApp</dt><dd>0812-3456-7890 <span class="badge b-ok">Chat</span></dd>
+          <dt>Email</dt><dd>info@sopinsya.id</dd>
+          <dt>Alamat</dt><dd>Jl. Pendidikan No. 1, Kota Anda</dd>
+          <dt>Jam layanan</dt><dd>Senin–Jumat, 08.00–17.00 WIB</dd>
+        </dl>
+        <div class="actions" style="margin-top:14px">
+          <button class="btn">💬 Chat WhatsApp</button>
+          <button class="btn ghost">info@sopinsya.id</button>
+        </div>
+      </div>
+      <form class="card">
+        <h3>Kirim pesan</h3>
+        <label class="field">Nama <span class="req">*</span><input required /></label>
+        <label class="field">Email <span class="req">*</span><input type="email" required /></label>
+        <label class="field">Topik<select><option>Konsultasi program</option><option>Pendaftaran</option><option>Kelas in-company</option></select></label>
+        <label class="field">Pesan <span class="req">*</span><textarea required></textarea></label>
+        <button class="btn" type="submit">Kirim Pesan</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Masuk -->
+  <section class="page" id="page-masuk">
+    <div class="pagehead"><div><h2>Masuk</h2><div class="sub">Peran ditentukan oleh akun, bukan dipilih di form</div></div></div>
+    <div class="grid g2" style="grid-template-columns:1fr 2fr">
+      <form class="card">
+        <label class="field">Email<input type="email" placeholder="nama@email.com" /></label>
+        <label class="field">Kata sandi<input type="password" placeholder="••••••••" /></label>
+        <button class="btn" type="submit" style="width:100%;justify-content:center">Masuk</button>
+        <p class="muted small" style="margin-top:10px">Peserta yang sudah terdaftar masuk untuk melanjutkan pelatihan. Admin &amp; Auditor masuk melalui akun internal.</p>
+      </form>
+      <div class="card">
+        <h3>Pratinjau prototype</h3>
+        <p class="muted small">Gunakan pemilih peran di kanan atas: <strong>Peserta</strong>, <strong>Admin</strong>, atau <strong>Auditor</strong> — tanpa perlu login sungguhan.</p>
+        <div class="actions">
+          <button class="btn ghost sm" data-role="admin">Buka versi Admin</button>
+          <button class="btn ghost sm" data-role="auditor">Buka versi Auditor</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ADMIN ======================= -->
+  <section class="page" id="page-dashboard-admin">
+    <div class="pagehead">
+      <div><h2>Dashboard Admin</h2><div class="sub">Ringkasan operasional sistem — F-01…F-18</div></div>
+      <div class="actions"><span class="badge b-mut">Admin · admin@sopinsya.id</span></div>
+    </div>
+    <div class="grid g4">
+      <div class="stat"><div class="num">12</div><div class="lbl">Program aktif</div></div>
+      <div class="stat"><div class="num">27</div><div class="lbl">Pendaftar baru (30 hari)</div></div>
+      <div class="stat"><div class="num">348</div><div class="lbl">Peserta aktif</div></div>
+      <div class="stat"><div class="num" style="color:#B91C1C">9</div><div class="lbl">Temuan audit terbuka</div></div>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Pendaftaran 6 bulan terakhir</h3>
+        <div class="bars" style="display:flex;gap:10px;align-items:flex-end;height:130px;padding-top:8px">
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;height:100%"><i style="display:block;width:100%;height:45%;background:var(--secondary);border-radius:6px 6px 0 0"></i><span class="muted small">Mei</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;height:100%"><i style="display:block;width:100%;height:60%;background:var(--secondary);border-radius:6px 6px 0 0"></i><span class="muted small">Jun</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;height:100%"><i style="display:block;width:100%;height:52%;background:var(--secondary);border-radius:6px 6px 0 0"></i><span class="muted small">Jul</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;height:100%"><i style="display:block;width:100%;height:78%;background:var(--secondary);border-radius:6px 6px 0 0"></i><span class="muted small">Ags</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;height:100%"><i style="display:block;width:100%;height:66%;background:var(--secondary);border-radius:6px 6px 0 0"></i><span class="muted small">Sep</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;height:100%"><i style="display:block;width:100%;height:92%;background:var(--secondary);border-radius:6px 6px 0 0"></i><span class="muted small">Okt</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Pendaftar menunggu verifikasi</h3>
+        <ul class="list">
+          <li><span>Rani Wijaya — ISO 37001</span><span class="badge b-warn">Menunggu</span></li>
+          <li><span>Bagas Prakoso — ISO 45001</span><span class="badge b-warn">Menunggu</span></li>
+          <li><span>Siti Rahma — ISO 14001</span><span class="badge b-warn">Menunggu</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="page-cms">
+    <div class="pagehead">
+      <div><h2>CMS Konten</h2><div class="sub">F-05 · kelola informasi program, materi, video, konten website</div></div>
+      <div class="actions"><button class="btn">+ Tambah Konten</button></div>
+    </div>
+    <div class="tabs"><button class="on">Program</button><button>Materi</button><button>Video</button><button>Konten Halaman</button></div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Judul</th><th>Tipe</th><th>Program</th><th>Status</th><th>Ubahan</th><th>Aksi</th></tr>
+        <tr><td>ISO 37001: 2025</td><td>Program</td><td>—</td><td><span class="badge b-ok">Terbit</span></td><td class="muted small">20 Okt 2026</td><td><button class="btn sm ghost">Edit</button> <button class="btn sm danger">Hapus</button></td></tr>
+        <tr><td>Materi Pertemuan 1 (PDF)</td><td>Materi</td><td>ISO 37001</td><td><span class="badge b-ok">Terbit</span></td><td class="muted small">19 Okt 2026</td><td><button class="btn sm ghost">Edit</button> <button class="btn sm danger">Hapus</button></td></tr>
+        <tr><td>Video — Prinsip anti penyuapan</td><td>Video</td><td>ISO 37001</td><td><span class="badge b-ok">Terbit</span></td><td class="muted small">14 Okt 2026</td><td><button class="btn sm ghost">Edit</button> <button class="btn sm danger">Hapus</button></td></tr>
+        <tr><td>Artikel — Tips Menyusun SOP</td><td>Artikel</td><td>—</td><td><span class="badge b-warn">Draft</span></td><td class="muted small">21 Okt 2026</td><td><button class="btn sm ghost">Edit</button> <button class="btn sm danger">Hapus</button></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="page" id="page-peserta">
+    <div class="pagehead">
+      <div><h2>Manajemen Peserta &amp; Hak Akses</h2><div class="sub">F-06 · data peserta, akun internal, pembatasan akses berdasarkan role</div></div>
+      <div class="actions"><button class="btn">+ Tambah Akun</button><button class="btn ghost">Ekspor CSV</button></div>
+    </div>
+    <div class="chips"><button class="chip on">Semua</button><button class="chip">Admin</button><button class="chip">Auditor</button><button class="chip">Peserta</button><button class="chip">Non-aktif</button></div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Nama</th><th>Email</th><th>Peran</th><th>Program</th><th>Status</th><th>Akses</th></tr>
+        <tr><td>Admin Utama</td><td class="small">admin@sopinsya.id</td><td><span class="badge b-acc">Admin</span></td><td>—</td><td><span class="badge b-ok">Aktif</span></td><td><input type="checkbox" checked /></td></tr>
+        <tr><td>Dewi Anggraini</td><td class="small">auditor1@sopinsya.id</td><td><span class="badge b-info">Auditor</span></td><td>—</td><td><span class="badge b-ok">Aktif</span></td><td><input type="checkbox" checked /></td></tr>
+        <tr><td>Rani Wijaya</td><td class="small">rani@email.com</td><td><span class="badge b-mut">Peserta</span></td><td>ISO 37001</td><td><span class="badge b-ok">Aktif</span></td><td><input type="checkbox" checked /></td></tr>
+        <tr><td>Bagas Prakoso</td><td class="small">bagas@email.com</td><td><span class="badge b-mut">Peserta</span></td><td>ISO 45001</td><td><span class="badge b-warn">Menunggu</span></td><td><input type="checkbox" /></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="page" id="page-nilai-admin">
+    <div class="pagehead">
+      <div><h2>Pengolahan Nilai &amp; Rekap</h2><div class="sub">F-10 · hitung nilai dari kunci jawaban, rekap, ekspor</div></div>
+      <div class="actions"><button class="btn">Hitung Ulang</button><button class="btn ghost">Ekspor Rekap</button></div>
+    </div>
+    <div class="grid g4">
+      <div class="stat"><div class="num">348</div><div class="lbl">Peserta dinilai</div></div>
+      <div class="stat"><div class="num">81,4</div><div class="lbl">Rata-rata post-test</div></div>
+      <div class="stat"><div class="num" style="color:#047857">94%</div><div class="lbl">Kelulusan</div></div>
+      <div class="stat"><div class="num" style="color:#B91C1C">6%</div><div class="lbl">Remedial</div></div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Peserta</th><th>Program</th><th>Pre-test</th><th>Kuis</th><th>Post-test</th><th>Akhir</th><th>Status</th></tr>
+        <tr><td>Rani Wijaya</td><td class="small">ISO 37001</td><td>78</td><td>86</td><td>85</td><td><strong>84</strong></td><td><span class="badge b-ok">Lulus</span></td></tr>
+        <tr><td>Bagas Prakoso</td><td class="small">ISO 45001</td><td>55</td><td>61</td><td>58</td><td><strong>58</strong></td><td><span class="badge b-bad">Remedial</span></td></tr>
+        <tr><td>Siti Rahma</td><td class="small">ISO 14001</td><td>85</td><td>91</td><td>90</td><td><strong>89</strong></td><td><span class="badge b-ok">Lulus</span></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="page" id="page-master-checklist">
+    <div class="pagehead">
+      <div><h2>Master Checklist Audit</h2><div class="sub">F-12 · kelola template checklist, kategori, pertanyaan pemeriksaan</div></div>
+      <div class="actions"><button class="btn">+ Pertanyaan</button></div>
+    </div>
+    <div class="grid g3">
+      <div class="card"><h3>Dokumentasi &amp; Data</h3><div class="muted small">8 pertanyaan</div>
+        <ul class="list" style="margin-top:8px"><li><span class="mono">AD-01</span><span class="small">Dokumen terkendali</span></li><li><span class="mono">AD-02</span><span class="small">Daftar dokumen diperbarui</span></li></ul></div>
+      <div class="card"><h3>Sarana &amp; Prasarana</h3><div class="muted small">6 pertanyaan</div>
+        <ul class="list" style="margin-top:8px"><li><span class="mono">SP-01</span><span class="small">Area kerja tertata</span></li><li><span class="mono">SP-02</span><span class="small">Kalibrasi terjadwal</span></li></ul></div>
+      <div class="card"><h3>SDM &amp; Kompetensi</h3><div class="muted small">5 pertanyaan</div>
+        <ul class="list" style="margin-top:8px"><li><span class="mono">SD-01</span><span class="small">Rekam jejak pelatihan</span></li><li><span class="mono">SD-02</span><span class="small">Indikator kompetensi</span></li></ul></div>
+    </div>
+  </section>
+
+  <section class="page" id="page-pengaturan">
+    <div class="pagehead">
+      <div><h2>Pengaturan Sistem</h2><div class="sub">F-18 · akun internal, role, hak akses, konfigurasi</div></div>
+      <div class="actions"><button class="btn">Simpan</button></div>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Konfigurasi Umum</h3>
+        <label class="field">Nama sistem<input value="Sopinsya Educenter" /></label>
+        <label class="field">Nomor WhatsApp<input value="0812-3456-7890" /></label>
+        <label class="field">Email kontak<input value="info@sopinsya.id" /></label>
+        <label class="field">KKM post-test<input value="70" /></label>
+      </div>
+      <div class="card">
+        <h3>Matriks Hak Akses</h3>
+        <div class="table-wrap" style="border:0">
+          <table>
+            <tr><th>Modul</th><th>Admin</th><th>Auditor</th></tr>
+            <tr><td class="small">CMS &amp; Pustaka SOP</td><td><input type="checkbox" checked disabled /></td><td><input type="checkbox" /></td></tr>
+            <tr><td class="small">Peserta &amp; nilai</td><td><input type="checkbox" checked disabled /></td><td><input type="checkbox" /></td></tr>
+            <tr><td class="small">Checklist &amp; temuan</td><td><input type="checkbox" /></td><td><input type="checkbox" checked disabled /></td></tr>
+            <tr><td class="small">Laporan audit</td><td><input type="checkbox" /></td><td><input type="checkbox" checked disabled /></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= AUDITOR ======================= -->
+  <section class="page" id="page-dash-audit">
+    <div class="pagehead">
+      <div><h2>Dashboard Audit</h2><div class="sub">F-14 · ringkasan pemeriksaan, statistik, temuan</div></div>
+      <div class="actions"><span class="badge b-info">Auditor · auditor1@sopinsya.id</span></div>
+    </div>
+    <div class="grid g4">
+      <div class="stat"><div class="num">2</div><div class="lbl">Sesi aktif</div></div>
+      <div class="stat"><div class="num">78%</div><div class="lbl">Checklist selesai</div></div>
+      <div class="stat"><div class="num" style="color:#B91C1C">12</div><div class="lbl">Temuan · 3 Major · 6 Minor · 3 Obs</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Laporan siap</div></div>
+    </div>
+    <div class="card">
+      <h3>Progres Sesi</h3>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span class="small" style="width:170px">AUD-2026-014 · ISO 37001</span><div class="progress secondary" style="flex:1"><i style="width:80%"></i></div><span class="muted small">80%</span></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span class="small" style="width:170px">AUD-2026-015 · ISO 45001</span><div class="progress secondary" style="flex:1"><i style="width:45%"></i></div><span class="muted small">45%</span></div>
+      <button class="btn sm" data-go="checklist">Lanjutkan Pemeriksaan</button>
+    </div>
+  </section>
+
+  <section class="page" id="page-checklist">
+    <div class="pagehead">
+      <div><h2>Checklist Audit</h2><div class="sub">F-13 · pemeriksaan &amp; pencatatan hasil berdasarkan template</div></div>
+      <div class="actions"><button class="btn">Simpan &amp; Lanjut</button><button class="btn ghost">Tandai Selesai</button></div>
+    </div>
+    <div class="card">
+      <div class="grid g4" style="margin:0">
+        <div><div class="muted small">Kode sesi</div><strong class="mono">AUD-2026-014</strong></div>
+        <div><div class="muted small">Objek</div><strong>ISO 37001: 2025</strong></div>
+        <div><div class="muted small">Area</div><strong>Produksi &amp; Dokumentasi</strong></div>
+        <div><div class="muted small">Status</div><span class="badge b-ok">ACTIVE</span></div>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Kode</th><th>Pertanyaan</th><th style="text-align:center">YA</th><th style="text-align:center">TIDAK</th><th style="text-align:center">BELUM</th><th>Catatan</th></tr>
+
+[read_files: showing lines 1-820 of 1129. The window was shortened to stay under 50,000 characters. Use code_search to locate the part you need and read a window around it, or call read_files again with offset=821 to continue.]
